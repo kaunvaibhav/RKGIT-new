@@ -753,7 +753,16 @@ function WhyRKGIT() {
 
 /* ------------------------------- Recruiters ----------------------------- */
 
-const RECRUITERS = ["Amazon", "Flipkart", "Park+", "Swiggy", "Paytm", "Commvault", "Trilogy", "Autodesk", "TCS", "Wipro", "Infosys", "Deloitte", "Accenture", "Cognizant"];
+const RECRUITERS = [
+  { name: "Amazon",    url: "https://assets.aboutamazon.com/2e/d7/ac71f1f344c39f8949f48fc89e71/amazon-logo-squid-ink-smile-orange.png" },
+  { name: "Flipkart",  url: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Flipkart_logo_%282026%29.svg/3840px-Flipkart_logo_%282026%29.svg.png" },
+  { name: "Park+",     url: "https://media.assettype.com/creativegaga%2F2023-07%2F77d36c57-6e54-424e-b788-8060b0fd9ade%2FParkplus_old_logo.png?w=640&auto=format%2Ccompress" },
+  { name: "Swiggy",    url: "https://companieslogo.com/img/orig/SWIGGY.NS_BIG-f0e9f79a.png?t=1731987060" },
+  { name: "Paytm",     url: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Paytm_Logo_%28standalone%29.svg/3840px-Paytm_Logo_%28standalone%29.svg.png" },
+  { name: "Commvault", url: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Commvault_logo_2019.svg" },
+  { name: "Trilogy",   url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHEEucX5TvvvvITiUZEB5aq88FWDDFwBlnYNHi4pSAwse2dxwsBHSFCHmw&s=10" },
+  { name: "Autodesk",  url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmgutFYUTf7T0Oae5Dk_Kws_2JGZN7istEjlYCb-aq_9EnhtT4-t_gpOQ&s=10" },
+];
 
 function Recruiters() {
   return (
@@ -770,11 +779,11 @@ function Recruiters() {
         </div>
       </div>
 
-      <div className="mt-14 overflow-hidden">
+      <div className="mt-14 overflow-hidden marquee-pause">
         <div className="flex gap-5 animate-marquee-fast whitespace-nowrap">
           {[...RECRUITERS, ...RECRUITERS, ...RECRUITERS].map((r, i) => (
-            <div key={i} className="shrink-0 grid place-items-center w-52 h-28 rounded-2xl bg-card border border-border shadow-soft hover:scale-105 transition-transform">
-              <span className="text-xl font-extrabold text-foreground tracking-tight">{r}</span>
+            <div key={i} className="shrink-0 grid place-items-center w-52 h-28 rounded-2xl bg-white border border-border shadow-soft hover:-translate-y-1 hover:shadow-lift transition-all p-6">
+              <img src={r.url} alt={r.name} loading="lazy" className="max-h-full max-w-full object-contain" />
             </div>
           ))}
         </div>
