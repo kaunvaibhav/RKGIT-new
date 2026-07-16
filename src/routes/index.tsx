@@ -162,11 +162,9 @@ function Header() {
             </div>
           </a>
 
-          <nav className="hidden lg:flex items-center justify-center gap-1">
+          <nav className="hidden lg:flex items-center justify-center gap-0.5">
             {NAV.map((n) => (
-              <a key={n} href="#" className="link-underline px-3 py-2 text-sm font-medium text-foreground/80 hover:text-primary transition-colors">
-                {n}
-              </a>
+              <NavDropdown key={n.label} item={n} />
             ))}
           </nav>
 
