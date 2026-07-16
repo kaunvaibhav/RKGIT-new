@@ -191,13 +191,20 @@ function Header() {
       {/* Main nav */}
       <div className={`bg-background border-b border-border transition-shadow ${scrolled ? "shadow-soft" : ""}`}>
         <div className="container-page grid grid-cols-[auto_1fr_auto] items-center gap-6 h-20">
-          <a href="#" className="flex items-center gap-3 shrink-0">
-            <img src={RKGIT_LOGO} alt="RKGIT Logo" className="h-12 w-auto" />
+          <a href="#" className="flex items-center gap-3 sm:gap-4 shrink-0">
+            <img
+              src={ANNIVERSARY_LOGO}
+              alt="26 Years of Academic Excellence"
+              className="h-11 sm:h-14 w-auto object-contain"
+            />
+            <div className="h-10 w-px bg-border/70 hidden sm:block" />
+            <img src={RKGIT_LOGO} alt="RKGIT Logo" className="h-12 sm:h-14 w-auto" />
             <div className="hidden md:block leading-tight">
               <div className="text-primary font-bold text-sm">RKGIT</div>
               <div className="text-[10px] text-muted-foreground uppercase tracking-wider">Ghaziabad · Est. 2000</div>
             </div>
           </a>
+
 
           <nav className="hidden lg:flex items-center justify-center gap-0.5">
             {NAV.map((n) => (
