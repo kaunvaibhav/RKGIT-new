@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import {
-  Search, Menu, X, ChevronDown, ArrowRight, ArrowUpRight, MapPin, Phone, Mail,
+  Search, Menu, X, ChevronDown, ChevronRight, ArrowRight, ArrowLeft, ArrowUpRight, MapPin, Phone, Mail,
   MessageCircle, Facebook, Twitter, Linkedin, Instagram, Youtube, Globe,
   Sparkles, GraduationCap, Beaker, BookOpen, Trophy, Briefcase, Building2,
   Clock, FlaskConical, Send, Play,
