@@ -622,12 +622,27 @@ function AccreditationStrip() {
       <div className="relative marquee-pause">
         <div className="flex gap-6 animate-marquee whitespace-nowrap">
           {[...ACCRED, ...ACCRED, ...ACCRED].map((a, i) => (
-            <div key={i} className="shrink-0 grid place-items-center w-48 h-28 rounded-2xl bg-white border border-border shadow-soft hover:-translate-y-1 hover:shadow-lift transition-all p-5">
-              <img src={a.url} alt={a.name} loading="lazy" className="max-h-full max-w-full object-contain" />
+            <div
+              key={i}
+              className="shrink-0 grid place-items-center h-40 w-40 sm:h-44 sm:w-44 rounded-[20px] bg-white p-7 transition-all duration-[250ms] hover:-translate-y-1.5"
+              style={{
+                border: "1px solid rgba(0,0,0,0.06)",
+                boxShadow: "0 8px 30px rgba(0,0,0,0.06)",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.boxShadow = "0 14px 40px rgba(0,0,0,0.10)")}
+              onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "0 8px 30px rgba(0,0,0,0.06)")}
+            >
+              <img
+                src={a.url}
+                alt={a.name}
+                loading="lazy"
+                className="max-h-full max-w-full object-contain"
+              />
             </div>
           ))}
         </div>
       </div>
+
     </section>
   );
 }
