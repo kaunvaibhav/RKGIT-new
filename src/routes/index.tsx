@@ -123,7 +123,48 @@ const NAV: NavItem[] = [
 ];
 const SUB_NAV = ["Apply Now", "Announcements", "NIRF", "ERP", "Alumni", "Library", "Careers", "Contact Us"];
 
-function Header() {
+function NavDropdown({ item }: { item: NavItem }) {
+  return (
+    <div className="relative group">
+      <button className="inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-foreground/80 hover:text-primary transition-colors">
+        {item.label}
+        <ChevronDown className="h-3.5 w-3.5 transition-transform duration-200 group-hover:rotate-180 group-hover:text-primary" />
+      </button>
+      <div
+        className="invisible opacity-0 translate-y-1 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 absolute left-0 top-full pt-3 z-50"
+      >
+        <ul className="min-w-[240px] rounded-2xl bg-white border border-border/70 shadow-lift py-2 overflow-visible">
+          {item.items.map((c) => (
+            <li key={c.label} className="relative group/child">
+              <a
+                href="#"
+                className="flex items-center justify-between gap-4 px-4 py-2.5 text-sm text-foreground/80 hover:bg-primary-soft hover:text-primary transition-colors rounded-lg mx-1"
+              >
+                <span className="font-medium">{c.label}</span>
+                {c.children && <ChevronRight className="h-3.5 w-3.5 opacity-60" />}
+              </a>
+              {c.children && (
+                <div className="invisible opacity-0 translate-x-1 group-hover/child:visible group-hover/child:opacity-100 group-hover/child:translate-x-0 transition-all duration-200 absolute left-full top-0 pl-2 z-50">
+                  <ul className="min-w-[220px] rounded-2xl bg-white border border-border/70 shadow-lift py-2">
+                    {c.children.map((sc) => (
+                      <li key={sc}>
+                        <a href="#" className="block px-4 py-2.5 text-sm text-foreground/80 hover:bg-primary-soft hover:text-primary transition-colors rounded-lg mx-1 font-medium">
+                          {sc}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
