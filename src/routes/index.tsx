@@ -258,20 +258,53 @@ function Header() {
 /* --------------------------------- Hero --------------------------------- */
 
 const SLIDES = [
-  { img: heroAsset.url, title: "Raj Kumar Goel Institute of Technology", tag: "Welcome to RKGIT" },
-  { img: campusImg,     title: "A Modern Campus Built for Discovery",   tag: "Innovation · Research · Excellence" },
-  { img: labImg,        title: "Labs Where Ideas Become Products",       tag: "Engineering the Future" },
-  { img: gradImg,       title: "26 Years of Graduates Leading Industry", tag: "8500+ Placement Offers" },
+  { img: heroAsset.url, title: "Raj Kumar Goel Institute of Technology", sub: "Engineering the future through learning, research and innovation." },
+  { img: campusImg,     title: "A Modern Campus Built for Discovery",   sub: "109,000+ sq. m. of studios, labs and shared spaces." },
+  { img: labImg,        title: "Labs Where Ideas Become Products",       sub: "60+ specialised laboratories and 12 R&D centres." },
+  { img: gradImg,       title: "26 Years of Graduates Leading Industry", sub: "8,500+ placement offers and a 34 LPA highest package." },
 ];
 
 function Hero() {
   const [i, setI] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const total = SLIDES.length;
+  const go = (n: number) => setI((n + total) % total);
+  const next = () => go(i + 1);
+  const prev = () => go(i - 1);
+
   useEffect(() => {
-    const t = setInterval(() => setI((n) => (n + 1) % SLIDES.length), 4500);
+    if (paused) return;
+    const t = setInterval(() => setI((n) => (n + 1) % total), 5000);
     return () => clearInterval(t);
-  }, []);
+  }, [paused, total]);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "ArrowRight") setI((n) => (n + 1) % total);
+      if (e.key === "ArrowLeft") setI((n) => (n - 1 + total) % total);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [total]);
+
+  // Swipe support
+  const touchX = useRef<number | null>(null);
+  const onTouchStart = (e: React.TouchEvent) => { touchX.current = e.touches[0].clientX; };
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchX.current == null) return;
+    const dx = e.changedTouches[0].clientX - touchX.current;
+    if (Math.abs(dx) > 50) (dx < 0 ? next : prev)();
+    touchX.current = null;
+  };
+
   return (
-    <section className="relative h-[92vh] min-h-[600px] w-full overflow-hidden bg-navy">
+    <section
+      className="group relative h-[92vh] min-h-[600px] w-full overflow-hidden bg-navy"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
+    >
       {SLIDES.map((s, idx) => (
         <div
           key={idx}
@@ -285,29 +318,16 @@ function Hero() {
             className={`h-full w-full object-cover ${idx === i ? "animate-ken-burns" : ""}`}
             {...(idx === 0 ? { loading: "eager" as const } : { loading: "lazy" as const })}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-navy/70 via-navy/50 to-navy/85" />
+          <div className="absolute inset-0 bg-gradient-to-b from-navy/55 via-navy/25 to-navy/80" />
         </div>
       ))}
 
-      {/* floating shapes */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute top-24 left-10 h-32 w-32 rounded-full bg-accent/20 blur-2xl animate-float-slow" />
-        <div className="absolute bottom-32 right-16 h-40 w-40 rounded-3xl bg-secondary/40 blur-3xl animate-float-slow" style={{ animationDelay: "1.5s" }} />
-        <div className="absolute top-1/2 right-1/3 h-20 w-20 rounded-full border-2 border-accent/40 animate-float-slow" style={{ animationDelay: "3s" }} />
-      </div>
-
       <div className="relative z-10 h-full container-page flex flex-col justify-center">
         <div key={i} className="max-w-3xl animate-fade-up">
-          <span className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 px-4 py-1.5 text-xs font-semibold text-white uppercase tracking-widest">
-            <Sparkles className="h-3.5 w-3.5 text-accent" /> {SLIDES[i].tag}
-          </span>
-          <h1 className="mt-6 text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.05]">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.05]">
             {SLIDES[i].title}
           </h1>
-          <p className="mt-6 max-w-xl text-lg text-white/80">
-            NAAC 'A' Accredited Institute · Approved by AICTE · Affiliated to AKTU.
-            Building tomorrow's engineers, entrepreneurs and researchers since 2000.
-          </p>
+          <p className="mt-6 max-w-xl text-lg text-white/85">{SLIDES[i].sub}</p>
           <div className="mt-10 flex flex-wrap gap-4">
             <a href="#campus" className="inline-flex items-center gap-2 rounded-full bg-white text-primary px-7 py-3.5 text-sm font-bold hover:bg-accent hover:text-accent-foreground transition-colors shadow-lift">
               Explore Campus <ArrowUpRight className="h-4 w-4" />
@@ -318,12 +338,21 @@ function Hero() {
           </div>
         </div>
 
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/70 text-xs uppercase tracking-widest">
-          <span>Scroll</span>
-          <div className="h-10 w-px bg-white/40 relative overflow-hidden">
-            <div className="absolute inset-x-0 top-0 h-1/3 bg-accent animate-[float-slow_2s_ease-in-out_infinite]" />
-          </div>
-        </div>
+        {/* Prev / Next arrows */}
+        <button
+          onClick={prev}
+          aria-label="Previous slide"
+          className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 h-12 w-12 grid place-items-center rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-white opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-white hover:text-primary"
+        >
+          <ArrowLeft className="h-5 w-5" />
+        </button>
+        <button
+          onClick={next}
+          aria-label="Next slide"
+          className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 h-12 w-12 grid place-items-center rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-white opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-white hover:text-primary"
+        >
+          <ArrowRight className="h-5 w-5" />
+        </button>
 
         <div className="absolute bottom-10 right-6 md:right-16 flex gap-2">
           {SLIDES.map((_, idx) => (
@@ -339,6 +368,7 @@ function Hero() {
     </section>
   );
 }
+
 
 /* ---------------------------- Announcement Bar -------------------------- */
 
