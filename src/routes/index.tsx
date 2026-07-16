@@ -74,7 +74,53 @@ function Reveal({ children, delay = 0, className = "" }: { children: React.React
 
 /* -------------------------------- Header -------------------------------- */
 
-const NAV = ["Home", "Academics", "Departments", "Admissions", "Research", "Placements", "Campus Life", "About", "People", "Contact"];
+type NavChild = { label: string; children?: string[] };
+type NavItem = { label: string; items: NavChild[] };
+
+const NAV: NavItem[] = [
+  { label: "Home", items: [
+    { label: "Overview" }, { label: "News & Updates" }, { label: "Campus Highlights" },
+    { label: "Events" }, { label: "Virtual Tour" },
+  ]},
+  { label: "Academics", items: [
+    { label: "Departments", children: ["Computer Science","Information Technology","Electronics","Mechanical","Civil","Electrical"] },
+    { label: "Academic Programs", children: ["UG Programs","PG Programs","Diploma"] },
+    { label: "UG & PG Schemes" }, { label: "Academic Calendar" }, { label: "Examination Section" },
+    { label: "Fees" }, { label: "Time Table" }, { label: "Library" }, { label: "Ordinance" },
+  ]},
+  { label: "Departments", items: [
+    { label: "Computer Science" }, { label: "Information Technology" }, { label: "Artificial Intelligence" },
+    { label: "Electronics" }, { label: "Mechanical" }, { label: "Civil" }, { label: "Electrical" },
+    { label: "MBA" }, { label: "MCA" },
+  ]},
+  { label: "Admissions", items: [
+    { label: "Apply Now" }, { label: "Eligibility" }, { label: "Admission Process" },
+    { label: "Scholarships" }, { label: "Fee Structure" }, { label: "FAQs" }, { label: "Download Brochure" },
+  ]},
+  { label: "Research", items: [
+    { label: "Research Centers" }, { label: "Publications" }, { label: "Patents" },
+    { label: "Innovation Cell" }, { label: "Consultancy" }, { label: "Incubation" },
+  ]},
+  { label: "Placements", items: [
+    { label: "Placement Statistics" }, { label: "Recruiters" }, { label: "Placement Team" },
+    { label: "Internship Cell" }, { label: "Success Stories" }, { label: "Career Development" },
+  ]},
+  { label: "Campus Life", items: [
+    { label: "Hostel" }, { label: "Sports" }, { label: "Clubs" }, { label: "Events" },
+    { label: "Student Chapters" }, { label: "Cafeteria" }, { label: "Medical Facilities" },
+  ]},
+  { label: "About", items: [
+    { label: "Vision & Mission" }, { label: "Leadership" }, { label: "History" },
+    { label: "Approvals" }, { label: "Rankings" }, { label: "Infrastructure" },
+  ]},
+  { label: "People", items: [
+    { label: "Faculty" }, { label: "Staff" }, { label: "Alumni" }, { label: "Students" }, { label: "Governing Body" },
+  ]},
+  { label: "Contact", items: [
+    { label: "Contact Us" }, { label: "Campus Map" }, { label: "Admissions Office" },
+    { label: "Support" }, { label: "Feedback" },
+  ]},
+];
 const SUB_NAV = ["Apply Now", "Announcements", "NIRF", "ERP", "Alumni", "Library", "Careers", "Contact Us"];
 
 function Header() {
