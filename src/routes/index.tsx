@@ -595,7 +595,16 @@ function About() {
 
 /* --------------------------- Accreditation Slider ----------------------- */
 
-const ACCRED = ["AICTE", "NAAC", "NBA", "UGC", "AKTU", "DST", "NIRF", "ISTE", "IEEE"];
+const ACCRED = [
+  { name: "AICTE", url: "https://www.ndimdelhi.org/wp-content/uploads/2023/10/All_India_Council_for_Technical_Education_logo.png" },
+  { name: "NBA",   url: "https://upload.wikimedia.org/wikipedia/en/thumb/8/8d/National_Board_of_Accreditation.svg/1280px-National_Board_of_Accreditation.svg.png" },
+  { name: "AKTU",  url: "https://upload.wikimedia.org/wikipedia/en/9/98/Dr._A.P.J._Abdul_Kalam_Technical_University_logo.png" },
+  { name: "UGC",   url: "https://upload.wikimedia.org/wikipedia/en/4/4e/UGC_India_Logo.png" },
+  { name: "NIRF",  url: "https://saec.ac.in/assets/images/nirf-logo.png" },
+  { name: "DST",   url: "https://upload.wikimedia.org/wikipedia/commons/d/dc/Ministry_of_Science_and_Technology_India.svg" },
+  { name: "ISTE",  url: "https://accet-site-media-trial.s3.ap-northeast-1.amazonaws.com/cocurricular/iste/istelogo.webp" },
+  { name: "NAAC",  url: "https://upload.wikimedia.org/wikipedia/en/1/1d/NAAC_LOGO.png" },
+];
 
 function AccreditationStrip() {
   return (
@@ -607,11 +616,11 @@ function AccreditationStrip() {
         </div>
         <div className="h-px flex-1 mx-6 bg-border hidden sm:block" />
       </div>
-      <div className="relative">
+      <div className="relative marquee-pause">
         <div className="flex gap-6 animate-marquee whitespace-nowrap">
           {[...ACCRED, ...ACCRED, ...ACCRED].map((a, i) => (
-            <div key={i} className="shrink-0 grid place-items-center w-48 h-24 rounded-2xl bg-card border border-border shadow-soft">
-              <span className="text-2xl font-extrabold text-primary tracking-tight">{a}</span>
+            <div key={i} className="shrink-0 grid place-items-center w-48 h-28 rounded-2xl bg-white border border-border shadow-soft hover:-translate-y-1 hover:shadow-lift transition-all p-5">
+              <img src={a.url} alt={a.name} loading="lazy" className="max-h-full max-w-full object-contain" />
             </div>
           ))}
         </div>
@@ -619,6 +628,7 @@ function AccreditationStrip() {
     </section>
   );
 }
+
 
 /* ------------------------------ Programs -------------------------------- */
 
