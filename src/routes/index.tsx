@@ -205,7 +205,7 @@ function Header() {
         <div className="lg:hidden bg-background border-b border-border animate-fade-up">
           <div className="container-page py-4 flex flex-col">
             {NAV.map((n) => (
-              <a key={n} href="#" className="py-2.5 text-sm font-medium border-b border-border/60">{n}</a>
+              <a key={n.label} href="#" className="py-2.5 text-sm font-medium border-b border-border/60">{n.label}</a>
             ))}
           </div>
         </div>
