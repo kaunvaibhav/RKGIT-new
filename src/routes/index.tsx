@@ -13,12 +13,15 @@ import campusImg from "@/assets/rkgit-campus.jpg";
 import labImg from "@/assets/rkgit-lab.jpg";
 import gradImg from "@/assets/rkgit-graduation.jpg";
 import treeImg from "@/assets/rkgit-26years.png";
+import anniversaryLogoAsset from "@/assets/rkgit-26years-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Home,
 });
 
 const RKGIT_LOGO = "https://www.bbarkgit.co.in/img/RKGIT%20Logo%20Blue-1.png";
+const ANNIVERSARY_LOGO = anniversaryLogoAsset.url;
+
 
 /* ------------------------------- Hooks ---------------------------------- */
 
