@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import {
-  Search, Menu, X, ChevronDown, ArrowRight, ArrowUpRight, MapPin, Phone, Mail,
+  Search, Menu, X, ChevronDown, ChevronRight, ArrowRight, ArrowLeft, ArrowUpRight, MapPin, Phone, Mail,
   MessageCircle, Facebook, Twitter, Linkedin, Instagram, Youtube, Globe,
   Sparkles, GraduationCap, Beaker, BookOpen, Trophy, Briefcase, Building2,
   Clock, FlaskConical, Send, Play,
@@ -74,8 +74,95 @@ function Reveal({ children, delay = 0, className = "" }: { children: React.React
 
 /* -------------------------------- Header -------------------------------- */
 
-const NAV = ["Home", "Academics", "Departments", "Admissions", "Research", "Placements", "Campus Life", "About", "People", "Contact"];
+type NavChild = { label: string; children?: string[] };
+type NavItem = { label: string; items: NavChild[] };
+
+const NAV: NavItem[] = [
+  { label: "Home", items: [
+    { label: "Overview" }, { label: "News & Updates" }, { label: "Campus Highlights" },
+    { label: "Events" }, { label: "Virtual Tour" },
+  ]},
+  { label: "Academics", items: [
+    { label: "Departments", children: ["Computer Science","Information Technology","Electronics","Mechanical","Civil","Electrical"] },
+    { label: "Academic Programs", children: ["UG Programs","PG Programs","Diploma"] },
+    { label: "UG & PG Schemes" }, { label: "Academic Calendar" }, { label: "Examination Section" },
+    { label: "Fees" }, { label: "Time Table" }, { label: "Library" }, { label: "Ordinance" },
+  ]},
+  { label: "Departments", items: [
+    { label: "Computer Science" }, { label: "Information Technology" }, { label: "Artificial Intelligence" },
+    { label: "Electronics" }, { label: "Mechanical" }, { label: "Civil" }, { label: "Electrical" },
+    { label: "MBA" }, { label: "MCA" },
+  ]},
+  { label: "Admissions", items: [
+    { label: "Apply Now" }, { label: "Eligibility" }, { label: "Admission Process" },
+    { label: "Scholarships" }, { label: "Fee Structure" }, { label: "FAQs" }, { label: "Download Brochure" },
+  ]},
+  { label: "Research", items: [
+    { label: "Research Centers" }, { label: "Publications" }, { label: "Patents" },
+    { label: "Innovation Cell" }, { label: "Consultancy" }, { label: "Incubation" },
+  ]},
+  { label: "Placements", items: [
+    { label: "Placement Statistics" }, { label: "Recruiters" }, { label: "Placement Team" },
+    { label: "Internship Cell" }, { label: "Success Stories" }, { label: "Career Development" },
+  ]},
+  { label: "Campus Life", items: [
+    { label: "Hostel" }, { label: "Sports" }, { label: "Clubs" }, { label: "Events" },
+    { label: "Student Chapters" }, { label: "Cafeteria" }, { label: "Medical Facilities" },
+  ]},
+  { label: "About", items: [
+    { label: "Vision & Mission" }, { label: "Leadership" }, { label: "History" },
+    { label: "Approvals" }, { label: "Rankings" }, { label: "Infrastructure" },
+  ]},
+  { label: "People", items: [
+    { label: "Faculty" }, { label: "Staff" }, { label: "Alumni" }, { label: "Students" }, { label: "Governing Body" },
+  ]},
+  { label: "Contact", items: [
+    { label: "Contact Us" }, { label: "Campus Map" }, { label: "Admissions Office" },
+    { label: "Support" }, { label: "Feedback" },
+  ]},
+];
 const SUB_NAV = ["Apply Now", "Announcements", "NIRF", "ERP", "Alumni", "Library", "Careers", "Contact Us"];
+
+function NavDropdown({ item }: { item: NavItem }) {
+  return (
+    <div className="relative group">
+      <button className="inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-foreground/80 hover:text-primary transition-colors">
+        {item.label}
+        <ChevronDown className="h-3.5 w-3.5 transition-transform duration-200 group-hover:rotate-180 group-hover:text-primary" />
+      </button>
+      <div
+        className="invisible opacity-0 translate-y-1 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 absolute left-0 top-full pt-3 z-50"
+      >
+        <ul className="min-w-[240px] rounded-2xl bg-white border border-border/70 shadow-lift py-2 overflow-visible">
+          {item.items.map((c) => (
+            <li key={c.label} className="relative group/child">
+              <a
+                href="#"
+                className="flex items-center justify-between gap-4 px-4 py-2.5 text-sm text-foreground/80 hover:bg-primary-soft hover:text-primary transition-colors rounded-lg mx-1"
+              >
+                <span className="font-medium">{c.label}</span>
+                {c.children && <ChevronRight className="h-3.5 w-3.5 opacity-60" />}
+              </a>
+              {c.children && (
+                <div className="invisible opacity-0 translate-x-1 group-hover/child:visible group-hover/child:opacity-100 group-hover/child:translate-x-0 transition-all duration-200 absolute left-full top-0 pl-2 z-50">
+                  <ul className="min-w-[220px] rounded-2xl bg-white border border-border/70 shadow-lift py-2">
+                    {c.children.map((sc) => (
+                      <li key={sc}>
+                        <a href="#" className="block px-4 py-2.5 text-sm text-foreground/80 hover:bg-primary-soft hover:text-primary transition-colors rounded-lg mx-1 font-medium">
+                          {sc}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
 
 function Header() {
   const [open, setOpen] = useState(false);
@@ -116,11 +203,9 @@ function Header() {
             </div>
           </a>
 
-          <nav className="hidden lg:flex items-center justify-center gap-1">
+          <nav className="hidden lg:flex items-center justify-center gap-0.5">
             {NAV.map((n) => (
-              <a key={n} href="#" className="link-underline px-3 py-2 text-sm font-medium text-foreground/80 hover:text-primary transition-colors">
-                {n}
-              </a>
+              <NavDropdown key={n.label} item={n} />
             ))}
           </nav>
 
@@ -161,7 +246,7 @@ function Header() {
         <div className="lg:hidden bg-background border-b border-border animate-fade-up">
           <div className="container-page py-4 flex flex-col">
             {NAV.map((n) => (
-              <a key={n} href="#" className="py-2.5 text-sm font-medium border-b border-border/60">{n}</a>
+              <a key={n.label} href="#" className="py-2.5 text-sm font-medium border-b border-border/60">{n.label}</a>
             ))}
           </div>
         </div>
@@ -173,20 +258,53 @@ function Header() {
 /* --------------------------------- Hero --------------------------------- */
 
 const SLIDES = [
-  { img: heroAsset.url, title: "Raj Kumar Goel Institute of Technology", tag: "Welcome to RKGIT" },
-  { img: campusImg,     title: "A Modern Campus Built for Discovery",   tag: "Innovation · Research · Excellence" },
-  { img: labImg,        title: "Labs Where Ideas Become Products",       tag: "Engineering the Future" },
-  { img: gradImg,       title: "26 Years of Graduates Leading Industry", tag: "8500+ Placement Offers" },
+  { img: heroAsset.url, title: "Raj Kumar Goel Institute of Technology", sub: "Engineering the future through learning, research and innovation." },
+  { img: campusImg,     title: "A Modern Campus Built for Discovery",   sub: "109,000+ sq. m. of studios, labs and shared spaces." },
+  { img: labImg,        title: "Labs Where Ideas Become Products",       sub: "60+ specialised laboratories and 12 R&D centres." },
+  { img: gradImg,       title: "26 Years of Graduates Leading Industry", sub: "8,500+ placement offers and a 34 LPA highest package." },
 ];
 
 function Hero() {
   const [i, setI] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const total = SLIDES.length;
+  const go = (n: number) => setI((n + total) % total);
+  const next = () => go(i + 1);
+  const prev = () => go(i - 1);
+
   useEffect(() => {
-    const t = setInterval(() => setI((n) => (n + 1) % SLIDES.length), 4500);
+    if (paused) return;
+    const t = setInterval(() => setI((n) => (n + 1) % total), 5000);
     return () => clearInterval(t);
-  }, []);
+  }, [paused, total]);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "ArrowRight") setI((n) => (n + 1) % total);
+      if (e.key === "ArrowLeft") setI((n) => (n - 1 + total) % total);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [total]);
+
+  // Swipe support
+  const touchX = useRef<number | null>(null);
+  const onTouchStart = (e: React.TouchEvent) => { touchX.current = e.touches[0].clientX; };
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchX.current == null) return;
+    const dx = e.changedTouches[0].clientX - touchX.current;
+    if (Math.abs(dx) > 50) (dx < 0 ? next : prev)();
+    touchX.current = null;
+  };
+
   return (
-    <section className="relative h-[92vh] min-h-[600px] w-full overflow-hidden bg-navy">
+    <section
+      className="group relative h-[92vh] min-h-[600px] w-full overflow-hidden bg-navy"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
+    >
       {SLIDES.map((s, idx) => (
         <div
           key={idx}
@@ -200,29 +318,16 @@ function Hero() {
             className={`h-full w-full object-cover ${idx === i ? "animate-ken-burns" : ""}`}
             {...(idx === 0 ? { loading: "eager" as const } : { loading: "lazy" as const })}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-navy/70 via-navy/50 to-navy/85" />
+          <div className="absolute inset-0 bg-gradient-to-b from-navy/55 via-navy/25 to-navy/80" />
         </div>
       ))}
 
-      {/* floating shapes */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute top-24 left-10 h-32 w-32 rounded-full bg-accent/20 blur-2xl animate-float-slow" />
-        <div className="absolute bottom-32 right-16 h-40 w-40 rounded-3xl bg-secondary/40 blur-3xl animate-float-slow" style={{ animationDelay: "1.5s" }} />
-        <div className="absolute top-1/2 right-1/3 h-20 w-20 rounded-full border-2 border-accent/40 animate-float-slow" style={{ animationDelay: "3s" }} />
-      </div>
-
       <div className="relative z-10 h-full container-page flex flex-col justify-center">
         <div key={i} className="max-w-3xl animate-fade-up">
-          <span className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 px-4 py-1.5 text-xs font-semibold text-white uppercase tracking-widest">
-            <Sparkles className="h-3.5 w-3.5 text-accent" /> {SLIDES[i].tag}
-          </span>
-          <h1 className="mt-6 text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.05]">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.05]">
             {SLIDES[i].title}
           </h1>
-          <p className="mt-6 max-w-xl text-lg text-white/80">
-            NAAC 'A' Accredited Institute · Approved by AICTE · Affiliated to AKTU.
-            Building tomorrow's engineers, entrepreneurs and researchers since 2000.
-          </p>
+          <p className="mt-6 max-w-xl text-lg text-white/85">{SLIDES[i].sub}</p>
           <div className="mt-10 flex flex-wrap gap-4">
             <a href="#campus" className="inline-flex items-center gap-2 rounded-full bg-white text-primary px-7 py-3.5 text-sm font-bold hover:bg-accent hover:text-accent-foreground transition-colors shadow-lift">
               Explore Campus <ArrowUpRight className="h-4 w-4" />
@@ -233,12 +338,21 @@ function Hero() {
           </div>
         </div>
 
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/70 text-xs uppercase tracking-widest">
-          <span>Scroll</span>
-          <div className="h-10 w-px bg-white/40 relative overflow-hidden">
-            <div className="absolute inset-x-0 top-0 h-1/3 bg-accent animate-[float-slow_2s_ease-in-out_infinite]" />
-          </div>
-        </div>
+        {/* Prev / Next arrows */}
+        <button
+          onClick={prev}
+          aria-label="Previous slide"
+          className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 h-12 w-12 grid place-items-center rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-white opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-white hover:text-primary"
+        >
+          <ArrowLeft className="h-5 w-5" />
+        </button>
+        <button
+          onClick={next}
+          aria-label="Next slide"
+          className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 h-12 w-12 grid place-items-center rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-white opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-white hover:text-primary"
+        >
+          <ArrowRight className="h-5 w-5" />
+        </button>
 
         <div className="absolute bottom-10 right-6 md:right-16 flex gap-2">
           {SLIDES.map((_, idx) => (
@@ -254,6 +368,7 @@ function Hero() {
     </section>
   );
 }
+
 
 /* ---------------------------- Announcement Bar -------------------------- */
 
@@ -480,7 +595,16 @@ function About() {
 
 /* --------------------------- Accreditation Slider ----------------------- */
 
-const ACCRED = ["AICTE", "NAAC", "NBA", "UGC", "AKTU", "DST", "NIRF", "ISTE", "IEEE"];
+const ACCRED = [
+  { name: "AICTE", url: "https://www.ndimdelhi.org/wp-content/uploads/2023/10/All_India_Council_for_Technical_Education_logo.png" },
+  { name: "NBA",   url: "https://upload.wikimedia.org/wikipedia/en/thumb/8/8d/National_Board_of_Accreditation.svg/1280px-National_Board_of_Accreditation.svg.png" },
+  { name: "AKTU",  url: "https://upload.wikimedia.org/wikipedia/en/9/98/Dr._A.P.J._Abdul_Kalam_Technical_University_logo.png" },
+  { name: "UGC",   url: "https://upload.wikimedia.org/wikipedia/en/4/4e/UGC_India_Logo.png" },
+  { name: "NIRF",  url: "https://saec.ac.in/assets/images/nirf-logo.png" },
+  { name: "DST",   url: "https://upload.wikimedia.org/wikipedia/commons/d/dc/Ministry_of_Science_and_Technology_India.svg" },
+  { name: "ISTE",  url: "https://accet-site-media-trial.s3.ap-northeast-1.amazonaws.com/cocurricular/iste/istelogo.webp" },
+  { name: "NAAC",  url: "https://upload.wikimedia.org/wikipedia/en/1/1d/NAAC_LOGO.png" },
+];
 
 function AccreditationStrip() {
   return (
@@ -492,11 +616,11 @@ function AccreditationStrip() {
         </div>
         <div className="h-px flex-1 mx-6 bg-border hidden sm:block" />
       </div>
-      <div className="relative">
+      <div className="relative marquee-pause">
         <div className="flex gap-6 animate-marquee whitespace-nowrap">
           {[...ACCRED, ...ACCRED, ...ACCRED].map((a, i) => (
-            <div key={i} className="shrink-0 grid place-items-center w-48 h-24 rounded-2xl bg-card border border-border shadow-soft">
-              <span className="text-2xl font-extrabold text-primary tracking-tight">{a}</span>
+            <div key={i} className="shrink-0 grid place-items-center w-48 h-28 rounded-2xl bg-white border border-border shadow-soft hover:-translate-y-1 hover:shadow-lift transition-all p-5">
+              <img src={a.url} alt={a.name} loading="lazy" className="max-h-full max-w-full object-contain" />
             </div>
           ))}
         </div>
@@ -504,6 +628,7 @@ function AccreditationStrip() {
     </section>
   );
 }
+
 
 /* ------------------------------ Programs -------------------------------- */
 
@@ -628,7 +753,16 @@ function WhyRKGIT() {
 
 /* ------------------------------- Recruiters ----------------------------- */
 
-const RECRUITERS = ["Amazon", "Flipkart", "Park+", "Swiggy", "Paytm", "Commvault", "Trilogy", "Autodesk", "TCS", "Wipro", "Infosys", "Deloitte", "Accenture", "Cognizant"];
+const RECRUITERS = [
+  { name: "Amazon",    url: "https://assets.aboutamazon.com/2e/d7/ac71f1f344c39f8949f48fc89e71/amazon-logo-squid-ink-smile-orange.png" },
+  { name: "Flipkart",  url: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Flipkart_logo_%282026%29.svg/3840px-Flipkart_logo_%282026%29.svg.png" },
+  { name: "Park+",     url: "https://media.assettype.com/creativegaga%2F2023-07%2F77d36c57-6e54-424e-b788-8060b0fd9ade%2FParkplus_old_logo.png?w=640&auto=format%2Ccompress" },
+  { name: "Swiggy",    url: "https://companieslogo.com/img/orig/SWIGGY.NS_BIG-f0e9f79a.png?t=1731987060" },
+  { name: "Paytm",     url: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Paytm_Logo_%28standalone%29.svg/3840px-Paytm_Logo_%28standalone%29.svg.png" },
+  { name: "Commvault", url: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Commvault_logo_2019.svg" },
+  { name: "Trilogy",   url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHEEucX5TvvvvITiUZEB5aq88FWDDFwBlnYNHi4pSAwse2dxwsBHSFCHmw&s=10" },
+  { name: "Autodesk",  url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmgutFYUTf7T0Oae5Dk_Kws_2JGZN7istEjlYCb-aq_9EnhtT4-t_gpOQ&s=10" },
+];
 
 function Recruiters() {
   return (
@@ -645,11 +779,11 @@ function Recruiters() {
         </div>
       </div>
 
-      <div className="mt-14 overflow-hidden">
+      <div className="mt-14 overflow-hidden marquee-pause">
         <div className="flex gap-5 animate-marquee-fast whitespace-nowrap">
           {[...RECRUITERS, ...RECRUITERS, ...RECRUITERS].map((r, i) => (
-            <div key={i} className="shrink-0 grid place-items-center w-52 h-28 rounded-2xl bg-card border border-border shadow-soft hover:scale-105 transition-transform">
-              <span className="text-xl font-extrabold text-foreground tracking-tight">{r}</span>
+            <div key={i} className="shrink-0 grid place-items-center w-52 h-28 rounded-2xl bg-white border border-border shadow-soft hover:-translate-y-1 hover:shadow-lift transition-all p-6">
+              <img src={r.url} alt={r.name} loading="lazy" className="max-h-full max-w-full object-contain" />
             </div>
           ))}
         </div>
