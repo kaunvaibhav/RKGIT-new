@@ -13,12 +13,15 @@ import campusImg from "@/assets/rkgit-campus.jpg";
 import labImg from "@/assets/rkgit-lab.jpg";
 import gradImg from "@/assets/rkgit-graduation.jpg";
 import treeImg from "@/assets/rkgit-26years.png";
+import anniversaryLogoAsset from "@/assets/rkgit-26years-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Home,
 });
 
 const RKGIT_LOGO = "https://www.bbarkgit.co.in/img/RKGIT%20Logo%20Blue-1.png";
+const ANNIVERSARY_LOGO = anniversaryLogoAsset.url;
+
 
 /* ------------------------------- Hooks ---------------------------------- */
 
@@ -78,9 +81,9 @@ type NavChild = { label: string; children?: string[] };
 type NavItem = { label: string; items: NavChild[] };
 
 const NAV: NavItem[] = [
-  { label: "Home", items: [
-    { label: "Overview" }, { label: "News & Updates" }, { label: "Campus Highlights" },
-    { label: "Events" }, { label: "Virtual Tour" },
+  { label: "About", items: [
+    { label: "Vision & Mission" }, { label: "Leadership" }, { label: "History" },
+    { label: "Approvals" }, { label: "Rankings" }, { label: "Infrastructure" },
   ]},
   { label: "Academics", items: [
     { label: "Departments", children: ["Computer Science","Information Technology","Electronics","Mechanical","Civil","Electrical"] },
@@ -109,19 +112,12 @@ const NAV: NavItem[] = [
     { label: "Hostel" }, { label: "Sports" }, { label: "Clubs" }, { label: "Events" },
     { label: "Student Chapters" }, { label: "Cafeteria" }, { label: "Medical Facilities" },
   ]},
-  { label: "About", items: [
-    { label: "Vision & Mission" }, { label: "Leadership" }, { label: "History" },
-    { label: "Approvals" }, { label: "Rankings" }, { label: "Infrastructure" },
-  ]},
   { label: "People", items: [
     { label: "Faculty" }, { label: "Staff" }, { label: "Alumni" }, { label: "Students" }, { label: "Governing Body" },
   ]},
-  { label: "Contact", items: [
-    { label: "Contact Us" }, { label: "Campus Map" }, { label: "Admissions Office" },
-    { label: "Support" }, { label: "Feedback" },
-  ]},
 ];
 const SUB_NAV = ["Apply Now", "Announcements", "NIRF", "ERP", "Alumni", "Library", "Careers", "Contact Us"];
+
 
 function NavDropdown({ item }: { item: NavItem }) {
   return (
@@ -195,13 +191,20 @@ function Header() {
       {/* Main nav */}
       <div className={`bg-background border-b border-border transition-shadow ${scrolled ? "shadow-soft" : ""}`}>
         <div className="container-page grid grid-cols-[auto_1fr_auto] items-center gap-6 h-20">
-          <a href="#" className="flex items-center gap-3 shrink-0">
-            <img src={RKGIT_LOGO} alt="RKGIT Logo" className="h-12 w-auto" />
+          <a href="#" className="flex items-center gap-3 sm:gap-4 shrink-0">
+            <img
+              src={ANNIVERSARY_LOGO}
+              alt="26 Years of Academic Excellence"
+              className="h-11 sm:h-14 w-auto object-contain"
+            />
+            <div className="h-10 w-px bg-border/70 hidden sm:block" />
+            <img src={RKGIT_LOGO} alt="RKGIT Logo" className="h-12 sm:h-14 w-auto" />
             <div className="hidden md:block leading-tight">
               <div className="text-primary font-bold text-sm">RKGIT</div>
               <div className="text-[10px] text-muted-foreground uppercase tracking-wider">Ghaziabad · Est. 2000</div>
             </div>
           </a>
+
 
           <nav className="hidden lg:flex items-center justify-center gap-0.5">
             {NAV.map((n) => (
@@ -619,12 +622,27 @@ function AccreditationStrip() {
       <div className="relative marquee-pause">
         <div className="flex gap-6 animate-marquee whitespace-nowrap">
           {[...ACCRED, ...ACCRED, ...ACCRED].map((a, i) => (
-            <div key={i} className="shrink-0 grid place-items-center w-48 h-28 rounded-2xl bg-white border border-border shadow-soft hover:-translate-y-1 hover:shadow-lift transition-all p-5">
-              <img src={a.url} alt={a.name} loading="lazy" className="max-h-full max-w-full object-contain" />
+            <div
+              key={i}
+              className="shrink-0 grid place-items-center h-40 w-40 sm:h-44 sm:w-44 rounded-[20px] bg-white p-7 transition-all duration-[250ms] hover:-translate-y-1.5"
+              style={{
+                border: "1px solid rgba(0,0,0,0.06)",
+                boxShadow: "0 8px 30px rgba(0,0,0,0.06)",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.boxShadow = "0 14px 40px rgba(0,0,0,0.10)")}
+              onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "0 8px 30px rgba(0,0,0,0.06)")}
+            >
+              <img
+                src={a.url}
+                alt={a.name}
+                loading="lazy"
+                className="max-h-full max-w-full object-contain"
+              />
             </div>
           ))}
         </div>
       </div>
+
     </section>
   );
 }
