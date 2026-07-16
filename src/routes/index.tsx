@@ -81,9 +81,9 @@ type NavChild = { label: string; children?: string[] };
 type NavItem = { label: string; items: NavChild[] };
 
 const NAV: NavItem[] = [
-  { label: "Home", items: [
-    { label: "Overview" }, { label: "News & Updates" }, { label: "Campus Highlights" },
-    { label: "Events" }, { label: "Virtual Tour" },
+  { label: "About", items: [
+    { label: "Vision & Mission" }, { label: "Leadership" }, { label: "History" },
+    { label: "Approvals" }, { label: "Rankings" }, { label: "Infrastructure" },
   ]},
   { label: "Academics", items: [
     { label: "Departments", children: ["Computer Science","Information Technology","Electronics","Mechanical","Civil","Electrical"] },
@@ -112,19 +112,12 @@ const NAV: NavItem[] = [
     { label: "Hostel" }, { label: "Sports" }, { label: "Clubs" }, { label: "Events" },
     { label: "Student Chapters" }, { label: "Cafeteria" }, { label: "Medical Facilities" },
   ]},
-  { label: "About", items: [
-    { label: "Vision & Mission" }, { label: "Leadership" }, { label: "History" },
-    { label: "Approvals" }, { label: "Rankings" }, { label: "Infrastructure" },
-  ]},
   { label: "People", items: [
     { label: "Faculty" }, { label: "Staff" }, { label: "Alumni" }, { label: "Students" }, { label: "Governing Body" },
   ]},
-  { label: "Contact", items: [
-    { label: "Contact Us" }, { label: "Campus Map" }, { label: "Admissions Office" },
-    { label: "Support" }, { label: "Feedback" },
-  ]},
 ];
 const SUB_NAV = ["Apply Now", "Announcements", "NIRF", "ERP", "Alumni", "Library", "Careers", "Contact Us"];
+
 
 function NavDropdown({ item }: { item: NavItem }) {
   return (
