@@ -164,7 +164,7 @@ function NavDropdown({ item }: { item: NavItem }) {
   );
 }
 
-
+function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
