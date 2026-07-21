@@ -742,9 +742,9 @@ function WhyRKGIT() {
     "Interdisciplinary academics",
   ];
   const Card = ({ title, badge, items, dark }: { title: string; badge: string; items: string[]; dark?: boolean }) => (
-    <div className={`rounded-3xl p-8 md:p-10 shadow-lift border ${dark ? "bg-navy text-navy-foreground border-white/10" : "bg-card border-border"}`}>
+    <div className={`rounded-3xl p-6 sm:p-8 md:p-10 shadow-lift border ${dark ? "bg-navy text-navy-foreground border-white/10" : "bg-card border-border"}`}>
       <span className={`inline-block text-[11px] font-bold uppercase tracking-[0.25em] ${dark ? "text-accent" : "text-primary"}`}>{badge}</span>
-      <h3 className="mt-3 text-2xl md:text-3xl font-extrabold">{title}</h3>
+      <h3 className="mt-3 text-xl sm:text-2xl md:text-3xl font-extrabold">{title}</h3>
       <ul className="mt-8 grid sm:grid-cols-2 gap-x-6 gap-y-3.5">
         {items.map((t) => (
           <li key={t} className="flex items-start gap-3 text-sm">
