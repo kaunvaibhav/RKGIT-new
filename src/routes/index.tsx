@@ -919,22 +919,22 @@ function Testimonials() {
   }, []);
   const t = TESTIMONIALS[i];
   return (
-    <section className="py-24 md:py-32">
+    <section className="py-16 md:py-32">
       <div className="container-page">
-        <div className="relative mx-auto max-w-4xl rounded-3xl bg-navy text-navy-foreground p-10 md:p-16 shadow-lift overflow-hidden">
+        <div className="relative mx-auto max-w-4xl rounded-3xl bg-navy text-navy-foreground p-6 sm:p-10 md:p-16 shadow-lift overflow-hidden">
           <div className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-accent/20 blur-3xl" />
           <div className="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-primary/40 blur-3xl" />
           <div className="relative">
             <span className="text-xs font-bold uppercase tracking-[0.25em] text-accent">Voices from RKGIT</span>
-            <blockquote key={i} className="mt-6 text-2xl md:text-3xl font-semibold leading-snug animate-fade-up">
+            <blockquote key={i} className="mt-6 text-lg sm:text-2xl md:text-3xl font-semibold leading-snug animate-fade-up">
               &ldquo;{t.quote}&rdquo;
             </blockquote>
-            <div className="mt-8 flex items-center justify-between">
-              <div>
-                <div className="font-bold">{t.name}</div>
+            <div className="mt-6 sm:mt-8 flex items-center justify-between gap-4 flex-wrap">
+              <div className="min-w-0">
+                <div className="font-bold truncate">{t.name}</div>
                 <div className="text-sm text-white/70">{t.role}</div>
               </div>
-              <div className="flex gap-2">
+              <div className="flex gap-2 shrink-0">
                 {TESTIMONIALS.map((_, idx) => (
                   <button key={idx} onClick={() => setI(idx)} className={`h-1.5 rounded-full transition-all ${idx === i ? "w-8 bg-accent" : "w-3 bg-white/30"}`} />
                 ))}
