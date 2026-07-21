@@ -428,7 +428,7 @@ function LegacySection() {
       <div className="absolute -top-20 -left-20 h-80 w-80 rounded-full bg-accent/10 blur-3xl" />
       <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-primary/10 blur-3xl" />
 
-      <div className="container-page relative grid lg:grid-cols-2 gap-16 items-center">
+      <div className="container-page relative grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
         <Reveal>
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-transparent to-primary/10 rounded-3xl blur-2xl" />
