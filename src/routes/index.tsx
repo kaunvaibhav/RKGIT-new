@@ -440,7 +440,7 @@ function LegacySection() {
           <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 text-primary px-4 py-1.5 text-xs font-bold uppercase tracking-widest">
             <Sparkles className="h-3.5 w-3.5" /> Est. 2000 — 2026
           </span>
-          <h2 className="mt-5 text-4xl md:text-5xl font-extrabold text-foreground">
+          <h2 className="mt-5 text-3xl sm:text-4xl md:text-5xl font-extrabold text-foreground">
             Celebrating <span className="text-primary">26 Years</span> of Academic Excellence
           </h2>
           <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
