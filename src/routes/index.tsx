@@ -543,12 +543,12 @@ function About() {
     { k: "Placement Offers", v: 8500, s: "+" },
   ];
   return (
-    <section className="py-24 md:py-32">
-      <div className="container-page grid lg:grid-cols-2 gap-16 items-start">
+    <section className="py-16 md:py-32">
+      <div className="container-page grid lg:grid-cols-2 gap-10 md:gap-16 items-start">
         <Reveal>
           <span className="text-xs font-bold uppercase tracking-[0.25em] text-primary">About RKGIT</span>
-          <h2 className="mt-4 text-4xl md:text-5xl font-extrabold">An institution built on ideas, not walls.</h2>
-          <div className="mt-8 flex gap-2 border-b border-border">
+          <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold">An institution built on ideas, not walls.</h2>
+          <div className="mt-8 flex flex-wrap gap-1 sm:gap-2 border-b border-border">
             {(Object.keys(ABOUT_TABS) as (keyof typeof ABOUT_TABS)[]).map((t) => (
               <button
                 key={t}
