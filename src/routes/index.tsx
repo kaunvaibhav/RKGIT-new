@@ -423,7 +423,7 @@ const STATS = [
 
 function LegacySection() {
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden">
+    <section className="relative py-16 md:py-32 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-primary-soft/40 via-background to-background" />
       <div className="absolute -top-20 -left-20 h-80 w-80 rounded-full bg-accent/10 blur-3xl" />
       <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-primary/10 blur-3xl" />
