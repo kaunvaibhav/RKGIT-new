@@ -246,11 +246,14 @@ function Header() {
       </div>
 
       {open && (
-        <div className="lg:hidden bg-background border-b border-border animate-fade-up">
+        <div className="lg:hidden bg-background border-b border-border animate-fade-up max-h-[70vh] overflow-y-auto">
           <div className="container-page py-4 flex flex-col">
             {NAV.map((n) => (
               <a key={n.label} href="#" className="py-2.5 text-sm font-medium border-b border-border/60">{n.label}</a>
             ))}
+            <a href="#apply" className="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-primary text-primary-foreground text-sm font-semibold px-5 py-2.5">
+              Apply Now <ArrowRight className="h-4 w-4" />
+            </a>
           </div>
         </div>
       )}
