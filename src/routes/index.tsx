@@ -475,11 +475,11 @@ const PROGRAMS = ["B.Tech", "M.Tech", "D.Pharma", "B.Pharm", "M.Pharm", "BBA", "
 
 function Nutshell() {
   return (
-    <section className="py-24 md:py-32 bg-gradient-to-b from-surface to-background">
+    <section className="py-16 md:py-32 bg-gradient-to-b from-surface to-background">
       <div className="container-page">
         <Reveal className="text-center max-w-3xl mx-auto">
           <span className="inline-block text-xs font-bold uppercase tracking-[0.25em] text-primary">The Institute</span>
-          <h2 className="mt-4 text-4xl md:text-5xl font-extrabold">RKGIT in a Nutshell</h2>
+          <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold">RKGIT in a Nutshell</h2>
           <div className="mx-auto mt-4 h-0.5 w-24 bg-primary/60" />
           <p className="mt-6 text-muted-foreground text-lg leading-relaxed">
             We at RKGIT are committed to excellence in education, innovation, research and holistic
