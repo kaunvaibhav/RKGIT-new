@@ -348,14 +348,14 @@ function Hero() {
         <button
           onClick={prev}
           aria-label="Previous slide"
-          className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 h-12 w-12 grid place-items-center rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-white opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-white hover:text-primary"
+          className="absolute left-3 md:left-8 top-1/2 -translate-y-1/2 h-10 w-10 md:h-12 md:w-12 grid place-items-center rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-white opacity-70 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 hover:bg-white hover:text-primary"
         >
           <ArrowLeft className="h-5 w-5" />
         </button>
         <button
           onClick={next}
           aria-label="Next slide"
-          className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 h-12 w-12 grid place-items-center rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-white opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-white hover:text-primary"
+          className="absolute right-3 md:right-8 top-1/2 -translate-y-1/2 h-10 w-10 md:h-12 md:w-12 grid place-items-center rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-white opacity-70 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 hover:bg-white hover:text-primary"
         >
           <ArrowRight className="h-5 w-5" />
         </button>
