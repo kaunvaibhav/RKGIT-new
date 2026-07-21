@@ -756,11 +756,11 @@ function WhyRKGIT() {
     </div>
   );
   return (
-    <section className="py-24 md:py-32">
+    <section className="py-16 md:py-32">
       <div className="container-page">
         <Reveal className="max-w-2xl">
           <span className="text-xs font-bold uppercase tracking-[0.25em] text-primary">Why RKGIT</span>
-          <h2 className="mt-4 text-4xl md:text-5xl font-extrabold">Two pillars. One institution.</h2>
+          <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold">Two pillars. One institution.</h2>
           <p className="mt-4 text-muted-foreground text-lg">Everything at RKGIT is built to strengthen either a student's career or the frontier of research. Often both.</p>
         </Reveal>
         <div className="mt-12 grid lg:grid-cols-2 gap-6">
