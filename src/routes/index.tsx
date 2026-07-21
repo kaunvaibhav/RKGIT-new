@@ -867,19 +867,19 @@ const NEWS = [
 
 function News() {
   return (
-    <section className="py-24 md:py-32 bg-surface">
+    <section className="py-16 md:py-32 bg-surface">
       <div className="container-page">
         <div className="flex items-end justify-between flex-wrap gap-4">
           <Reveal>
             <span className="text-xs font-bold uppercase tracking-[0.25em] text-primary">Newsroom</span>
-            <h2 className="mt-4 text-4xl md:text-5xl font-extrabold">Latest news & events</h2>
+            <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold">Latest news & events</h2>
           </Reveal>
           <a href="#" className="text-sm font-bold text-primary link-underline inline-flex items-center gap-2">
             All stories <ArrowRight className="h-4 w-4" />
           </a>
         </div>
 
-        <div className="mt-12 grid md:grid-cols-3 gap-6">
+        <div className="mt-10 md:mt-12 grid sm:grid-cols-2 md:grid-cols-3 gap-6">
           {NEWS.map((n, i) => (
             <Reveal key={n.title} delay={i * 100}>
               <article className="group rounded-3xl bg-card border border-border overflow-hidden shadow-soft hover:shadow-lift hover:-translate-y-1 transition-all h-full">
