@@ -571,24 +571,24 @@ function About() {
         </Reveal>
 
         <Reveal delay={150}>
-          <div className="grid grid-cols-2 gap-5">
+          <div className="grid grid-cols-2 gap-3 sm:gap-5">
             {cards.map((c, i) => {
               const bgs = ["bg-primary-soft", "bg-[oklch(0.97_0.03_80)]", "bg-[oklch(0.96_0.02_170)]", "bg-[oklch(0.95_0.03_320)]"];
               return (
-                <div key={c.k} className={`rounded-3xl p-7 ${bgs[i]} border border-border/60 shadow-soft`}>
-                  <div className="text-4xl md:text-5xl font-extrabold text-primary tracking-tight">
+                <div key={c.k} className={`rounded-3xl p-5 sm:p-7 ${bgs[i]} border border-border/60 shadow-soft`}>
+                  <div className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-primary tracking-tight break-words">
                     <CountUp end={c.v} suffix={c.s} />
                   </div>
                   <div className="mt-2 text-sm font-semibold text-foreground/80">{c.k}</div>
                 </div>
               );
             })}
-            <div className="col-span-2 rounded-3xl p-7 bg-navy text-navy-foreground shadow-lift flex items-center justify-between gap-6">
-              <div>
+            <div className="col-span-2 rounded-3xl p-5 sm:p-7 bg-navy text-navy-foreground shadow-lift flex items-center justify-between gap-4 sm:gap-6">
+              <div className="min-w-0">
                 <div className="text-xs uppercase tracking-widest text-accent">Accreditation</div>
-                <div className="mt-1 text-xl font-bold">NAAC 'A' · AICTE Approved · AKTU Affiliated</div>
+                <div className="mt-1 text-base sm:text-xl font-bold">NAAC 'A' · AICTE Approved · AKTU Affiliated</div>
               </div>
-              <div className="hidden sm:grid h-14 w-14 place-items-center rounded-2xl bg-accent text-accent-foreground">
+              <div className="hidden sm:grid h-14 w-14 place-items-center rounded-2xl bg-accent text-accent-foreground shrink-0">
                 <Trophy className="h-6 w-6" />
               </div>
             </div>
