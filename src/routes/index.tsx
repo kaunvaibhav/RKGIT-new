@@ -787,12 +787,12 @@ const RECRUITERS = [
 
 function Recruiters() {
   return (
-    <section className="py-24 md:py-32 bg-gradient-to-br from-primary-soft/60 via-surface to-primary-soft/40">
+    <section className="py-16 md:py-32 bg-gradient-to-br from-primary-soft/60 via-surface to-primary-soft/40">
       <div className="container-page">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
           <Reveal>
             <span className="text-xs font-bold uppercase tracking-[0.25em] text-primary">Our Recruiters</span>
-            <h2 className="mt-4 text-4xl md:text-5xl font-extrabold">Our students at leading companies</h2>
+            <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold">Our students at leading companies</h2>
           </Reveal>
           <a href="#" className="text-sm font-bold text-primary link-underline inline-flex items-center gap-2">
             View Placements <ArrowRight className="h-4 w-4" />
@@ -800,10 +800,10 @@ function Recruiters() {
         </div>
       </div>
 
-      <div className="mt-14 overflow-hidden marquee-pause">
-        <div className="flex gap-5 animate-marquee-fast whitespace-nowrap">
+      <div className="mt-10 md:mt-14 overflow-hidden marquee-pause">
+        <div className="flex gap-4 sm:gap-5 animate-marquee-fast whitespace-nowrap">
           {[...RECRUITERS, ...RECRUITERS, ...RECRUITERS].map((r, i) => (
-            <div key={i} className="shrink-0 grid place-items-center w-52 h-28 rounded-2xl bg-white border border-border shadow-soft hover:-translate-y-1 hover:shadow-lift transition-all p-6">
+            <div key={i} className="shrink-0 grid place-items-center w-40 h-24 sm:w-52 sm:h-28 rounded-2xl bg-white border border-border shadow-soft hover:-translate-y-1 hover:shadow-lift transition-all p-5 sm:p-6">
               <img src={r.url} alt={r.name} loading="lazy" className="max-h-full max-w-full object-contain" />
             </div>
           ))}
