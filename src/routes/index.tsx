@@ -951,23 +951,23 @@ function Testimonials() {
 
 function CTA() {
   return (
-    <section id="apply" className="py-24 md:py-32">
+    <section id="apply" className="py-16 md:py-32">
       <div className="container-page">
-        <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-primary via-secondary to-primary p-10 md:p-20 shadow-lift">
+        <div className="relative overflow-hidden rounded-3xl md:rounded-[2.5rem] bg-gradient-to-br from-primary via-secondary to-primary p-6 sm:p-10 md:p-20 shadow-lift">
           <div className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-accent/30 blur-3xl" />
           <div className="absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-white/10 blur-3xl" />
-          <div className="relative grid lg:grid-cols-[1.4fr_1fr] gap-10 items-center text-white">
+          <div className="relative grid lg:grid-cols-[1.4fr_1fr] gap-8 md:gap-10 items-center text-white">
             <div>
               <span className="inline-flex items-center gap-2 rounded-full bg-white/15 backdrop-blur border border-white/20 px-4 py-1.5 text-xs font-bold uppercase tracking-widest">
                 <Sparkles className="h-3.5 w-3.5 text-accent" /> Admissions Open 2026
               </span>
-              <h2 className="mt-6 text-4xl md:text-6xl font-extrabold leading-tight">Your future begins at RKGIT.</h2>
-              <p className="mt-5 text-white/80 text-lg max-w-xl">Apply through counselling or direct admission. Priority round scholarships available until 30 September 2026.</p>
-              <div className="mt-10 flex flex-wrap gap-4">
-                <a href="#" className="inline-flex items-center gap-2 rounded-full bg-accent text-accent-foreground px-7 py-3.5 text-sm font-bold hover:brightness-105 shadow-lift">
+              <h2 className="mt-6 text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight">Your future begins at RKGIT.</h2>
+              <p className="mt-5 text-white/80 text-base sm:text-lg max-w-xl">Apply through counselling or direct admission. Priority round scholarships available until 30 September 2026.</p>
+              <div className="mt-8 md:mt-10 flex flex-wrap gap-3 sm:gap-4">
+                <a href="#" className="inline-flex items-center gap-2 rounded-full bg-accent text-accent-foreground px-5 sm:px-7 py-3 sm:py-3.5 text-sm font-bold hover:brightness-105 shadow-lift">
                   Apply Now <ArrowRight className="h-4 w-4" />
                 </a>
-                <a href="#" className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur border border-white/25 px-7 py-3.5 text-sm font-bold hover:bg-white/20">
+                <a href="#" className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur border border-white/25 px-5 sm:px-7 py-3 sm:py-3.5 text-sm font-bold hover:bg-white/20">
                   <Play className="h-4 w-4" /> Visit Campus
                 </a>
               </div>
