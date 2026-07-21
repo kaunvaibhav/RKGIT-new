@@ -305,7 +305,7 @@ function Hero() {
 
   return (
     <section
-      className="group relative h-[92vh] min-h-[600px] w-full overflow-hidden bg-navy"
+      className="group relative h-[80vh] min-h-[520px] md:h-[92vh] md:min-h-[600px] w-full overflow-hidden bg-navy"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onTouchStart={onTouchStart}
