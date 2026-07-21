@@ -505,15 +505,15 @@ function Nutshell() {
         </Reveal>
 
         {/* Stats grid */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-5">
+        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5">
           {STATS.map((s, i) => (
             <Reveal key={s.label} delay={i * 60}>
-              <div className="group relative h-full rounded-2xl bg-card border border-border p-6 shadow-soft hover:shadow-lift hover:-translate-y-1 transition-all overflow-hidden">
+              <div className="group relative h-full rounded-2xl bg-card border border-border p-5 sm:p-6 shadow-soft hover:shadow-lift hover:-translate-y-1 transition-all overflow-hidden">
                 <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary via-secondary to-accent" />
-                <div className="grid h-12 w-12 place-items-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                <div className="grid h-11 w-11 sm:h-12 sm:w-12 place-items-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                   <s.icon className="h-5 w-5" />
                 </div>
-                <div className="mt-5 text-3xl md:text-4xl font-extrabold text-foreground tracking-tight">
+                <div className="mt-4 sm:mt-5 text-2xl sm:text-3xl md:text-4xl font-extrabold text-foreground tracking-tight break-words">
                   <CountUp end={s.value} suffix={s.suffix} />
                 </div>
                 <div className="mt-1 text-xs font-medium uppercase tracking-wider text-muted-foreground">{s.label}</div>
