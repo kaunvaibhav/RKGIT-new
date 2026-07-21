@@ -190,36 +190,36 @@ function Header() {
 
       {/* Main nav */}
       <div className={`bg-background border-b border-border transition-shadow ${scrolled ? "shadow-soft" : ""}`}>
-        <div className="container-page grid grid-cols-[auto_1fr_auto] items-center gap-6 h-20">
-          <a href="#" className="flex items-center gap-3 sm:gap-4 shrink-0">
+        <div className="container-page grid grid-cols-[minmax(0,1fr)_auto] lg:grid-cols-[auto_1fr_auto] items-center gap-3 sm:gap-6 h-16 sm:h-20">
+          <a href="#" className="flex items-center gap-2 sm:gap-3 md:gap-4 shrink min-w-0">
             <img
               src={ANNIVERSARY_LOGO}
               alt="26 Years of Academic Excellence"
-              className="h-11 sm:h-14 w-auto object-contain"
+              className="h-9 sm:h-12 lg:h-14 w-auto object-contain shrink-0"
             />
-            <div className="h-10 w-px bg-border/70 hidden sm:block" />
-            <img src={RKGIT_LOGO} alt="RKGIT Logo" className="h-12 sm:h-14 w-auto" />
-            <div className="hidden md:block leading-tight">
+            <div className="h-8 sm:h-10 w-px bg-border/70 hidden sm:block shrink-0" />
+            <img src={RKGIT_LOGO} alt="RKGIT Logo" className="h-9 sm:h-12 lg:h-14 w-auto shrink-0" />
+            <div className="hidden xl:block leading-tight min-w-0">
               <div className="text-primary font-bold text-sm">RKGIT</div>
               <div className="text-[10px] text-muted-foreground uppercase tracking-wider">Ghaziabad · Est. 2000</div>
             </div>
           </a>
 
 
-          <nav className="hidden lg:flex items-center justify-center gap-0.5">
+          <nav className="hidden lg:flex items-center justify-center gap-0.5 min-w-0">
             {NAV.map((n) => (
               <NavDropdown key={n.label} item={n} />
             ))}
           </nav>
 
-          <div className="flex items-center gap-3 shrink-0">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <button aria-label="Search" className="hidden sm:grid h-10 w-10 place-items-center rounded-full border border-border hover:border-primary hover:text-primary transition-colors">
               <Search className="h-4 w-4" />
             </button>
-            <a href="#apply" className="hidden sm:inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground text-sm font-semibold px-5 py-2.5 hover:bg-secondary transition-colors shadow-soft">
+            <a href="#apply" className="hidden md:inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground text-sm font-semibold px-5 py-2.5 hover:bg-secondary transition-colors shadow-soft">
               Apply Now <ArrowRight className="h-4 w-4" />
             </a>
-            <button aria-label="Menu" onClick={() => setOpen(!open)} className="lg:hidden grid h-10 w-10 place-items-center rounded-full border border-border">
+            <button aria-label="Menu" onClick={() => setOpen(!open)} className="lg:hidden grid h-10 w-10 place-items-center rounded-full border border-border shrink-0">
               {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
@@ -246,11 +246,14 @@ function Header() {
       </div>
 
       {open && (
-        <div className="lg:hidden bg-background border-b border-border animate-fade-up">
+        <div className="lg:hidden bg-background border-b border-border animate-fade-up max-h-[70vh] overflow-y-auto">
           <div className="container-page py-4 flex flex-col">
             {NAV.map((n) => (
               <a key={n.label} href="#" className="py-2.5 text-sm font-medium border-b border-border/60">{n.label}</a>
             ))}
+            <a href="#apply" className="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-primary text-primary-foreground text-sm font-semibold px-5 py-2.5">
+              Apply Now <ArrowRight className="h-4 w-4" />
+            </a>
           </div>
         </div>
       )}
@@ -302,7 +305,7 @@ function Hero() {
 
   return (
     <section
-      className="group relative h-[92vh] min-h-[600px] w-full overflow-hidden bg-navy"
+      className="group relative h-[80vh] min-h-[520px] md:h-[92vh] md:min-h-[600px] w-full overflow-hidden bg-navy"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onTouchStart={onTouchStart}
@@ -326,16 +329,16 @@ function Hero() {
       ))}
 
       <div className="relative z-10 h-full container-page flex flex-col justify-center">
-        <div key={i} className="max-w-3xl animate-fade-up">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.05]">
+        <div key={i} className="max-w-3xl animate-fade-up pb-24 md:pb-0">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1]">
             {SLIDES[i].title}
           </h1>
-          <p className="mt-6 max-w-xl text-lg text-white/85">{SLIDES[i].sub}</p>
-          <div className="mt-10 flex flex-wrap gap-4">
-            <a href="#campus" className="inline-flex items-center gap-2 rounded-full bg-white text-primary px-7 py-3.5 text-sm font-bold hover:bg-accent hover:text-accent-foreground transition-colors shadow-lift">
+          <p className="mt-4 sm:mt-6 max-w-xl text-base sm:text-lg text-white/85">{SLIDES[i].sub}</p>
+          <div className="mt-6 sm:mt-10 flex flex-wrap gap-3 sm:gap-4">
+            <a href="#campus" className="inline-flex items-center gap-2 rounded-full bg-white text-primary px-5 sm:px-7 py-3 sm:py-3.5 text-sm font-bold hover:bg-accent hover:text-accent-foreground transition-colors shadow-lift">
               Explore Campus <ArrowUpRight className="h-4 w-4" />
             </a>
-            <a href="#apply" className="inline-flex items-center gap-2 rounded-full bg-accent text-accent-foreground px-7 py-3.5 text-sm font-bold hover:brightness-105 transition-all shadow-lift">
+            <a href="#apply" className="inline-flex items-center gap-2 rounded-full bg-accent text-accent-foreground px-5 sm:px-7 py-3 sm:py-3.5 text-sm font-bold hover:brightness-105 transition-all shadow-lift">
               Admissions Open 2026 <ArrowRight className="h-4 w-4" />
             </a>
           </div>
@@ -345,19 +348,19 @@ function Hero() {
         <button
           onClick={prev}
           aria-label="Previous slide"
-          className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 h-12 w-12 grid place-items-center rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-white opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-white hover:text-primary"
+          className="absolute left-3 md:left-8 top-1/2 -translate-y-1/2 h-10 w-10 md:h-12 md:w-12 grid place-items-center rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-white opacity-70 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 hover:bg-white hover:text-primary"
         >
           <ArrowLeft className="h-5 w-5" />
         </button>
         <button
           onClick={next}
           aria-label="Next slide"
-          className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 h-12 w-12 grid place-items-center rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-white opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-white hover:text-primary"
+          className="absolute right-3 md:right-8 top-1/2 -translate-y-1/2 h-10 w-10 md:h-12 md:w-12 grid place-items-center rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-white opacity-70 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 hover:bg-white hover:text-primary"
         >
           <ArrowRight className="h-5 w-5" />
         </button>
 
-        <div className="absolute bottom-10 right-6 md:right-16 flex gap-2">
+        <div className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-16 flex gap-2">
           {SLIDES.map((_, idx) => (
             <button
               key={idx}
@@ -420,12 +423,12 @@ const STATS = [
 
 function LegacySection() {
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden">
+    <section className="relative py-16 md:py-32 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-primary-soft/40 via-background to-background" />
       <div className="absolute -top-20 -left-20 h-80 w-80 rounded-full bg-accent/10 blur-3xl" />
       <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-primary/10 blur-3xl" />
 
-      <div className="container-page relative grid lg:grid-cols-2 gap-16 items-center">
+      <div className="container-page relative grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
         <Reveal>
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-transparent to-primary/10 rounded-3xl blur-2xl" />
@@ -437,7 +440,7 @@ function LegacySection() {
           <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 text-primary px-4 py-1.5 text-xs font-bold uppercase tracking-widest">
             <Sparkles className="h-3.5 w-3.5" /> Est. 2000 — 2026
           </span>
-          <h2 className="mt-5 text-4xl md:text-5xl font-extrabold text-foreground">
+          <h2 className="mt-5 text-3xl sm:text-4xl md:text-5xl font-extrabold text-foreground">
             Celebrating <span className="text-primary">26 Years</span> of Academic Excellence
           </h2>
           <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
@@ -472,11 +475,11 @@ const PROGRAMS = ["B.Tech", "M.Tech", "D.Pharma", "B.Pharm", "M.Pharm", "BBA", "
 
 function Nutshell() {
   return (
-    <section className="py-24 md:py-32 bg-gradient-to-b from-surface to-background">
+    <section className="py-16 md:py-32 bg-gradient-to-b from-surface to-background">
       <div className="container-page">
         <Reveal className="text-center max-w-3xl mx-auto">
           <span className="inline-block text-xs font-bold uppercase tracking-[0.25em] text-primary">The Institute</span>
-          <h2 className="mt-4 text-4xl md:text-5xl font-extrabold">RKGIT in a Nutshell</h2>
+          <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold">RKGIT in a Nutshell</h2>
           <div className="mx-auto mt-4 h-0.5 w-24 bg-primary/60" />
           <p className="mt-6 text-muted-foreground text-lg leading-relaxed">
             We at RKGIT are committed to excellence in education, innovation, research and holistic
@@ -502,15 +505,15 @@ function Nutshell() {
         </Reveal>
 
         {/* Stats grid */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-5">
+        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5">
           {STATS.map((s, i) => (
             <Reveal key={s.label} delay={i * 60}>
-              <div className="group relative h-full rounded-2xl bg-card border border-border p-6 shadow-soft hover:shadow-lift hover:-translate-y-1 transition-all overflow-hidden">
+              <div className="group relative h-full rounded-2xl bg-card border border-border p-5 sm:p-6 shadow-soft hover:shadow-lift hover:-translate-y-1 transition-all overflow-hidden">
                 <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary via-secondary to-accent" />
-                <div className="grid h-12 w-12 place-items-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                <div className="grid h-11 w-11 sm:h-12 sm:w-12 place-items-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                   <s.icon className="h-5 w-5" />
                 </div>
-                <div className="mt-5 text-3xl md:text-4xl font-extrabold text-foreground tracking-tight">
+                <div className="mt-4 sm:mt-5 text-2xl sm:text-3xl md:text-4xl font-extrabold text-foreground tracking-tight break-words">
                   <CountUp end={s.value} suffix={s.suffix} />
                 </div>
                 <div className="mt-1 text-xs font-medium uppercase tracking-wider text-muted-foreground">{s.label}</div>
@@ -540,12 +543,12 @@ function About() {
     { k: "Placement Offers", v: 8500, s: "+" },
   ];
   return (
-    <section className="py-24 md:py-32">
-      <div className="container-page grid lg:grid-cols-2 gap-16 items-start">
+    <section className="py-16 md:py-32">
+      <div className="container-page grid lg:grid-cols-2 gap-10 md:gap-16 items-start">
         <Reveal>
           <span className="text-xs font-bold uppercase tracking-[0.25em] text-primary">About RKGIT</span>
-          <h2 className="mt-4 text-4xl md:text-5xl font-extrabold">An institution built on ideas, not walls.</h2>
-          <div className="mt-8 flex gap-2 border-b border-border">
+          <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold">An institution built on ideas, not walls.</h2>
+          <div className="mt-8 flex flex-wrap gap-1 sm:gap-2 border-b border-border">
             {(Object.keys(ABOUT_TABS) as (keyof typeof ABOUT_TABS)[]).map((t) => (
               <button
                 key={t}
@@ -568,24 +571,24 @@ function About() {
         </Reveal>
 
         <Reveal delay={150}>
-          <div className="grid grid-cols-2 gap-5">
+          <div className="grid grid-cols-2 gap-3 sm:gap-5">
             {cards.map((c, i) => {
               const bgs = ["bg-primary-soft", "bg-[oklch(0.97_0.03_80)]", "bg-[oklch(0.96_0.02_170)]", "bg-[oklch(0.95_0.03_320)]"];
               return (
-                <div key={c.k} className={`rounded-3xl p-7 ${bgs[i]} border border-border/60 shadow-soft`}>
-                  <div className="text-4xl md:text-5xl font-extrabold text-primary tracking-tight">
+                <div key={c.k} className={`rounded-3xl p-5 sm:p-7 ${bgs[i]} border border-border/60 shadow-soft`}>
+                  <div className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-primary tracking-tight break-words">
                     <CountUp end={c.v} suffix={c.s} />
                   </div>
                   <div className="mt-2 text-sm font-semibold text-foreground/80">{c.k}</div>
                 </div>
               );
             })}
-            <div className="col-span-2 rounded-3xl p-7 bg-navy text-navy-foreground shadow-lift flex items-center justify-between gap-6">
-              <div>
+            <div className="col-span-2 rounded-3xl p-5 sm:p-7 bg-navy text-navy-foreground shadow-lift flex items-center justify-between gap-4 sm:gap-6">
+              <div className="min-w-0">
                 <div className="text-xs uppercase tracking-widest text-accent">Accreditation</div>
-                <div className="mt-1 text-xl font-bold">NAAC 'A' · AICTE Approved · AKTU Affiliated</div>
+                <div className="mt-1 text-base sm:text-xl font-bold">NAAC 'A' · AICTE Approved · AKTU Affiliated</div>
               </div>
-              <div className="hidden sm:grid h-14 w-14 place-items-center rounded-2xl bg-accent text-accent-foreground">
+              <div className="hidden sm:grid h-14 w-14 place-items-center rounded-2xl bg-accent text-accent-foreground shrink-0">
                 <Trophy className="h-6 w-6" />
               </div>
             </div>
@@ -666,19 +669,19 @@ const PROGRAM_CARDS = {
 function Programs() {
   const [tab, setTab] = useState<keyof typeof PROGRAM_CARDS>("Undergraduate");
   return (
-    <section className="py-24 md:py-32 bg-surface">
+    <section className="py-16 md:py-32 bg-surface">
       <div className="container-page">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
           <Reveal>
             <span className="text-xs font-bold uppercase tracking-[0.25em] text-primary">Academics</span>
-            <h2 className="mt-4 text-4xl md:text-5xl font-extrabold">Academic Programs</h2>
+            <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold">Academic Programs</h2>
           </Reveal>
           <div className="flex gap-2 p-1 rounded-full bg-card border border-border shadow-soft w-fit">
             {(Object.keys(PROGRAM_CARDS) as (keyof typeof PROGRAM_CARDS)[]).map((t) => (
               <button
                 key={t}
                 onClick={() => setTab(t)}
-                className={`px-5 py-2 text-sm font-semibold rounded-full transition-all ${
+                className={`px-4 sm:px-5 py-2 text-sm font-semibold rounded-full transition-all ${
                   tab === t ? "bg-primary text-primary-foreground shadow-soft" : "text-muted-foreground hover:text-foreground"
                 }`}
               >
@@ -688,7 +691,7 @@ function Programs() {
           </div>
         </div>
 
-        <div className="mt-12 grid md:grid-cols-3 gap-6">
+        <div className="mt-10 md:mt-12 grid sm:grid-cols-2 md:grid-cols-3 gap-6">
           {PROGRAM_CARDS[tab].map((p, i) => (
             <Reveal key={p.name} delay={i * 80}>
               <article className="group rounded-3xl bg-card border border-border overflow-hidden shadow-soft hover:shadow-lift hover:-translate-y-1 transition-all">
@@ -739,9 +742,9 @@ function WhyRKGIT() {
     "Interdisciplinary academics",
   ];
   const Card = ({ title, badge, items, dark }: { title: string; badge: string; items: string[]; dark?: boolean }) => (
-    <div className={`rounded-3xl p-8 md:p-10 shadow-lift border ${dark ? "bg-navy text-navy-foreground border-white/10" : "bg-card border-border"}`}>
+    <div className={`rounded-3xl p-6 sm:p-8 md:p-10 shadow-lift border ${dark ? "bg-navy text-navy-foreground border-white/10" : "bg-card border-border"}`}>
       <span className={`inline-block text-[11px] font-bold uppercase tracking-[0.25em] ${dark ? "text-accent" : "text-primary"}`}>{badge}</span>
-      <h3 className="mt-3 text-2xl md:text-3xl font-extrabold">{title}</h3>
+      <h3 className="mt-3 text-xl sm:text-2xl md:text-3xl font-extrabold">{title}</h3>
       <ul className="mt-8 grid sm:grid-cols-2 gap-x-6 gap-y-3.5">
         {items.map((t) => (
           <li key={t} className="flex items-start gap-3 text-sm">
@@ -753,11 +756,11 @@ function WhyRKGIT() {
     </div>
   );
   return (
-    <section className="py-24 md:py-32">
+    <section className="py-16 md:py-32">
       <div className="container-page">
         <Reveal className="max-w-2xl">
           <span className="text-xs font-bold uppercase tracking-[0.25em] text-primary">Why RKGIT</span>
-          <h2 className="mt-4 text-4xl md:text-5xl font-extrabold">Two pillars. One institution.</h2>
+          <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold">Two pillars. One institution.</h2>
           <p className="mt-4 text-muted-foreground text-lg">Everything at RKGIT is built to strengthen either a student's career or the frontier of research. Often both.</p>
         </Reveal>
         <div className="mt-12 grid lg:grid-cols-2 gap-6">
@@ -784,12 +787,12 @@ const RECRUITERS = [
 
 function Recruiters() {
   return (
-    <section className="py-24 md:py-32 bg-gradient-to-br from-primary-soft/60 via-surface to-primary-soft/40">
+    <section className="py-16 md:py-32 bg-gradient-to-br from-primary-soft/60 via-surface to-primary-soft/40">
       <div className="container-page">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
           <Reveal>
             <span className="text-xs font-bold uppercase tracking-[0.25em] text-primary">Our Recruiters</span>
-            <h2 className="mt-4 text-4xl md:text-5xl font-extrabold">Our students at leading companies</h2>
+            <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold">Our students at leading companies</h2>
           </Reveal>
           <a href="#" className="text-sm font-bold text-primary link-underline inline-flex items-center gap-2">
             View Placements <ArrowRight className="h-4 w-4" />
@@ -797,10 +800,10 @@ function Recruiters() {
         </div>
       </div>
 
-      <div className="mt-14 overflow-hidden marquee-pause">
-        <div className="flex gap-5 animate-marquee-fast whitespace-nowrap">
+      <div className="mt-10 md:mt-14 overflow-hidden marquee-pause">
+        <div className="flex gap-4 sm:gap-5 animate-marquee-fast whitespace-nowrap">
           {[...RECRUITERS, ...RECRUITERS, ...RECRUITERS].map((r, i) => (
-            <div key={i} className="shrink-0 grid place-items-center w-52 h-28 rounded-2xl bg-white border border-border shadow-soft hover:-translate-y-1 hover:shadow-lift transition-all p-6">
+            <div key={i} className="shrink-0 grid place-items-center w-40 h-24 sm:w-52 sm:h-28 rounded-2xl bg-white border border-border shadow-soft hover:-translate-y-1 hover:shadow-lift transition-all p-5 sm:p-6">
               <img src={r.url} alt={r.name} loading="lazy" className="max-h-full max-w-full object-contain" />
             </div>
           ))}
@@ -823,14 +826,14 @@ const CAMPUS = [
 
 function CampusLife() {
   return (
-    <section id="campus" className="py-24 md:py-32">
+    <section id="campus" className="py-16 md:py-32">
       <div className="container-page">
         <Reveal className="max-w-2xl">
           <span className="text-xs font-bold uppercase tracking-[0.25em] text-primary">Campus Life</span>
-          <h2 className="mt-4 text-4xl md:text-5xl font-extrabold">More than lectures. It's where you grow up.</h2>
+          <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold">More than lectures. It's where you grow up.</h2>
         </Reveal>
 
-        <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[180px] md:auto-rows-[220px]">
+        <div className="mt-10 md:mt-12 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 auto-rows-[140px] sm:auto-rows-[180px] md:auto-rows-[220px]">
           {CAMPUS.map((c, i) => (
             <Reveal key={c.title} delay={i * 60} className={c.span}>
               <a href="#" className="group relative block h-full rounded-3xl overflow-hidden shadow-soft">
@@ -864,19 +867,19 @@ const NEWS = [
 
 function News() {
   return (
-    <section className="py-24 md:py-32 bg-surface">
+    <section className="py-16 md:py-32 bg-surface">
       <div className="container-page">
         <div className="flex items-end justify-between flex-wrap gap-4">
           <Reveal>
             <span className="text-xs font-bold uppercase tracking-[0.25em] text-primary">Newsroom</span>
-            <h2 className="mt-4 text-4xl md:text-5xl font-extrabold">Latest news & events</h2>
+            <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold">Latest news & events</h2>
           </Reveal>
           <a href="#" className="text-sm font-bold text-primary link-underline inline-flex items-center gap-2">
             All stories <ArrowRight className="h-4 w-4" />
           </a>
         </div>
 
-        <div className="mt-12 grid md:grid-cols-3 gap-6">
+        <div className="mt-10 md:mt-12 grid sm:grid-cols-2 md:grid-cols-3 gap-6">
           {NEWS.map((n, i) => (
             <Reveal key={n.title} delay={i * 100}>
               <article className="group rounded-3xl bg-card border border-border overflow-hidden shadow-soft hover:shadow-lift hover:-translate-y-1 transition-all h-full">
@@ -916,22 +919,22 @@ function Testimonials() {
   }, []);
   const t = TESTIMONIALS[i];
   return (
-    <section className="py-24 md:py-32">
+    <section className="py-16 md:py-32">
       <div className="container-page">
-        <div className="relative mx-auto max-w-4xl rounded-3xl bg-navy text-navy-foreground p-10 md:p-16 shadow-lift overflow-hidden">
+        <div className="relative mx-auto max-w-4xl rounded-3xl bg-navy text-navy-foreground p-6 sm:p-10 md:p-16 shadow-lift overflow-hidden">
           <div className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-accent/20 blur-3xl" />
           <div className="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-primary/40 blur-3xl" />
           <div className="relative">
             <span className="text-xs font-bold uppercase tracking-[0.25em] text-accent">Voices from RKGIT</span>
-            <blockquote key={i} className="mt-6 text-2xl md:text-3xl font-semibold leading-snug animate-fade-up">
+            <blockquote key={i} className="mt-6 text-lg sm:text-2xl md:text-3xl font-semibold leading-snug animate-fade-up">
               &ldquo;{t.quote}&rdquo;
             </blockquote>
-            <div className="mt-8 flex items-center justify-between">
-              <div>
-                <div className="font-bold">{t.name}</div>
+            <div className="mt-6 sm:mt-8 flex items-center justify-between gap-4 flex-wrap">
+              <div className="min-w-0">
+                <div className="font-bold truncate">{t.name}</div>
                 <div className="text-sm text-white/70">{t.role}</div>
               </div>
-              <div className="flex gap-2">
+              <div className="flex gap-2 shrink-0">
                 {TESTIMONIALS.map((_, idx) => (
                   <button key={idx} onClick={() => setI(idx)} className={`h-1.5 rounded-full transition-all ${idx === i ? "w-8 bg-accent" : "w-3 bg-white/30"}`} />
                 ))}
@@ -948,23 +951,23 @@ function Testimonials() {
 
 function CTA() {
   return (
-    <section id="apply" className="py-24 md:py-32">
+    <section id="apply" className="py-16 md:py-32">
       <div className="container-page">
-        <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-primary via-secondary to-primary p-10 md:p-20 shadow-lift">
+        <div className="relative overflow-hidden rounded-3xl md:rounded-[2.5rem] bg-gradient-to-br from-primary via-secondary to-primary p-6 sm:p-10 md:p-20 shadow-lift">
           <div className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-accent/30 blur-3xl" />
           <div className="absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-white/10 blur-3xl" />
-          <div className="relative grid lg:grid-cols-[1.4fr_1fr] gap-10 items-center text-white">
+          <div className="relative grid lg:grid-cols-[1.4fr_1fr] gap-8 md:gap-10 items-center text-white">
             <div>
               <span className="inline-flex items-center gap-2 rounded-full bg-white/15 backdrop-blur border border-white/20 px-4 py-1.5 text-xs font-bold uppercase tracking-widest">
                 <Sparkles className="h-3.5 w-3.5 text-accent" /> Admissions Open 2026
               </span>
-              <h2 className="mt-6 text-4xl md:text-6xl font-extrabold leading-tight">Your future begins at RKGIT.</h2>
-              <p className="mt-5 text-white/80 text-lg max-w-xl">Apply through counselling or direct admission. Priority round scholarships available until 30 September 2026.</p>
-              <div className="mt-10 flex flex-wrap gap-4">
-                <a href="#" className="inline-flex items-center gap-2 rounded-full bg-accent text-accent-foreground px-7 py-3.5 text-sm font-bold hover:brightness-105 shadow-lift">
+              <h2 className="mt-6 text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight">Your future begins at RKGIT.</h2>
+              <p className="mt-5 text-white/80 text-base sm:text-lg max-w-xl">Apply through counselling or direct admission. Priority round scholarships available until 30 September 2026.</p>
+              <div className="mt-8 md:mt-10 flex flex-wrap gap-3 sm:gap-4">
+                <a href="#" className="inline-flex items-center gap-2 rounded-full bg-accent text-accent-foreground px-5 sm:px-7 py-3 sm:py-3.5 text-sm font-bold hover:brightness-105 shadow-lift">
                   Apply Now <ArrowRight className="h-4 w-4" />
                 </a>
-                <a href="#" className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur border border-white/25 px-7 py-3.5 text-sm font-bold hover:bg-white/20">
+                <a href="#" className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur border border-white/25 px-5 sm:px-7 py-3 sm:py-3.5 text-sm font-bold hover:bg-white/20">
                   <Play className="h-4 w-4" /> Visit Campus
                 </a>
               </div>
@@ -994,7 +997,7 @@ function CTA() {
 function Footer() {
   return (
     <footer className="bg-navy text-navy-foreground">
-      <div className="container-page py-20 grid lg:grid-cols-3 gap-12">
+      <div className="container-page py-14 md:py-20 grid md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12">
         {/* Quick Links */}
         <div>
           <div className="flex items-center gap-3">
