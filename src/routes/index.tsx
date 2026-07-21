@@ -826,14 +826,14 @@ const CAMPUS = [
 
 function CampusLife() {
   return (
-    <section id="campus" className="py-24 md:py-32">
+    <section id="campus" className="py-16 md:py-32">
       <div className="container-page">
         <Reveal className="max-w-2xl">
           <span className="text-xs font-bold uppercase tracking-[0.25em] text-primary">Campus Life</span>
-          <h2 className="mt-4 text-4xl md:text-5xl font-extrabold">More than lectures. It's where you grow up.</h2>
+          <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold">More than lectures. It's where you grow up.</h2>
         </Reveal>
 
-        <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[180px] md:auto-rows-[220px]">
+        <div className="mt-10 md:mt-12 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 auto-rows-[140px] sm:auto-rows-[180px] md:auto-rows-[220px]">
           {CAMPUS.map((c, i) => (
             <Reveal key={c.title} delay={i * 60} className={c.span}>
               <a href="#" className="group relative block h-full rounded-3xl overflow-hidden shadow-soft">
