@@ -360,7 +360,7 @@ function Hero() {
           <ArrowRight className="h-5 w-5" />
         </button>
 
-        <div className="absolute bottom-10 right-6 md:right-16 flex gap-2">
+        <div className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-16 flex gap-2">
           {SLIDES.map((_, idx) => (
             <button
               key={idx}
