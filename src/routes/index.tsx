@@ -190,36 +190,36 @@ function Header() {
 
       {/* Main nav */}
       <div className={`bg-background border-b border-border transition-shadow ${scrolled ? "shadow-soft" : ""}`}>
-        <div className="container-page grid grid-cols-[auto_1fr_auto] items-center gap-6 h-20">
-          <a href="#" className="flex items-center gap-3 sm:gap-4 shrink-0">
+        <div className="container-page grid grid-cols-[minmax(0,1fr)_auto] lg:grid-cols-[auto_1fr_auto] items-center gap-3 sm:gap-6 h-16 sm:h-20">
+          <a href="#" className="flex items-center gap-2 sm:gap-3 md:gap-4 shrink min-w-0">
             <img
               src={ANNIVERSARY_LOGO}
               alt="26 Years of Academic Excellence"
-              className="h-11 sm:h-14 w-auto object-contain"
+              className="h-9 sm:h-12 lg:h-14 w-auto object-contain shrink-0"
             />
-            <div className="h-10 w-px bg-border/70 hidden sm:block" />
-            <img src={RKGIT_LOGO} alt="RKGIT Logo" className="h-12 sm:h-14 w-auto" />
-            <div className="hidden md:block leading-tight">
+            <div className="h-8 sm:h-10 w-px bg-border/70 hidden sm:block shrink-0" />
+            <img src={RKGIT_LOGO} alt="RKGIT Logo" className="h-9 sm:h-12 lg:h-14 w-auto shrink-0" />
+            <div className="hidden xl:block leading-tight min-w-0">
               <div className="text-primary font-bold text-sm">RKGIT</div>
               <div className="text-[10px] text-muted-foreground uppercase tracking-wider">Ghaziabad · Est. 2000</div>
             </div>
           </a>
 
 
-          <nav className="hidden lg:flex items-center justify-center gap-0.5">
+          <nav className="hidden lg:flex items-center justify-center gap-0.5 min-w-0">
             {NAV.map((n) => (
               <NavDropdown key={n.label} item={n} />
             ))}
           </nav>
 
-          <div className="flex items-center gap-3 shrink-0">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <button aria-label="Search" className="hidden sm:grid h-10 w-10 place-items-center rounded-full border border-border hover:border-primary hover:text-primary transition-colors">
               <Search className="h-4 w-4" />
             </button>
-            <a href="#apply" className="hidden sm:inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground text-sm font-semibold px-5 py-2.5 hover:bg-secondary transition-colors shadow-soft">
+            <a href="#apply" className="hidden md:inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground text-sm font-semibold px-5 py-2.5 hover:bg-secondary transition-colors shadow-soft">
               Apply Now <ArrowRight className="h-4 w-4" />
             </a>
-            <button aria-label="Menu" onClick={() => setOpen(!open)} className="lg:hidden grid h-10 w-10 place-items-center rounded-full border border-border">
+            <button aria-label="Menu" onClick={() => setOpen(!open)} className="lg:hidden grid h-10 w-10 place-items-center rounded-full border border-border shrink-0">
               {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
