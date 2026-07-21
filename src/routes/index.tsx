@@ -997,7 +997,7 @@ function CTA() {
 function Footer() {
   return (
     <footer className="bg-navy text-navy-foreground">
-      <div className="container-page py-20 grid lg:grid-cols-3 gap-12">
+      <div className="container-page py-14 md:py-20 grid md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12">
         {/* Quick Links */}
         <div>
           <div className="flex items-center gap-3">
