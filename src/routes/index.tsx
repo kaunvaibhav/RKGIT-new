@@ -329,16 +329,16 @@ function Hero() {
       ))}
 
       <div className="relative z-10 h-full container-page flex flex-col justify-center">
-        <div key={i} className="max-w-3xl animate-fade-up">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.05]">
+        <div key={i} className="max-w-3xl animate-fade-up pb-24 md:pb-0">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1]">
             {SLIDES[i].title}
           </h1>
-          <p className="mt-6 max-w-xl text-lg text-white/85">{SLIDES[i].sub}</p>
-          <div className="mt-10 flex flex-wrap gap-4">
-            <a href="#campus" className="inline-flex items-center gap-2 rounded-full bg-white text-primary px-7 py-3.5 text-sm font-bold hover:bg-accent hover:text-accent-foreground transition-colors shadow-lift">
+          <p className="mt-4 sm:mt-6 max-w-xl text-base sm:text-lg text-white/85">{SLIDES[i].sub}</p>
+          <div className="mt-6 sm:mt-10 flex flex-wrap gap-3 sm:gap-4">
+            <a href="#campus" className="inline-flex items-center gap-2 rounded-full bg-white text-primary px-5 sm:px-7 py-3 sm:py-3.5 text-sm font-bold hover:bg-accent hover:text-accent-foreground transition-colors shadow-lift">
               Explore Campus <ArrowUpRight className="h-4 w-4" />
             </a>
-            <a href="#apply" className="inline-flex items-center gap-2 rounded-full bg-accent text-accent-foreground px-7 py-3.5 text-sm font-bold hover:brightness-105 transition-all shadow-lift">
+            <a href="#apply" className="inline-flex items-center gap-2 rounded-full bg-accent text-accent-foreground px-5 sm:px-7 py-3 sm:py-3.5 text-sm font-bold hover:brightness-105 transition-all shadow-lift">
               Admissions Open 2026 <ArrowRight className="h-4 w-4" />
             </a>
           </div>
