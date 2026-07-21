@@ -669,19 +669,19 @@ const PROGRAM_CARDS = {
 function Programs() {
   const [tab, setTab] = useState<keyof typeof PROGRAM_CARDS>("Undergraduate");
   return (
-    <section className="py-24 md:py-32 bg-surface">
+    <section className="py-16 md:py-32 bg-surface">
       <div className="container-page">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
           <Reveal>
             <span className="text-xs font-bold uppercase tracking-[0.25em] text-primary">Academics</span>
-            <h2 className="mt-4 text-4xl md:text-5xl font-extrabold">Academic Programs</h2>
+            <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold">Academic Programs</h2>
           </Reveal>
           <div className="flex gap-2 p-1 rounded-full bg-card border border-border shadow-soft w-fit">
             {(Object.keys(PROGRAM_CARDS) as (keyof typeof PROGRAM_CARDS)[]).map((t) => (
               <button
                 key={t}
                 onClick={() => setTab(t)}
-                className={`px-5 py-2 text-sm font-semibold rounded-full transition-all ${
+                className={`px-4 sm:px-5 py-2 text-sm font-semibold rounded-full transition-all ${
                   tab === t ? "bg-primary text-primary-foreground shadow-soft" : "text-muted-foreground hover:text-foreground"
                 }`}
               >
@@ -691,7 +691,7 @@ function Programs() {
           </div>
         </div>
 
-        <div className="mt-12 grid md:grid-cols-3 gap-6">
+        <div className="mt-10 md:mt-12 grid sm:grid-cols-2 md:grid-cols-3 gap-6">
           {PROGRAM_CARDS[tab].map((p, i) => (
             <Reveal key={p.name} delay={i * 80}>
               <article className="group rounded-3xl bg-card border border-border overflow-hidden shadow-soft hover:shadow-lift hover:-translate-y-1 transition-all">
