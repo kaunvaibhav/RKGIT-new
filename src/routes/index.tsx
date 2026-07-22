@@ -228,19 +228,27 @@ function Header() {
         {/* Secondary strip */}
         <div className="hidden md:block bg-primary-soft/60 border-t border-border">
           <div className="container-page flex flex-wrap items-center gap-2 py-2 overflow-x-auto">
-            {SUB_NAV.map((s, i) => (
-              <a
-                key={s}
-                href="#"
-                className={`rounded-full text-xs font-semibold px-4 py-1.5 transition-all hover:-translate-y-0.5 ${
-                  i === 0
-                    ? "bg-accent text-accent-foreground shadow-soft"
-                    : "bg-white/80 text-primary hover:bg-white"
-                }`}
-              >
-                {s}
-              </a>
-            ))}
+            {SUB_NAV.map((s, i) => {
+              const base = `rounded-full text-xs font-semibold px-4 py-1.5 transition-all hover:-translate-y-0.5 inline-flex items-center gap-1.5 ${
+                i === 0
+                  ? "bg-accent text-accent-foreground shadow-soft"
+                  : s === "Pay Fee"
+                  ? "bg-primary text-primary-foreground shadow-soft hover:bg-secondary"
+                  : "bg-white/80 text-primary hover:bg-white"
+              }`;
+              if (s === "Pay Fee") {
+                return (
+                  <Link key={s} to="/pay-fee" className={base}>
+                    <CreditCard className="h-3.5 w-3.5" /> {s}
+                  </Link>
+                );
+              }
+              return (
+                <a key={s} href="#" className={base}>
+                  {s}
+                </a>
+              );
+            })}
           </div>
         </div>
       </div>
