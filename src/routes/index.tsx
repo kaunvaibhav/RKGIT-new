@@ -116,7 +116,7 @@ const NAV: NavItem[] = [
     { label: "Faculty" }, { label: "Staff" }, { label: "Alumni" }, { label: "Students" }, { label: "Governing Body" },
   ]},
 ];
-const SUB_NAV = ["Apply Now", "Announcements", "NIRF", "ERP", "Alumni", "Library", "Careers", "Contact Us"];
+const SUB_NAV = ["Apply Now", "Announcements", "NIRF", "ERP", "Pay Fee", "Alumni", "Library", "Careers", "Contact Us"];
 
 
 function NavDropdown({ item }: { item: NavItem }) {
