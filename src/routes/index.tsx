@@ -1,10 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import {
   Search, Menu, X, ChevronDown, ChevronRight, ArrowRight, ArrowLeft, ArrowUpRight, MapPin, Phone, Mail,
   MessageCircle, Facebook, Twitter, Linkedin, Instagram, Youtube, Globe,
   Sparkles, GraduationCap, Beaker, BookOpen, Trophy, Briefcase, Building2,
-  Clock, FlaskConical, Send, Play,
+  Clock, FlaskConical, Send, Play, CreditCard,
 } from "lucide-react";
 
 import heroAsset from "@/assets/rkgit-hero.png.asset.json";
@@ -116,7 +116,7 @@ const NAV: NavItem[] = [
     { label: "Faculty" }, { label: "Staff" }, { label: "Alumni" }, { label: "Students" }, { label: "Governing Body" },
   ]},
 ];
-const SUB_NAV = ["Apply Now", "Announcements", "NIRF", "ERP", "Alumni", "Library", "Careers", "Contact Us"];
+const SUB_NAV = ["Apply Now", "Announcements", "NIRF", "ERP", "Pay Fee", "Alumni", "Library", "Careers", "Contact Us"];
 
 
 function NavDropdown({ item }: { item: NavItem }) {
@@ -228,19 +228,27 @@ function Header() {
         {/* Secondary strip */}
         <div className="hidden md:block bg-primary-soft/60 border-t border-border">
           <div className="container-page flex flex-wrap items-center gap-2 py-2 overflow-x-auto">
-            {SUB_NAV.map((s, i) => (
-              <a
-                key={s}
-                href="#"
-                className={`rounded-full text-xs font-semibold px-4 py-1.5 transition-all hover:-translate-y-0.5 ${
-                  i === 0
-                    ? "bg-accent text-accent-foreground shadow-soft"
-                    : "bg-white/80 text-primary hover:bg-white"
-                }`}
-              >
-                {s}
-              </a>
-            ))}
+            {SUB_NAV.map((s, i) => {
+              const base = `rounded-full text-xs font-semibold px-4 py-1.5 transition-all hover:-translate-y-0.5 inline-flex items-center gap-1.5 ${
+                i === 0
+                  ? "bg-accent text-accent-foreground shadow-soft"
+                  : s === "Pay Fee"
+                  ? "bg-primary text-primary-foreground shadow-soft hover:bg-secondary"
+                  : "bg-white/80 text-primary hover:bg-white"
+              }`;
+              if (s === "Pay Fee") {
+                return (
+                  <Link key={s} to="/pay-fee" className={base}>
+                    <CreditCard className="h-3.5 w-3.5" /> {s}
+                  </Link>
+                );
+              }
+              return (
+                <a key={s} href="#" className={base}>
+                  {s}
+                </a>
+              );
+            })}
           </div>
         </div>
       </div>

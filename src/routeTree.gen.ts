@@ -9,8 +9,14 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as PayFeeRouteImport } from './routes/pay-fee'
 import { Route as IndexRouteImport } from './routes/index'
 
+const PayFeeRoute = PayFeeRouteImport.update({
+  id: '/pay-fee',
+  path: '/pay-fee',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +25,39 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/pay-fee': typeof PayFeeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/pay-fee': typeof PayFeeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/pay-fee': typeof PayFeeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/pay-fee'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/pay-fee'
+  id: '__root__' | '/' | '/pay-fee'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  PayFeeRoute: typeof PayFeeRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/pay-fee': {
+      id: '/pay-fee'
+      path: '/pay-fee'
+      fullPath: '/pay-fee'
+      preLoaderRoute: typeof PayFeeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +70,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  PayFeeRoute: PayFeeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
