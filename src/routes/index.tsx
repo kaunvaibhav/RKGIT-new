@@ -243,6 +243,13 @@ function Header() {
                   </Link>
                 );
               }
+              if (s === "NIRF") {
+                return (
+                  <a key={s} href="#nirf" className={base}>
+                    {s}
+                  </a>
+                );
+              }
               return (
                 <a key={s} href="#" className={base}>
                   {s}
@@ -1089,11 +1096,22 @@ function Footer() {
           </div>
           <h4 className="mt-10 text-sm font-bold uppercase tracking-[0.2em] text-accent">Quick Links</h4>
           <ul className="mt-5 grid grid-cols-2 gap-y-3">
-            {["Admissions", "Academics", "Departments", "Placements", "Research", "Library", "ERP", "NIRF", "Careers", "Contact Us"].map((l) => (
-              <li key={l}>
-                <a href="#" className="group inline-flex items-center gap-1.5 text-sm text-white/80 hover:text-accent transition-colors">
+            {[
+              { label: "Admissions", href: "#" },
+              { label: "Academics", href: "#" },
+              { label: "Departments", href: "#" },
+              { label: "Placements", href: "#" },
+              { label: "Research", href: "#" },
+              { label: "Library", href: "#" },
+              { label: "ERP", href: "#" },
+              { label: "NIRF", href: "#nirf" },
+              { label: "Careers", href: "#" },
+              { label: "Contact Us", href: "#" },
+            ].map((l) => (
+              <li key={l.label}>
+                <a href={l.href} className="group inline-flex items-center gap-1.5 text-sm text-white/80 hover:text-accent transition-colors">
                   <ArrowRight className="h-3 w-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all" />
-                  {l}
+                  {l.label}
                 </a>
               </li>
             ))}
@@ -1263,6 +1281,7 @@ function Home() {
         <Nutshell />
         <About />
         <AccreditationStrip />
+        <NIRFSection />
         <Programs />
         <WhyRKGIT />
         <Recruiters />
