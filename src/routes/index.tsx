@@ -243,6 +243,13 @@ function Header() {
                   </Link>
                 );
               }
+              if (s === "NIRF") {
+                return (
+                  <a key={s} href="#nirf" className={base}>
+                    {s}
+                  </a>
+                );
+              }
               return (
                 <a key={s} href="#" className={base}>
                   {s}
@@ -658,6 +665,76 @@ function AccreditationStrip() {
   );
 }
 
+/* ------------------------------ NIRF Accordion -------------------------- */
+
+const NIRF_PDF = "https://rkgit.edu.in/upload/NIRF%20Engineering-2026.pdf";
+
+const NIRF_YEARS = [
+  { year: "2026", categories: ["NIRF (Engineering)", "NIRF (Pharmacy)", "NIRF (Management)", "NIRF (Overall)", "SDG"] },
+  { year: "2025", categories: ["NIRF (Engineering)", "NIRF (Pharmacy)", "NIRF (Management)", "NIRF (Overall)", "SDG"] },
+  { year: "2024", categories: ["NIRF (Engineering)", "NIRF (Pharmacy)", "NIRF (Management)", "NIRF (Overall)", "SDG"] },
+];
+
+function NIRFSection() {
+  const [openYear, setOpenYear] = useState<string | null>("2026");
+  return (
+    <section id="nirf" className="py-16 md:py-24 bg-surface border-y border-border">
+      <div className="container-page">
+        <Reveal>
+          <span className="text-xs font-bold uppercase tracking-[0.25em] text-primary">Rankings</span>
+          <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold">NIRF Data Repository</h2>
+          <p className="mt-2 max-w-2xl text-muted-foreground">Access National Institutional Ranking Framework reports by year and category.</p>
+        </Reveal>
+        <div className="mt-10 md:mt-12 grid gap-4">
+          {NIRF_YEARS.map((y) => {
+            const isOpen = openYear === y.year;
+            return (
+              <div key={y.year} className="rounded-2xl bg-card border border-border shadow-soft overflow-hidden">
+                <button
+                  onClick={() => setOpenYear(isOpen ? null : y.year)}
+                  className="w-full flex items-center justify-between px-6 py-5 text-left hover:bg-primary-soft/40 transition-colors"
+                  aria-expanded={isOpen}
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="grid h-10 w-10 place-items-center rounded-xl bg-primary text-primary-foreground font-bold text-sm">
+                      {y.year.slice(-2)}
+                    </div>
+                    <span className="text-lg font-bold">NIRF Data {y.year}</span>
+                  </div>
+                  <ChevronDown className={`h-5 w-5 text-muted-foreground transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
+                </button>
+                <div
+                  className="grid transition-all duration-300 ease-in-out"
+                  style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
+                >
+                  <div className="overflow-hidden">
+                    <div className="px-6 pb-6 pt-2">
+                      <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+                        {y.categories.map((cat) => (
+                          <a
+                            key={cat}
+                            href={NIRF_PDF}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group flex items-center justify-between rounded-xl bg-white border border-border p-4 shadow-soft hover:shadow-lift hover:-translate-y-1 transition-all"
+                          >
+                            <span className="text-sm font-semibold text-foreground/80 group-hover:text-primary">{cat}</span>
+                            <ArrowUpRight className="h-4 w-4 text-muted-foreground group-hover:text-primary" />
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 
 /* ------------------------------ Programs -------------------------------- */
 
@@ -1019,11 +1096,22 @@ function Footer() {
           </div>
           <h4 className="mt-10 text-sm font-bold uppercase tracking-[0.2em] text-accent">Quick Links</h4>
           <ul className="mt-5 grid grid-cols-2 gap-y-3">
-            {["Admissions", "Academics", "Departments", "Placements", "Research", "Library", "ERP", "NIRF", "Careers", "Contact Us"].map((l) => (
-              <li key={l}>
-                <a href="#" className="group inline-flex items-center gap-1.5 text-sm text-white/80 hover:text-accent transition-colors">
+            {[
+              { label: "Admissions", href: "#" },
+              { label: "Academics", href: "#" },
+              { label: "Departments", href: "#" },
+              { label: "Placements", href: "#" },
+              { label: "Research", href: "#" },
+              { label: "Library", href: "#" },
+              { label: "ERP", href: "#" },
+              { label: "NIRF", href: "#nirf" },
+              { label: "Careers", href: "#" },
+              { label: "Contact Us", href: "#" },
+            ].map((l) => (
+              <li key={l.label}>
+                <a href={l.href} className="group inline-flex items-center gap-1.5 text-sm text-white/80 hover:text-accent transition-colors">
                   <ArrowRight className="h-3 w-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all" />
-                  {l}
+                  {l.label}
                 </a>
               </li>
             ))}
@@ -1193,6 +1281,7 @@ function Home() {
         <Nutshell />
         <About />
         <AccreditationStrip />
+        <NIRFSection />
         <Programs />
         <WhyRKGIT />
         <Recruiters />
