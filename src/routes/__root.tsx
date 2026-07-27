@@ -11,6 +11,9 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { FloatingActionPanel } from "../components/FloatingActionPanel";
+import { SearchProvider } from "../components/SearchContext";
+import { SearchModal } from "../components/SearchModal";
 
 function NotFoundComponent() {
   return (
@@ -128,8 +131,12 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <SearchProvider>
+        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+        <Outlet />
+        <FloatingActionPanel />
+        <SearchModal />
+      </SearchProvider>
     </QueryClientProvider>
   );
 }

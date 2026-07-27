@@ -9,55 +9,482 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as PayFeeRouteImport } from './routes/pay-fee'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as NirfRouteImport } from './routes/nirf'
+import { Route as PayFeeRouteImport } from './routes/pay-fee'
+import { Route as PlacementsRouteImport } from './routes/placements'
+import { Route as ProgramRouteImport } from './routes/program'
+import { Route as AdminAchievementsRouteImport } from './routes/admin/achievements'
+import { Route as AdminAnnouncementsRouteImport } from './routes/admin/announcements'
+import { Route as AdminCareersRouteImport } from './routes/admin/careers'
+import { Route as AdminClubsRouteImport } from './routes/admin/clubs'
+import { Route as AdminContactRouteImport } from './routes/admin/contact'
+import { Route as AdminCoursesRouteImport } from './routes/admin/courses'
+import { Route as AdminDashboardRouteImport } from './routes/admin/dashboard'
+import { Route as AdminDepartmentsRouteImport } from './routes/admin/departments'
+import { Route as AdminDownloadsRouteImport } from './routes/admin/downloads'
+import { Route as AdminEventsRouteImport } from './routes/admin/events'
+import { Route as AdminFacultyRouteImport } from './routes/admin/faculty'
+import { Route as AdminFaqRouteImport } from './routes/admin/faq'
+import { Route as AdminFooterRouteImport } from './routes/admin/footer'
+import { Route as AdminGalleryRouteImport } from './routes/admin/gallery'
+import { Route as AdminIqacRouteImport } from './routes/admin/iqac'
+import { Route as AdminLoginRouteImport } from './routes/admin/login'
+import { Route as AdminMandatoryRouteImport } from './routes/admin/mandatory'
+import { Route as AdminMediaRouteImport } from './routes/admin/media'
+import { Route as AdminNaacRouteImport } from './routes/admin/naac'
+import { Route as AdminNavigationRouteImport } from './routes/admin/navigation'
+import { Route as AdminNewsRouteImport } from './routes/admin/news'
+import { Route as AdminNirfRouteImport } from './routes/admin/nirf'
+import { Route as AdminNoticesRouteImport } from './routes/admin/notices'
+import { Route as AdminPlacementsRouteImport } from './routes/admin/placements'
+import { Route as AdminResearchRouteImport } from './routes/admin/research'
+import { Route as AdminSeoRouteImport } from './routes/admin/seo'
+import { Route as AdminSettingsRouteImport } from './routes/admin/settings'
+import { Route as AdminTestimonialsRouteImport } from './routes/admin/testimonials'
+import { Route as PlacementsRecruitersRouteImport } from './routes/placements/recruiters'
+import { Route as PlacementsStatisticsRouteImport } from './routes/placements/statistics'
 
-const PayFeeRoute = PayFeeRouteImport.update({
-  id: '/pay-fee',
-  path: '/pay-fee',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NirfRoute = NirfRouteImport.update({
+  id: '/nirf',
+  path: '/nirf',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PayFeeRoute = PayFeeRouteImport.update({
+  id: '/pay-fee',
+  path: '/pay-fee',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlacementsRoute = PlacementsRouteImport.update({
+  id: '/placements',
+  path: '/placements',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgramRoute = ProgramRouteImport.update({
+  id: '/program',
+  path: '/program',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminAchievementsRoute = AdminAchievementsRouteImport.update({
+  id: '/admin/achievements',
+  path: '/admin/achievements',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminAnnouncementsRoute = AdminAnnouncementsRouteImport.update({
+  id: '/admin/announcements',
+  path: '/admin/announcements',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminCareersRoute = AdminCareersRouteImport.update({
+  id: '/admin/careers',
+  path: '/admin/careers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminClubsRoute = AdminClubsRouteImport.update({
+  id: '/admin/clubs',
+  path: '/admin/clubs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminContactRoute = AdminContactRouteImport.update({
+  id: '/admin/contact',
+  path: '/admin/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminCoursesRoute = AdminCoursesRouteImport.update({
+  id: '/admin/courses',
+  path: '/admin/courses',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminDashboardRoute = AdminDashboardRouteImport.update({
+  id: '/admin/dashboard',
+  path: '/admin/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminDepartmentsRoute = AdminDepartmentsRouteImport.update({
+  id: '/admin/departments',
+  path: '/admin/departments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminDownloadsRoute = AdminDownloadsRouteImport.update({
+  id: '/admin/downloads',
+  path: '/admin/downloads',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminEventsRoute = AdminEventsRouteImport.update({
+  id: '/admin/events',
+  path: '/admin/events',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminFacultyRoute = AdminFacultyRouteImport.update({
+  id: '/admin/faculty',
+  path: '/admin/faculty',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminFaqRoute = AdminFaqRouteImport.update({
+  id: '/admin/faq',
+  path: '/admin/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminFooterRoute = AdminFooterRouteImport.update({
+  id: '/admin/footer',
+  path: '/admin/footer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminGalleryRoute = AdminGalleryRouteImport.update({
+  id: '/admin/gallery',
+  path: '/admin/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminIqacRoute = AdminIqacRouteImport.update({
+  id: '/admin/iqac',
+  path: '/admin/iqac',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/admin/login',
+  path: '/admin/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminMandatoryRoute = AdminMandatoryRouteImport.update({
+  id: '/admin/mandatory',
+  path: '/admin/mandatory',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminMediaRoute = AdminMediaRouteImport.update({
+  id: '/admin/media',
+  path: '/admin/media',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminNaacRoute = AdminNaacRouteImport.update({
+  id: '/admin/naac',
+  path: '/admin/naac',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminNavigationRoute = AdminNavigationRouteImport.update({
+  id: '/admin/navigation',
+  path: '/admin/navigation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminNewsRoute = AdminNewsRouteImport.update({
+  id: '/admin/news',
+  path: '/admin/news',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminNirfRoute = AdminNirfRouteImport.update({
+  id: '/admin/nirf',
+  path: '/admin/nirf',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminNoticesRoute = AdminNoticesRouteImport.update({
+  id: '/admin/notices',
+  path: '/admin/notices',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminPlacementsRoute = AdminPlacementsRouteImport.update({
+  id: '/admin/placements',
+  path: '/admin/placements',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminResearchRoute = AdminResearchRouteImport.update({
+  id: '/admin/research',
+  path: '/admin/research',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminSeoRoute = AdminSeoRouteImport.update({
+  id: '/admin/seo',
+  path: '/admin/seo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminSettingsRoute = AdminSettingsRouteImport.update({
+  id: '/admin/settings',
+  path: '/admin/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminTestimonialsRoute = AdminTestimonialsRouteImport.update({
+  id: '/admin/testimonials',
+  path: '/admin/testimonials',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlacementsRecruitersRoute = PlacementsRecruitersRouteImport.update({
+  id: '/recruiters',
+  path: '/recruiters',
+  getParentRoute: () => PlacementsRoute,
+} as any)
+const PlacementsStatisticsRoute = PlacementsStatisticsRouteImport.update({
+  id: '/statistics',
+  path: '/statistics',
+  getParentRoute: () => PlacementsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/nirf': typeof NirfRoute
   '/pay-fee': typeof PayFeeRoute
+  '/placements': typeof PlacementsRouteWithChildren
+  '/program': typeof ProgramRoute
+  '/admin/achievements': typeof AdminAchievementsRoute
+  '/admin/announcements': typeof AdminAnnouncementsRoute
+  '/admin/careers': typeof AdminCareersRoute
+  '/admin/clubs': typeof AdminClubsRoute
+  '/admin/contact': typeof AdminContactRoute
+  '/admin/courses': typeof AdminCoursesRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/departments': typeof AdminDepartmentsRoute
+  '/admin/downloads': typeof AdminDownloadsRoute
+  '/admin/events': typeof AdminEventsRoute
+  '/admin/faculty': typeof AdminFacultyRoute
+  '/admin/faq': typeof AdminFaqRoute
+  '/admin/footer': typeof AdminFooterRoute
+  '/admin/gallery': typeof AdminGalleryRoute
+  '/admin/iqac': typeof AdminIqacRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/mandatory': typeof AdminMandatoryRoute
+  '/admin/media': typeof AdminMediaRoute
+  '/admin/naac': typeof AdminNaacRoute
+  '/admin/navigation': typeof AdminNavigationRoute
+  '/admin/news': typeof AdminNewsRoute
+  '/admin/nirf': typeof AdminNirfRoute
+  '/admin/notices': typeof AdminNoticesRoute
+  '/admin/placements': typeof AdminPlacementsRoute
+  '/admin/research': typeof AdminResearchRoute
+  '/admin/seo': typeof AdminSeoRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/testimonials': typeof AdminTestimonialsRoute
+  '/placements/recruiters': typeof PlacementsRecruitersRoute
+  '/placements/statistics': typeof PlacementsStatisticsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/nirf': typeof NirfRoute
   '/pay-fee': typeof PayFeeRoute
+  '/placements': typeof PlacementsRouteWithChildren
+  '/program': typeof ProgramRoute
+  '/admin/achievements': typeof AdminAchievementsRoute
+  '/admin/announcements': typeof AdminAnnouncementsRoute
+  '/admin/careers': typeof AdminCareersRoute
+  '/admin/clubs': typeof AdminClubsRoute
+  '/admin/contact': typeof AdminContactRoute
+  '/admin/courses': typeof AdminCoursesRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/departments': typeof AdminDepartmentsRoute
+  '/admin/downloads': typeof AdminDownloadsRoute
+  '/admin/events': typeof AdminEventsRoute
+  '/admin/faculty': typeof AdminFacultyRoute
+  '/admin/faq': typeof AdminFaqRoute
+  '/admin/footer': typeof AdminFooterRoute
+  '/admin/gallery': typeof AdminGalleryRoute
+  '/admin/iqac': typeof AdminIqacRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/mandatory': typeof AdminMandatoryRoute
+  '/admin/media': typeof AdminMediaRoute
+  '/admin/naac': typeof AdminNaacRoute
+  '/admin/navigation': typeof AdminNavigationRoute
+  '/admin/news': typeof AdminNewsRoute
+  '/admin/nirf': typeof AdminNirfRoute
+  '/admin/notices': typeof AdminNoticesRoute
+  '/admin/placements': typeof AdminPlacementsRoute
+  '/admin/research': typeof AdminResearchRoute
+  '/admin/seo': typeof AdminSeoRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/testimonials': typeof AdminTestimonialsRoute
+  '/placements/recruiters': typeof PlacementsRecruitersRoute
+  '/placements/statistics': typeof PlacementsStatisticsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/nirf': typeof NirfRoute
   '/pay-fee': typeof PayFeeRoute
+  '/placements': typeof PlacementsRouteWithChildren
+  '/program': typeof ProgramRoute
+  '/admin/achievements': typeof AdminAchievementsRoute
+  '/admin/announcements': typeof AdminAnnouncementsRoute
+  '/admin/careers': typeof AdminCareersRoute
+  '/admin/clubs': typeof AdminClubsRoute
+  '/admin/contact': typeof AdminContactRoute
+  '/admin/courses': typeof AdminCoursesRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/departments': typeof AdminDepartmentsRoute
+  '/admin/downloads': typeof AdminDownloadsRoute
+  '/admin/events': typeof AdminEventsRoute
+  '/admin/faculty': typeof AdminFacultyRoute
+  '/admin/faq': typeof AdminFaqRoute
+  '/admin/footer': typeof AdminFooterRoute
+  '/admin/gallery': typeof AdminGalleryRoute
+  '/admin/iqac': typeof AdminIqacRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/mandatory': typeof AdminMandatoryRoute
+  '/admin/media': typeof AdminMediaRoute
+  '/admin/naac': typeof AdminNaacRoute
+  '/admin/navigation': typeof AdminNavigationRoute
+  '/admin/news': typeof AdminNewsRoute
+  '/admin/nirf': typeof AdminNirfRoute
+  '/admin/notices': typeof AdminNoticesRoute
+  '/admin/placements': typeof AdminPlacementsRoute
+  '/admin/research': typeof AdminResearchRoute
+  '/admin/seo': typeof AdminSeoRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/testimonials': typeof AdminTestimonialsRoute
+  '/placements/recruiters': typeof PlacementsRecruitersRoute
+  '/placements/statistics': typeof PlacementsStatisticsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/pay-fee'
+  fullPaths:
+    | '/'
+    | '/nirf'
+    | '/pay-fee'
+    | '/placements'
+    | '/program'
+    | '/admin/achievements'
+    | '/admin/announcements'
+    | '/admin/careers'
+    | '/admin/clubs'
+    | '/admin/contact'
+    | '/admin/courses'
+    | '/admin/dashboard'
+    | '/admin/departments'
+    | '/admin/downloads'
+    | '/admin/events'
+    | '/admin/faculty'
+    | '/admin/faq'
+    | '/admin/footer'
+    | '/admin/gallery'
+    | '/admin/iqac'
+    | '/admin/login'
+    | '/admin/mandatory'
+    | '/admin/media'
+    | '/admin/naac'
+    | '/admin/navigation'
+    | '/admin/news'
+    | '/admin/nirf'
+    | '/admin/notices'
+    | '/admin/placements'
+    | '/admin/research'
+    | '/admin/seo'
+    | '/admin/settings'
+    | '/admin/testimonials'
+    | '/placements/recruiters'
+    | '/placements/statistics'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/pay-fee'
-  id: '__root__' | '/' | '/pay-fee'
+  to:
+    | '/'
+    | '/nirf'
+    | '/pay-fee'
+    | '/placements'
+    | '/program'
+    | '/admin/achievements'
+    | '/admin/announcements'
+    | '/admin/careers'
+    | '/admin/clubs'
+    | '/admin/contact'
+    | '/admin/courses'
+    | '/admin/dashboard'
+    | '/admin/departments'
+    | '/admin/downloads'
+    | '/admin/events'
+    | '/admin/faculty'
+    | '/admin/faq'
+    | '/admin/footer'
+    | '/admin/gallery'
+    | '/admin/iqac'
+    | '/admin/login'
+    | '/admin/mandatory'
+    | '/admin/media'
+    | '/admin/naac'
+    | '/admin/navigation'
+    | '/admin/news'
+    | '/admin/nirf'
+    | '/admin/notices'
+    | '/admin/placements'
+    | '/admin/research'
+    | '/admin/seo'
+    | '/admin/settings'
+    | '/admin/testimonials'
+    | '/placements/recruiters'
+    | '/placements/statistics'
+  id:
+    | '__root__'
+    | '/'
+    | '/nirf'
+    | '/pay-fee'
+    | '/placements'
+    | '/program'
+    | '/admin/achievements'
+    | '/admin/announcements'
+    | '/admin/careers'
+    | '/admin/clubs'
+    | '/admin/contact'
+    | '/admin/courses'
+    | '/admin/dashboard'
+    | '/admin/departments'
+    | '/admin/downloads'
+    | '/admin/events'
+    | '/admin/faculty'
+    | '/admin/faq'
+    | '/admin/footer'
+    | '/admin/gallery'
+    | '/admin/iqac'
+    | '/admin/login'
+    | '/admin/mandatory'
+    | '/admin/media'
+    | '/admin/naac'
+    | '/admin/navigation'
+    | '/admin/news'
+    | '/admin/nirf'
+    | '/admin/notices'
+    | '/admin/placements'
+    | '/admin/research'
+    | '/admin/seo'
+    | '/admin/settings'
+    | '/admin/testimonials'
+    | '/placements/recruiters'
+    | '/placements/statistics'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  NirfRoute: typeof NirfRoute
   PayFeeRoute: typeof PayFeeRoute
+  PlacementsRoute: typeof PlacementsRouteWithChildren
+  ProgramRoute: typeof ProgramRoute
+  AdminAchievementsRoute: typeof AdminAchievementsRoute
+  AdminAnnouncementsRoute: typeof AdminAnnouncementsRoute
+  AdminCareersRoute: typeof AdminCareersRoute
+  AdminClubsRoute: typeof AdminClubsRoute
+  AdminContactRoute: typeof AdminContactRoute
+  AdminCoursesRoute: typeof AdminCoursesRoute
+  AdminDashboardRoute: typeof AdminDashboardRoute
+  AdminDepartmentsRoute: typeof AdminDepartmentsRoute
+  AdminDownloadsRoute: typeof AdminDownloadsRoute
+  AdminEventsRoute: typeof AdminEventsRoute
+  AdminFacultyRoute: typeof AdminFacultyRoute
+  AdminFaqRoute: typeof AdminFaqRoute
+  AdminFooterRoute: typeof AdminFooterRoute
+  AdminGalleryRoute: typeof AdminGalleryRoute
+  AdminIqacRoute: typeof AdminIqacRoute
+  AdminLoginRoute: typeof AdminLoginRoute
+  AdminMandatoryRoute: typeof AdminMandatoryRoute
+  AdminMediaRoute: typeof AdminMediaRoute
+  AdminNaacRoute: typeof AdminNaacRoute
+  AdminNavigationRoute: typeof AdminNavigationRoute
+  AdminNewsRoute: typeof AdminNewsRoute
+  AdminNirfRoute: typeof AdminNirfRoute
+  AdminNoticesRoute: typeof AdminNoticesRoute
+  AdminPlacementsRoute: typeof AdminPlacementsRoute
+  AdminResearchRoute: typeof AdminResearchRoute
+  AdminSeoRoute: typeof AdminSeoRoute
+  AdminSettingsRoute: typeof AdminSettingsRoute
+  AdminTestimonialsRoute: typeof AdminTestimonialsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/pay-fee': {
-      id: '/pay-fee'
-      path: '/pay-fee'
-      fullPath: '/pay-fee'
-      preLoaderRoute: typeof PayFeeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -65,12 +492,295 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/nirf': {
+      id: '/nirf'
+      path: '/nirf'
+      fullPath: '/nirf'
+      preLoaderRoute: typeof NirfRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pay-fee': {
+      id: '/pay-fee'
+      path: '/pay-fee'
+      fullPath: '/pay-fee'
+      preLoaderRoute: typeof PayFeeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/placements': {
+      id: '/placements'
+      path: '/placements'
+      fullPath: '/placements'
+      preLoaderRoute: typeof PlacementsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/program': {
+      id: '/program'
+      path: '/program'
+      fullPath: '/program'
+      preLoaderRoute: typeof ProgramRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/achievements': {
+      id: '/admin/achievements'
+      path: '/admin/achievements'
+      fullPath: '/admin/achievements'
+      preLoaderRoute: typeof AdminAchievementsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/announcements': {
+      id: '/admin/announcements'
+      path: '/admin/announcements'
+      fullPath: '/admin/announcements'
+      preLoaderRoute: typeof AdminAnnouncementsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/careers': {
+      id: '/admin/careers'
+      path: '/admin/careers'
+      fullPath: '/admin/careers'
+      preLoaderRoute: typeof AdminCareersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/clubs': {
+      id: '/admin/clubs'
+      path: '/admin/clubs'
+      fullPath: '/admin/clubs'
+      preLoaderRoute: typeof AdminClubsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/contact': {
+      id: '/admin/contact'
+      path: '/admin/contact'
+      fullPath: '/admin/contact'
+      preLoaderRoute: typeof AdminContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/courses': {
+      id: '/admin/courses'
+      path: '/admin/courses'
+      fullPath: '/admin/courses'
+      preLoaderRoute: typeof AdminCoursesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/dashboard': {
+      id: '/admin/dashboard'
+      path: '/admin/dashboard'
+      fullPath: '/admin/dashboard'
+      preLoaderRoute: typeof AdminDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/departments': {
+      id: '/admin/departments'
+      path: '/admin/departments'
+      fullPath: '/admin/departments'
+      preLoaderRoute: typeof AdminDepartmentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/downloads': {
+      id: '/admin/downloads'
+      path: '/admin/downloads'
+      fullPath: '/admin/downloads'
+      preLoaderRoute: typeof AdminDownloadsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/events': {
+      id: '/admin/events'
+      path: '/admin/events'
+      fullPath: '/admin/events'
+      preLoaderRoute: typeof AdminEventsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/faculty': {
+      id: '/admin/faculty'
+      path: '/admin/faculty'
+      fullPath: '/admin/faculty'
+      preLoaderRoute: typeof AdminFacultyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/faq': {
+      id: '/admin/faq'
+      path: '/admin/faq'
+      fullPath: '/admin/faq'
+      preLoaderRoute: typeof AdminFaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/footer': {
+      id: '/admin/footer'
+      path: '/admin/footer'
+      fullPath: '/admin/footer'
+      preLoaderRoute: typeof AdminFooterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/gallery': {
+      id: '/admin/gallery'
+      path: '/admin/gallery'
+      fullPath: '/admin/gallery'
+      preLoaderRoute: typeof AdminGalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/iqac': {
+      id: '/admin/iqac'
+      path: '/admin/iqac'
+      fullPath: '/admin/iqac'
+      preLoaderRoute: typeof AdminIqacRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/admin/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/mandatory': {
+      id: '/admin/mandatory'
+      path: '/admin/mandatory'
+      fullPath: '/admin/mandatory'
+      preLoaderRoute: typeof AdminMandatoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/media': {
+      id: '/admin/media'
+      path: '/admin/media'
+      fullPath: '/admin/media'
+      preLoaderRoute: typeof AdminMediaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/naac': {
+      id: '/admin/naac'
+      path: '/admin/naac'
+      fullPath: '/admin/naac'
+      preLoaderRoute: typeof AdminNaacRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/navigation': {
+      id: '/admin/navigation'
+      path: '/admin/navigation'
+      fullPath: '/admin/navigation'
+      preLoaderRoute: typeof AdminNavigationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/news': {
+      id: '/admin/news'
+      path: '/admin/news'
+      fullPath: '/admin/news'
+      preLoaderRoute: typeof AdminNewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/nirf': {
+      id: '/admin/nirf'
+      path: '/admin/nirf'
+      fullPath: '/admin/nirf'
+      preLoaderRoute: typeof AdminNirfRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/notices': {
+      id: '/admin/notices'
+      path: '/admin/notices'
+      fullPath: '/admin/notices'
+      preLoaderRoute: typeof AdminNoticesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/placements': {
+      id: '/admin/placements'
+      path: '/admin/placements'
+      fullPath: '/admin/placements'
+      preLoaderRoute: typeof AdminPlacementsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/research': {
+      id: '/admin/research'
+      path: '/admin/research'
+      fullPath: '/admin/research'
+      preLoaderRoute: typeof AdminResearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/seo': {
+      id: '/admin/seo'
+      path: '/admin/seo'
+      fullPath: '/admin/seo'
+      preLoaderRoute: typeof AdminSeoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/settings': {
+      id: '/admin/settings'
+      path: '/admin/settings'
+      fullPath: '/admin/settings'
+      preLoaderRoute: typeof AdminSettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/testimonials': {
+      id: '/admin/testimonials'
+      path: '/admin/testimonials'
+      fullPath: '/admin/testimonials'
+      preLoaderRoute: typeof AdminTestimonialsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/placements/recruiters': {
+      id: '/placements/recruiters'
+      path: '/recruiters'
+      fullPath: '/placements/recruiters'
+      preLoaderRoute: typeof PlacementsRecruitersRouteImport
+      parentRoute: typeof PlacementsRoute
+    }
+    '/placements/statistics': {
+      id: '/placements/statistics'
+      path: '/statistics'
+      fullPath: '/placements/statistics'
+      preLoaderRoute: typeof PlacementsStatisticsRouteImport
+      parentRoute: typeof PlacementsRoute
+    }
   }
 }
 
+interface PlacementsRouteChildren {
+  PlacementsRecruitersRoute: typeof PlacementsRecruitersRoute
+  PlacementsStatisticsRoute: typeof PlacementsStatisticsRoute
+}
+
+const PlacementsRouteChildren: PlacementsRouteChildren = {
+  PlacementsRecruitersRoute: PlacementsRecruitersRoute,
+  PlacementsStatisticsRoute: PlacementsStatisticsRoute,
+}
+
+const PlacementsRouteWithChildren = PlacementsRoute._addFileChildren(
+  PlacementsRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  NirfRoute: NirfRoute,
   PayFeeRoute: PayFeeRoute,
+  PlacementsRoute: PlacementsRouteWithChildren,
+  ProgramRoute: ProgramRoute,
+  AdminAchievementsRoute: AdminAchievementsRoute,
+  AdminAnnouncementsRoute: AdminAnnouncementsRoute,
+  AdminCareersRoute: AdminCareersRoute,
+  AdminClubsRoute: AdminClubsRoute,
+  AdminContactRoute: AdminContactRoute,
+  AdminCoursesRoute: AdminCoursesRoute,
+  AdminDashboardRoute: AdminDashboardRoute,
+  AdminDepartmentsRoute: AdminDepartmentsRoute,
+  AdminDownloadsRoute: AdminDownloadsRoute,
+  AdminEventsRoute: AdminEventsRoute,
+  AdminFacultyRoute: AdminFacultyRoute,
+  AdminFaqRoute: AdminFaqRoute,
+  AdminFooterRoute: AdminFooterRoute,
+  AdminGalleryRoute: AdminGalleryRoute,
+  AdminIqacRoute: AdminIqacRoute,
+  AdminLoginRoute: AdminLoginRoute,
+  AdminMandatoryRoute: AdminMandatoryRoute,
+  AdminMediaRoute: AdminMediaRoute,
+  AdminNaacRoute: AdminNaacRoute,
+  AdminNavigationRoute: AdminNavigationRoute,
+  AdminNewsRoute: AdminNewsRoute,
+  AdminNirfRoute: AdminNirfRoute,
+  AdminNoticesRoute: AdminNoticesRoute,
+  AdminPlacementsRoute: AdminPlacementsRoute,
+  AdminResearchRoute: AdminResearchRoute,
+  AdminSeoRoute: AdminSeoRoute,
+  AdminSettingsRoute: AdminSettingsRoute,
+  AdminTestimonialsRoute: AdminTestimonialsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
