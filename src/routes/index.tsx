@@ -252,6 +252,200 @@ function NavDropdown({ item }: { item: NavItem }) {
   );
 }
 
+function MobileNavAccordion({ onClose }: { onClose: () => void }) {
+  const [openSection, setOpenSection] = useState<string | null>(null);
+  const [openSubSection, setOpenSubSection] = useState<string | null>(null);
+  const [openSubSubSection, setOpenSubSubSection] = useState<string | null>(null);
+
+  const toggleSection = (label: string) => {
+    if (openSection === label) {
+      setOpenSection(null);
+    } else {
+      setOpenSection(label);
+      setOpenSubSection(null);
+      setOpenSubSubSection(null);
+    }
+  };
+
+  const toggleSubSection = (label: string) => {
+    setOpenSubSection(openSubSection === label ? null : label);
+    setOpenSubSubSection(null);
+  };
+
+  const toggleSubSubSection = (label: string) => {
+    setOpenSubSubSection(openSubSubSection === label ? null : label);
+  };
+
+  return (
+    <div className="flex flex-col border-t border-border/60">
+      {NAV.map((n) => {
+        const isExpanded = openSection === n.label;
+
+        return (
+          <div key={n.label} className="border-b border-border/60">
+            <button
+              type="button"
+              onClick={() => toggleSection(n.label)}
+              className="w-full flex items-center justify-between py-3 px-2 text-sm font-semibold text-foreground hover:text-primary transition-colors min-h-[44px] cursor-pointer"
+            >
+              <span>{n.label}</span>
+              <ChevronDown
+                className={`h-4 w-4 text-muted-foreground transition-transform duration-300 ${
+                  isExpanded ? "rotate-180 text-primary" : ""
+                }`}
+              />
+            </button>
+
+            {/* Level 1 Submenu Accordion Container */}
+            <div className={`mobile-accordion-grid ${isExpanded ? "open" : ""}`}>
+              <div className="mobile-accordion-inner">
+                <div className="bg-[#F8FAFC] border-l-2 border-primary rounded-r-xl py-1 my-1.5 pl-4 pr-2 flex flex-col gap-0.5">
+                  {n.items.map((c) => {
+                    const hasChildren = Array.isArray(c.children) && c.children.length > 0;
+                    const isSubOpen = openSubSection === c.label;
+                    const isApply = c.label === "Apply Now";
+
+                    if (hasChildren) {
+                      return (
+                        <div key={c.label} className="flex flex-col">
+                          <button
+                            type="button"
+                            onClick={() => toggleSubSection(c.label)}
+                            className="w-full flex items-center justify-between py-2.5 px-3 text-xs sm:text-sm font-medium text-foreground/90 hover:text-primary hover:bg-primary-soft/50 rounded-lg transition-colors min-h-[44px] cursor-pointer"
+                          >
+                            <span>{c.label}</span>
+                            <ChevronDown
+                              className={`h-3.5 w-3.5 text-muted-foreground transition-transform duration-300 ${
+                                isSubOpen ? "rotate-180 text-primary" : ""
+                              }`}
+                            />
+                          </button>
+
+                          {/* Level 2 Submenu Accordion */}
+                          <div className={`mobile-accordion-grid ${isSubOpen ? "open" : ""}`}>
+                            <div className="mobile-accordion-inner">
+                              <div className="border-l-2 border-primary/40 ml-3 pl-3 py-1 flex flex-col gap-0.5">
+                                {c.children!.map((sc) => {
+                                  const scObj = typeof sc === "string" ? { label: sc } : sc;
+                                  const hasSubChildren = Array.isArray(scObj.children) && scObj.children.length > 0;
+                                  const isSubSubOpen = openSubSubSection === scObj.label;
+
+                                  if (hasSubChildren) {
+                                    return (
+                                      <div key={scObj.label} className="flex flex-col">
+                                        <button
+                                          type="button"
+                                          onClick={() => toggleSubSubSection(scObj.label)}
+                                          className="w-full flex items-center justify-between py-2 px-2 text-xs font-medium text-foreground/80 hover:text-primary min-h-[44px] cursor-pointer"
+                                        >
+                                          <span>{scObj.label}</span>
+                                          <ChevronDown
+                                            className={`h-3 w-3 text-muted-foreground transition-transform duration-300 ${
+                                              isSubSubOpen ? "rotate-180 text-primary" : ""
+                                            }`}
+                                          />
+                                        </button>
+
+                                        {/* Level 3 Submenu Accordion */}
+                                        <div className={`mobile-accordion-grid ${isSubSubOpen ? "open" : ""}`}>
+                                          <div className="mobile-accordion-inner">
+                                            <div className="border-l border-primary/30 ml-2 pl-2 py-1 flex flex-col gap-0.5">
+                                              {scObj.children!.map((leaf) => {
+                                                const leafObj = typeof leaf === "string" ? { label: leaf } : leaf;
+
+                                                return (
+                                                  <Link
+                                                    key={leafObj.label}
+                                                    to="/program"
+                                                    search={{ branch: leafObj.label }}
+                                                    onClick={onClose}
+                                                    className="flex items-center justify-between py-2 px-2 text-xs font-normal text-foreground/80 hover:text-primary hover:bg-primary-soft/50 rounded transition-colors min-h-[44px]"
+                                                  >
+                                                    <span className="truncate">{leafObj.label}</span>
+                                                    {leafObj.badge && (
+                                                      <span className="shrink-0 rounded-full bg-accent/20 text-accent-foreground px-2 py-0.5 text-[9px] font-bold uppercase">
+                                                        {leafObj.badge}
+                                                      </span>
+                                                    )}
+                                                  </Link>
+                                                );
+                                              })}
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    );
+                                  }
+
+                                  return (
+                                    <Link
+                                      key={scObj.label}
+                                      to="/program"
+                                      search={{ branch: scObj.label }}
+                                      onClick={onClose}
+                                      className="flex items-center justify-between py-2 px-3 text-xs font-medium text-foreground/80 hover:text-primary hover:bg-primary-soft/50 rounded-lg transition-colors min-h-[44px]"
+                                    >
+                                      <span>{scObj.label}</span>
+                                    </Link>
+                                  );
+                                })}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    }
+
+                    if (isApply) {
+                      return (
+                        <a
+                          key={c.label}
+                          href="https://admission.rkgit.edu.in"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={onClose}
+                          className="flex items-center justify-between py-2.5 px-3 text-xs sm:text-sm font-medium text-foreground/80 hover:text-primary hover:bg-primary-soft/50 rounded-lg transition-colors min-h-[44px]"
+                        >
+                          <span>{c.label}</span>
+                        </a>
+                      );
+                    }
+
+                    if (c.href) {
+                      return (
+                        <Link
+                          key={c.label}
+                          to={c.href}
+                          onClick={onClose}
+                          className="flex items-center justify-between py-2.5 px-3 text-xs sm:text-sm font-medium text-foreground/80 hover:text-primary hover:bg-primary-soft/50 rounded-lg transition-colors min-h-[44px]"
+                        >
+                          <span>{c.label}</span>
+                        </Link>
+                      );
+                    }
+
+                    return (
+                      <Link
+                        key={c.label}
+                        to="/program"
+                        search={{ branch: c.label }}
+                        onClick={onClose}
+                        className="flex items-center justify-between py-2.5 px-3 text-xs sm:text-sm font-medium text-foreground/80 hover:text-primary hover:bg-primary-soft/50 rounded-lg transition-colors min-h-[44px]"
+                      >
+                        <span>{c.label}</span>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 export function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -378,7 +572,7 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="lg:hidden bg-background border-b border-border animate-fade-up max-h-[70vh] overflow-y-auto">
+        <div className="lg:hidden bg-background border-b border-border animate-fade-up max-h-[75vh] overflow-y-auto">
           <div className="container-page py-4 flex flex-col">
             <button
               onClick={() => {
@@ -398,11 +592,11 @@ export function Header() {
               <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Select Language</span>
               <LanguageSelector variant="light" />
             </div>
-            {NAV.map((n) => (
-              <a key={n.label} href="#" className="py-2.5 text-sm font-medium border-b border-border/60">{n.label}</a>
-            ))}
-            <Link to="/nirf" activeProps={{ className: "text-primary font-bold" }} className="py-2.5 text-sm font-medium border-b border-border/60">NIRF</Link>
-            <Link to="/pay-fee" className="py-2.5 text-sm font-medium border-b border-border/60">Pay Fee</Link>
+
+            <MobileNavAccordion onClose={() => setOpen(false)} />
+
+            <Link to="/nirf" activeProps={{ className: "text-primary font-bold" }} onClick={() => setOpen(false)} className="py-3 px-2 text-sm font-semibold border-b border-border/60 min-h-[44px] flex items-center">NIRF</Link>
+            <Link to="/pay-fee" onClick={() => setOpen(false)} className="py-3 px-2 text-sm font-semibold border-b border-border/60 min-h-[44px] flex items-center">Pay Fee</Link>
             <a
               href="https://admission.rkgit.edu.in"
               target="_blank"
