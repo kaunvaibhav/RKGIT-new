@@ -12,8 +12,7 @@ import alumniAsset from "@/assets/rkgit-alumni.png.asset.json";
 import campusImg from "@/assets/rkgit-campus.jpg";
 import labImg from "@/assets/rkgit-lab.jpg";
 import gradImg from "@/assets/rkgit-graduation.jpg";
-import rkgit26Years from "@/assets/rkgit-26years.png";
-import treeImg from "@/assets/rkgit-26years.png";
+import rkgit26YearsLogo from "@/assets/rkgit-26years.png";
 import { LanguageSelector } from "@/components/LanguageSelector";
 import { useSearch } from "@/components/SearchContext";
 import { ALL_RECRUITERS } from "@/data/placementData";
@@ -479,8 +478,8 @@ export function Header() {
         <div className="container-page grid grid-cols-[minmax(0,1fr)_auto] lg:grid-cols-[auto_1fr_auto] items-center gap-3 sm:gap-6 h-16 sm:h-20">
           <Link to="/" className="flex items-center gap-2 sm:gap-3 md:gap-4 shrink min-w-0">
             <img
-              src={rkgit26Years}
-              alt="26 Years of Academic Excellence"
+              src={rkgit26YearsLogo}
+              alt="RKGIT 26 Ghaziabad — 26 Years of Academic Excellence"
               className="h-9 sm:h-12 lg:h-14 w-auto object-contain shrink-0"
             />
             <div className="h-8 sm:h-10 w-px bg-border/70 hidden sm:block shrink-0" />
@@ -679,8 +678,19 @@ function Hero() {
         </div>
       ))}
 
-      <div className="relative z-10 h-full container-page flex flex-col justify-center">
-        <div key={i} className="max-w-3xl animate-fade-up pb-24 md:pb-0">
+      <div className="relative z-10 h-full container-page grid lg:grid-cols-12 gap-8 lg:gap-12 items-center justify-center py-10 md:py-16">
+        {/* Left side: RKGIT 26 Ghaziabad Logo */}
+        <div className="lg:col-span-5 flex justify-center items-center">
+          <img
+            src={rkgit26YearsLogo}
+            alt="RKGIT 26 Ghaziabad — 26 Years of Academic Excellence"
+            className="w-full max-w-[340px] sm:max-w-[420px] lg:max-w-[460px] h-auto object-contain shrink-0 [transform:none]"
+            style={{ transform: "none" }}
+          />
+        </div>
+
+        {/* Right side: Hero text & CTAs */}
+        <div key={i} className="lg:col-span-7 animate-fade-up pb-16 md:pb-0">
           <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1]">
             {SLIDES[i].title}
           </h1>
@@ -785,12 +795,16 @@ function LegacySection() {
       <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-primary/10 blur-3xl" />
 
       <div className="container-page relative grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
-        <Reveal>
-          <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-transparent to-primary/10 rounded-3xl blur-2xl" />
-            <img src={treeImg} alt="26 Years of Excellence — Tree of Knowledge" className="relative w-full max-w-lg mx-auto animate-float-slow" loading="lazy" />
-          </div>
-        </Reveal>
+        <div className="relative">
+          <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-transparent to-primary/10 rounded-3xl blur-2xl" />
+          <img
+            src={rkgit26YearsLogo}
+            alt="RKGIT 26 Ghaziabad — 26 Years of Academic Excellence"
+            className="relative w-full max-w-[460px] sm:max-w-[480px] mx-auto h-auto object-contain shrink-0 [transform:none]"
+            style={{ transform: "none" }}
+            loading="lazy"
+          />
+        </div>
 
         <Reveal delay={150}>
           <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 text-primary px-4 py-1.5 text-xs font-bold uppercase tracking-widest">
