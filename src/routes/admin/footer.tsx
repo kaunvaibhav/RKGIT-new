@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Save, Image as ImageIcon, Link as LinkIcon, Upload } from "lucide-react";
 import AdminLayout, { PageHeader, InputField } from "../../components/admin/AdminLayout";
+import { VisitorCounter } from "../../components/VisitorCounter";
 
 export const Route = createFileRoute("/admin/footer")({ component: AdminFooter });
 
@@ -92,7 +93,10 @@ function AdminFooter() {
                 <div className="space-y-1 text-xs text-white/70"><div>Ghaziabad, UP - 201003</div><div>Toll Free: {form.tollFree}</div></div>
               </div>
             </div>
-            <div className="border-t border-white/10 pt-4 flex justify-between text-xs text-white/40">
+            <div className="border-t border-white/10 pt-4 pb-2">
+              <VisitorCounter />
+            </div>
+            <div className="pt-2 flex flex-col md:flex-row justify-between items-start md:items-center gap-2 text-xs text-white/40">
               <span>{form.copyright}</span>
               <span className="flex gap-3">
                 <span>Privacy Policy</span>

@@ -106,7 +106,7 @@ export function SearchModal() {
       if (saved) {
         setRecentSearches(JSON.parse(saved));
       }
-    } catch {
+    } catch { 
       // Ignore storage error
     }
   }, []);

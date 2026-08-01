@@ -4,8 +4,9 @@ import {
   Search, Menu, X, ChevronDown, ChevronRight, ArrowRight, ArrowLeft, ArrowUpRight, MapPin, Phone, Mail,
   MessageCircle, Facebook, Twitter, Linkedin, Instagram, Youtube, Globe,
   Sparkles, GraduationCap, Beaker, BookOpen, Trophy, Briefcase, Building2,
-  Clock, FlaskConical, Send, Play, CreditCard,
+  Clock, FlaskConical, Send, Play, CreditCard, Loader2,
 } from "lucide-react";
+import { askGeminiServerFn } from "@/services/chatService";
 
 import heroAsset from "@/assets/rkgit-hero.png.asset.json";
 import alumniAsset from "@/assets/rkgit-alumni.png.asset.json";
@@ -13,15 +14,17 @@ import campusImg from "@/assets/rkgit-campus.jpg";
 import labImg from "@/assets/rkgit-lab.jpg";
 import gradImg from "@/assets/rkgit-graduation.jpg";
 import rkgit26YearsLogo from "@/assets/rkgit-26years.png";
+import rkgitLogo from "@/assets/rkgitlogo.png";
 import { LanguageSelector } from "@/components/LanguageSelector";
 import { useSearch } from "@/components/SearchContext";
+import { VisitorCounter } from "@/components/VisitorCounter";
 import { ALL_RECRUITERS } from "@/data/placementData";
 
 export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const RKGIT_LOGO = "https://www.bbarkgit.co.in/img/RKGIT%20Logo%20Blue-1.png";
+const RKGIT_LOGO = rkgitLogo;
 
 
 /* ------------------------------- Hooks ---------------------------------- */
@@ -1526,9 +1529,31 @@ export function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="container-page py-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-white/60">
+        <div className="container-page pt-6 pb-2 flex justify-start">
+          <VisitorCounter />
+        </div>
+        <div className="container-page pb-6 pt-2 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-white/60">
           <div>© 2026 Raj Kumar Goel Institute of Technology, Ghaziabad. All rights reserved.</div>
-          <div>Designed as a modern UI/UX prototype.</div>
+          <div>
+            Designed & Developed by{" "}
+            <a
+              href="https://www.linkedin.com/in/vaibhavgupta64/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/80 hover:text-accent underline underline-offset-2 transition-colors font-medium"
+            >
+              Vaibhav Gupta
+            </a>
+            , and{" "}
+            <a
+              href="https://www.linkedin.com/in/rishabhmishra-tech/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/80 hover:text-accent underline underline-offset-2 transition-colors font-medium"
+            >
+              Rishabh Mishra
+            </a>
+          </div>
           <div className="flex gap-5">
             <a href="#" className="hover:text-accent">Privacy Policy</a>
             <a href="#" className="hover:text-accent">Terms</a>
@@ -1543,13 +1568,6 @@ export function Footer() {
 /* -------------------------------- Chatbot ------------------------------- */
 
 const QUICK = ["B.Tech Admission", "Fee Structure", "Hostel Facilities", "Placement Record", "Documents Required"];
-const BOT_REPLIES: Record<string, string> = {
-  "B.Tech Admission": "B.Tech admissions are open via UPTAC counselling (JEE Main score) and direct admission. Priority round closes 30 Sep 2026.",
-  "Fee Structure": "B.Tech tuition starts at ₹1.25L / year. Scholarships up to 100% available on merit and JEE percentile.",
-  "Hostel Facilities": "Separate boys' & girls' hostels with Wi-Fi, mess, gym and 24×7 security inside the main campus.",
-  "Placement Record": "8500+ offers over the last 26 years. 2025-26 highest package: 34 LPA. 300+ recruiters including Amazon, Autodesk, TCS.",
-  "Documents Required": "10th & 12th mark sheets, JEE scorecard, transfer & migration certificates, category certificate (if applicable), ID proof.",
-};
 
 export function Chatbot() {
   const [open, setOpen] = useState(false);
@@ -1557,13 +1575,54 @@ export function Chatbot() {
     { role: "bot", text: "Hi! I'm the RKGIT Admission Assistant. Ask me anything about admissions, courses, fees, hostel or placements." },
   ]);
   const [input, setInput] = useState("");
-  const send = (text: string) => {
-    if (!text.trim()) return;
-    setMsgs((m) => [...m, { role: "user", text }]);
-    const reply = BOT_REPLIES[text] || "Thanks for your question! Our admission team will reach out shortly. For urgent queries call our toll-free 1800-120-777755.";
-    setTimeout(() => setMsgs((m) => [...m, { role: "bot", text: reply }]), 500);
+  const [loading, setLoading] = useState(false);
+  const msgsEndRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (open) {
+      msgsEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [msgs, loading, open]);
+
+  const send = async (text: string) => {
+    if (!text.trim() || loading) return;
+
+    const userText = text.trim();
+    const updatedMsgs = [...msgs, { role: "user" as const, text: userText }];
+
+    setMsgs(updatedMsgs);
     setInput("");
+    setLoading(true);
+
+    try {
+      const res = await askGeminiServerFn({ data: { messages: updatedMsgs } });
+      const replyText = res.text || res.error || "Unable to process message. Please try again.";
+      setMsgs((m) => [...m, { role: "bot", text: replyText }]);
+    } catch (err: any) {
+      console.error("[Chatbot Frontend] Server function call exception:", err);
+      try {
+        const res = await fetch("/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ messages: updatedMsgs }),
+        });
+        const data = await res.json();
+        const replyText = data.text || data.error || "Unable to reach Gemini API backend.";
+        setMsgs((m) => [...m, { role: "bot", text: replyText }]);
+      } catch (fetchErr: any) {
+        setMsgs((m) => [
+          ...m,
+          {
+            role: "bot",
+            text: `Network Error: ${fetchErr?.message || "Unable to connect to assistant backend."}`,
+          },
+        ]);
+      }
+    } finally {
+      setLoading(false);
+    }
   };
+
   return (
     <>
       {open && (
@@ -1575,7 +1634,7 @@ export function Chatbot() {
               </div>
               <div className="flex-1 min-w-0">
                 <div className="font-bold">RKGIT Admission Assistant</div>
-                <div className="text-[11px] text-white/70">Online · replies in seconds</div>
+                <div className="text-[11px] text-white/70">Online · Powered by Gemini</div>
               </div>
               <button onClick={() => setOpen(false)} className="grid h-8 w-8 place-items-center rounded-full hover:bg-white/10">
                 <X className="h-4 w-4" />
@@ -1585,16 +1644,25 @@ export function Chatbot() {
           <div className="h-72 overflow-y-auto p-4 space-y-3 bg-white/60">
             {msgs.map((m, i) => (
               <div key={i} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
-                <div className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-sm ${m.role === "user" ? "bg-primary text-primary-foreground rounded-br-sm" : "bg-white shadow-soft rounded-bl-sm text-foreground"}`}>
+                <div className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-sm whitespace-pre-wrap ${m.role === "user" ? "bg-primary text-primary-foreground rounded-br-sm" : "bg-white shadow-soft rounded-bl-sm text-foreground"}`}>
                   {m.text}
                 </div>
               </div>
             ))}
+            {loading && (
+              <div className="flex justify-start">
+                <div className="max-w-[80%] rounded-2xl px-4 py-2.5 text-sm bg-white shadow-soft rounded-bl-sm text-muted-foreground flex items-center gap-2">
+                  <Loader2 className="h-3.5 w-3.5 animate-spin text-primary" />
+                  <span>Thinking...</span>
+                </div>
+              </div>
+            )}
+            <div ref={msgsEndRef} />
           </div>
           <div className="p-3 border-t border-white/40 bg-white/70">
             <div className="flex gap-1.5 overflow-x-auto pb-2">
               {QUICK.map((q) => (
-                <button key={q} onClick={() => send(q)} className="shrink-0 text-[11px] font-semibold rounded-full bg-primary-soft text-primary px-3 py-1 hover:bg-primary hover:text-primary-foreground transition-colors">
+                <button key={q} onClick={() => send(q)} disabled={loading} className="shrink-0 text-[11px] font-semibold rounded-full bg-primary-soft text-primary px-3 py-1 hover:bg-primary hover:text-primary-foreground transition-colors disabled:opacity-50">
                   {q}
                 </button>
               ))}
@@ -1604,10 +1672,11 @@ export function Chatbot() {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Ask about admissions…"
-                className="flex-1 bg-transparent text-sm outline-none placeholder:text-muted-foreground"
+                disabled={loading}
+                className="flex-1 bg-transparent text-sm outline-none placeholder:text-muted-foreground disabled:opacity-50"
               />
-              <button type="submit" className="grid h-8 w-8 place-items-center rounded-full bg-primary text-primary-foreground hover:bg-secondary transition-colors">
-                <Send className="h-3.5 w-3.5" />
+              <button type="submit" disabled={loading || !input.trim()} className="grid h-8 w-8 place-items-center rounded-full bg-primary text-primary-foreground hover:bg-secondary transition-colors disabled:opacity-50">
+                {loading ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Send className="h-3.5 w-3.5" />}
               </button>
             </form>
           </div>
