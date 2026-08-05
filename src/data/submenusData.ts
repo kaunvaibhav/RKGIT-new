@@ -567,41 +567,114 @@ export const SUBMENUS_DATA: Record<string, SubmenuPageData> = {
     slug: "admission-process",
     category: "Admissions",
     title: "Admission Process 2026–27",
-    subtitle: "Step-by-step guidance for joining B.Tech, M.Tech, MBA, MCA & Pharmacy programs.",
+    subtitle: "Complete guidance, seat matrix, eligibility criteria, and quota policies for B.Tech, M.Tech, MBA, MCA & Pharmacy admissions.",
     badge: "Admissions 2026",
     overview: [
-      "Admissions to Raj Kumar Goel Institute of Technology (RKGIT) are conducted strictly in accordance with regulations issued by AKTU Lucknow and AICTE New Delhi.",
-      "Candidates can secure admission either through UPSEE / JEE Main state counseling (85% seats) or through Direct Management Merit (15% seats)."
+      "RKGIT offers Four years, full time Graduate Program in Engineering - B.Tech. Approved by All India Council for Technical Education (AICTE), Ministry of HRD, and Affiliated to Dr. APJ Abdul Kalam Technical University (AKTU), Lucknow.",
+      "15% of the total intake is available through Management Quota as per the norms of JEE 2026 and State Government. The vacant seats after counselling of JEE 2026 shall be filled by the Institute as per the norms of the State Government."
     ],
     keyHighlights: [
-      { title: "Counseling Seats (85%)", description: "Allotted via UPTAC / AKTU counseling based on JEE Main / CUET percentile." },
-      { title: "Direct Management Seats (15%)", description: "Offered on merit based on 10+2 PCM / graduation marks." },
-      { title: "Online Application", description: "Apply seamlessly on admission.rkgit.edu.in with instant document upload." }
+      { title: "Management Quota (15%)", description: "15% of the total intake available as per the norms of JEE 2026 and State Government." },
+      { title: "Fee Waiver Seats (5%)", description: "Up to 5% sanctioned intake in B.Tech for economically weaker meritorious students (AICTE norms) with 100% tuition fee waiver via JEE counselling." },
+      { title: "Kashmiri Migrants Scheme", description: "Direct admission over & above sanctioned intake (1 seat per AKTU institute) as per AICTE & UP Govt orders. JEE 2026 exam not required." },
+      { title: "B.Tech Lateral Entry (2nd Year)", description: "20% of sanctioned 1st-year intake for 3-year Engg Diploma or B.Sc. graduates with min 45% marks (40% for SC/ST) via JEE 2026." }
     ],
     stats: [
-      { label: "Counseling Code", value: "033", subtext: "AKTU RKGIT Institute Code" },
-      { label: "Total Seats", value: "1,500+", subtext: "Across All Degree Programs" }
+      { label: "AKTU Code", value: "033", subtext: "RKGIT Institute Code" },
+      { label: "B.Tech Seats", value: "1,440", subtext: "Across 9 Disciplines" },
+      { label: "Management Quota", value: "15%", subtext: "JEE / State Govt Norms" },
+      { label: "Fee Waiver Seats", value: "5%", subtext: "100% Tuition Exemption" }
     ],
     table: {
-      headers: ["Step No.", "Process Stage", "Action Required by Candidate", "Location / Portal", "Timeline"],
+      headers: ["Courses / Discipline", "No. of Seats", "Program Level & Duration", "Accreditation / Approval Status"],
       rows: [
-        ["Step 1", "Online Registration", "Fill online application form and pay ₹1,000 fee", "admission.rkgit.edu.in", "Open Now"],
-        ["Step 2", "Entrance Exam Score Verification", "Submit JEE Main / CUET / UPTAC scorecard", "Admissions Portal", "August 2026"],
-        ["Step 3", "Document Verification", "Upload 10th, 12th, Category & ID certificates", "Online / Admission Desk", "Within 3 Days"],
-        ["Step 4", "Seat Allotment Letter", "Receive official allotment from UPTAC or RKGIT", "UPTAC / RKGIT Portal", "As per Counseling"],
-        ["Step 5", "Seat Acceptance Fee", "Pay seat confirmation fee (₹20,000 adjustable)", "Online Fee Portal", "Within 48 Hours"],
-        ["Step 6", "Physical Reporting at Campus", "Submit original documents & medical certificate", "Admissions Cell Block A", "Scheduled Dates"],
-        ["Step 7", "Hostel & Transport Opting", "Apply for hostel room or transport route pass", "Hostel / Transport Desk", "Same Day"],
-        ["Step 8", "Orientation & Identity Card", "Collect Roll No, ERP login & attend orientation", "Main Auditorium", "August 17, 2026"]
+        ["B.Tech. Computer Science and Engineering", "360", "Undergraduate (4 Years)", "NBA Accredited / AICTE / AKTU"],
+        ["B.Tech. Computer Science", "240", "Undergraduate (4 Years)", "AICTE / AKTU Approved"],
+        ["B.Tech. Computer Science and Engineering (Artificial Intelligence and Machine Learning)", "300", "Undergraduate (4 Years)", "AICTE / AKTU Approved"],
+        ["B.Tech. Computer Science and Engineering (DATA Science)", "120", "Undergraduate (4 Years)", "AICTE / AKTU Approved"],
+        ["B.Tech. Information Technology", "120", "Undergraduate (4 Years)", "NBA Accredited / AICTE / AKTU"],
+        ["B.Tech. Electronics and Communication Engineering", "120", "Undergraduate (4 Years)", "NBA Accredited / AICTE / AKTU"],
+        ["B.Tech. Electrical and Electronics Engineering", "30", "Undergraduate (4 Years)", "AICTE / AKTU Approved"],
+        ["B.Tech. Mechanical Engineering", "30", "Undergraduate (4 Years)", "AICTE / AKTU Approved"],
+        ["B.Tech. Civil Engineering", "30", "Undergraduate (4 Years)", "AICTE / AKTU Approved"],
+        ["Master Of Technology - ECE", "9", "Postgraduate (2 Years)", "AICTE / AKTU Approved"],
+        ["Master Of Technology - CSE", "18", "Postgraduate (2 Years)", "AICTE / AKTU Approved"],
+        ["Master Of Business Administration (M.B.A)", "90", "Postgraduate (2 Years)", "AICTE / AKTU Approved"],
+        ["Master Of Computer Application (M.C.A)", "60", "Postgraduate (2 Years)", "AICTE / AKTU Approved"],
+        ["Diploma In Pharmacy (D.Pharm)", "60", "Diploma (2 Years)", "PCI Approved"],
+        ["Bachelor of Pharmacy (B.Pharm)", "100", "Undergraduate (4 Years)", "NBA Accredited / PCI Approved"],
+        ["Master of Pharmacy (Pharmacology / Pharmaceutics)", "12 / 15", "Postgraduate (2 Years)", "PCI Approved"]
       ]
     },
     gallery: [
-      { url: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&q=80", caption: "Admissions Counseling & Helpdesk Hall" }
+      { url: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&q=80", caption: "Admissions Counseling & Information Centre" }
     ],
     faqs: [
-      { question: "What is the AKTU college code for RKGIT Ghaziabad?", answer: "The AKTU Counseling Code for RKGIT is 033." }
+      {
+        question: "What is the Management Quota seat availability and procedure?",
+        answer: "15% of the total intake is available through Management Quota as per the norms of JEE 2026 and State Government. The vacant seats after counselling of JEE 2026 shall be filled by the Institute as per the norms of the State Government."
+      },
+      {
+        question: "What are the guidelines for Fee Waiver seats for Economically Weaker Meritorious Students?",
+        answer: "The fee waiver seats will be limited to a maximum of 5% of the sanctioned intake in the B.Tech. course for economically weaker meritorious candidates as per AICTE. No tuition fee will be charged from such candidates admitted against such seats. Economically weaker students must submit Certificate No. 12 (Income Certificate) at the time of document verification during counselling. These seats are allotted strictly through JEE counselling only."
+      },
+      {
+        question: "What is the policy for Direct Admission to Kashmiri Migrants?",
+        answer: "Direct admission to Kashmiri Migrants in the first year in each institute is to be made as per the latest instructions of AICTE and orders from U.P. Govt. Such admissions will be over and above the sanctioned intake and normally limited up to one admission per Institute affiliated to Dr. APJ AKTU, Lucknow. Detailed information is published in May 2026 in newspapers and University website (http://www.aktu.ac.in). Candidates opting for admission under this scheme need not appear in JEE-2026."
+      },
+      {
+        question: "What is the eligibility for 2nd Year B.Tech. (Lateral Entry) through JEE 2026?",
+        answer: "Lateral Entry intake is 20% of total sanctioned intake at first-year level. Eligibility: 1) Passed 3-year Engg Diploma from an institution in U.P. with min 45% marks (40% for SC/ST) OR UP domicile parents and passed 3-year Engg Diploma with min 45% marks (40% SC/ST) recognized by BTE U.P. (except Agri, Pharmacy & Arch). OR passed 3-year B.Sc. degree and passed XII standard with Mathematics securing min 45% marks (40% SC/ST). 2) Vacant seats to 2nd year after counselling shall be filled by the Institute as per UPCET 2026 & State Govt norms."
+      }
     ],
-    contact: { title: "Central Admission Cell", name: "Chief Admission Officer", phone: "+91-120-2788273", email: "admissions@rkgit.edu.in", office: "Ground Floor Block A" }
+    contact: { title: "Central Admission Cell", name: "Chief Admission Officer", phone: "+91-120-2788273", email: "admissions@rkgit.edu.in", office: "Admissions Office, Ground Floor Block A" }
+  },
+
+  "fee-structure": {
+    slug: "fee-structure",
+    category: "Admissions",
+    title: "Fee Structure 2026–27",
+    subtitle: "Official academic and hostel fee structure for B.Tech, B.Pharm, MBA, and M.Tech programs (Academic Session 2026-27 | College Code: 033).",
+    badge: "Session 2026-27",
+    overview: [
+      "Official Fee Structure of Raj Kumar Goel Institute of Technology (RKGIT), Ghaziabad for Academic Session 2026–27 (College Code: 033).",
+      "RKGIT ensures complete transparency in all tuition, development, and academic support charges. All fees are listed per academic year in Indian Rupees (INR ₹) and governed by state regulations and AKTU guidelines."
+    ],
+    keyHighlights: [
+      { title: "Transparent Fee Structure", description: "Clear breakdown of tuition fees, development, digital learning, and AKTU exam fees." },
+      { title: "Refundable Security Deposit", description: "Academic security deposit paid at 1st year admission is 100% refundable upon completion of degree." },
+      { title: "Hostel Facilities", description: "Separately managed Boys (Triple Seater) & Girls (Double Seater) air-cooled hostels with mess." },
+      { title: "No Hidden Charges", description: "Compliant with AICTE, PCI, and AKTU Lucknow fee norms." }
+    ],
+    stats: [
+      { label: "College Code", value: "033", subtext: "AKTU Affiliated" },
+      { label: "Session", value: "2026–27", subtext: "Approved Rates" },
+      { label: "B.Tech Gross Total", value: "₹1,47,500", subtext: "1st Year Total" },
+      { label: "Hostel Fee", value: "From ₹92,500", subtext: "Including Mess & Security" }
+    ],
+    table: {
+      headers: ["Program Name", "Duration", "1st Year Fee", "Annual Exam Fee (AKTU)"],
+      rows: [
+        ["B.Tech (Bachelor of Technology)", "4 Years", "₹1,47,500", "₹7,500"],
+        ["B.Pharm (Bachelor of Pharmacy)", "4 Years", "₹1,47,500", "₹8,200"],
+        ["Master of Business Administration (MBA)", "2 Years", "₹1,50,000", "₹8,200"],
+        ["M.Tech (ECE / CSE)", "2 Years", "₹1,00,000", "As per AKTU"]
+      ]
+    },
+    gallery: [
+      { url: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=80", caption: "RKGIT Accounts & Administrative Building" }
+    ],
+    faqs: [
+      {
+        question: "Is the fee structure for 2026-27 subject to change?",
+        answer: "Fee structure is subject to change by the state/fee fixation committee, if any."
+      },
+      {
+        question: "How can I pay the academic or hostel fees?",
+        answer: "Fees can be paid online via credit/debit card, netbanking, or UPI through our official Pay Fee portal (/pay-fee) or via Demand Draft in favor of 'Raj Kumar Goel Institute of Technology' payable at Ghaziabad."
+      }
+    ],
+    contact: { title: "Accounts & Fee Desk", name: "Finance Officer", phone: "+91-120-2788272", email: "accounts@rkgit.edu.in", office: "Accounts Office, Block A Ground Floor" }
   },
 
   // ─── RESEARCH ──────────────────────────────────────────────────────────

@@ -149,20 +149,50 @@ function SubmenuPage() {
               </h1>
               <p className="mt-4 text-base sm:text-lg text-white/85 leading-relaxed">{pageData.subtitle}</p>
 
+              {/* Dynamic Contextual Hero CTAs */}
               <div className="mt-8 flex flex-wrap gap-3">
-                <a
-                  href="https://admission.rkgit.edu.in"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-accent text-accent-foreground px-6 py-3 text-sm font-bold shadow-soft hover:brightness-105 transition-all"
-                >
-                  Apply Now 2026 <ArrowRight className="h-4 w-4" />
-                </a>
+                {pageData.category.toLowerCase() === "admissions" || slug === "admission-process" ? (
+                  <Link
+                    to="/apply-now"
+                    className="inline-flex items-center gap-2 rounded-full bg-accent text-accent-foreground px-6 py-3 text-sm font-bold shadow-soft hover:brightness-105 transition-all"
+                  >
+                    Apply Online 2026 <ArrowRight className="h-4 w-4" />
+                  </Link>
+                ) : pageData.category.toLowerCase() === "academics" ? (
+                  <a
+                    href="#table"
+                    className="inline-flex items-center gap-2 rounded-full bg-accent text-accent-foreground px-6 py-3 text-sm font-bold shadow-soft hover:brightness-105 transition-all"
+                  >
+                    Explore Programs <BookOpen className="h-4 w-4" />
+                  </a>
+                ) : pageData.category.toLowerCase() === "placements" ? (
+                  <a
+                    href="#table"
+                    className="inline-flex items-center gap-2 rounded-full bg-accent text-accent-foreground px-6 py-3 text-sm font-bold shadow-soft hover:brightness-105 transition-all"
+                  >
+                    View Placement Records <Award className="h-4 w-4" />
+                  </a>
+                ) : pageData.category.toLowerCase() === "research" ? (
+                  <a
+                    href="#table"
+                    className="inline-flex items-center gap-2 rounded-full bg-accent text-accent-foreground px-6 py-3 text-sm font-bold shadow-soft hover:brightness-105 transition-all"
+                  >
+                    Explore Research <FileText className="h-4 w-4" />
+                  </a>
+                ) : (
+                  <a
+                    href="#overview"
+                    className="inline-flex items-center gap-2 rounded-full bg-accent text-accent-foreground px-6 py-3 text-sm font-bold shadow-soft hover:brightness-105 transition-all"
+                  >
+                    Explore Details <ArrowRight className="h-4 w-4" />
+                  </a>
+                )}
+
                 <a
                   href="#contact"
                   className="inline-flex items-center gap-2 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/20 px-6 py-3 text-sm font-semibold transition-all backdrop-blur-sm"
                 >
-                  Contact Section <Phone className="h-4 w-4" />
+                  Contact Desk <Phone className="h-4 w-4" />
                 </a>
               </div>
             </div>
@@ -252,8 +282,14 @@ function SubmenuPage() {
           </div>
         </section>
 
-        {/* Data Table Section (Where required - 10-20 sample rows) */}
-        {pageData.table && (
+        {/* Fee Structure Custom Section for /admissions/fee-structure */}
+        {slug === "fee-structure" ? (
+          <section className="py-12 bg-muted/40 border-y border-border">
+            <div className="container-page">
+              <FeeStructureTables />
+            </div>
+          </section>
+        ) : pageData.table && (
           <section className="py-12 bg-muted/40 border-y border-border">
             <div className="container-page">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
@@ -449,20 +485,52 @@ function SubmenuPage() {
                 </div>
 
                 <div className="lg:col-span-4 flex flex-col gap-3">
-                  <a
-                    href="https://admission.rkgit.edu.in"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-accent text-accent-foreground py-3.5 px-6 text-sm font-bold shadow-soft hover:brightness-105 transition-all text-center"
-                  >
-                    Apply Online 2026 <ArrowRight className="h-4 w-4" />
-                  </a>
-                  <a
-                    href="tel:+911202788273"
-                    className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 py-3.5 px-6 text-sm font-semibold text-white transition-all text-center"
-                  >
-                    Call Admissions Desk
-                  </a>
+                  {pageData.category.toLowerCase() === "admissions" || slug === "admission-process" ? (
+                    <>
+                      <Link
+                        to="/apply-now"
+                        className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-accent text-accent-foreground py-3.5 px-6 text-sm font-bold shadow-soft hover:brightness-105 transition-all text-center"
+                      >
+                        Apply Online 2026 <ArrowRight className="h-4 w-4" />
+                      </Link>
+                      <a
+                        href="tel:+911202788273"
+                        className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 py-3.5 px-6 text-sm font-semibold text-white transition-all text-center"
+                      >
+                        Call Admissions Desk
+                      </a>
+                    </>
+                  ) : pageData.category.toLowerCase() === "academics" ? (
+                    <>
+                      <Link
+                        to="/admissions/admission-process"
+                        className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-accent text-accent-foreground py-3.5 px-6 text-sm font-bold shadow-soft hover:brightness-105 transition-all text-center"
+                      >
+                        Admission Eligibility & Process <ArrowRight className="h-4 w-4" />
+                      </Link>
+                      <Link
+                        to="/contact-us"
+                        className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 py-3.5 px-6 text-sm font-semibold text-white transition-all text-center"
+                      >
+                        Enquire Department
+                      </Link>
+                    </>
+                  ) : (
+                    <>
+                      <Link
+                        to="/contact-us"
+                        className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-accent text-accent-foreground py-3.5 px-6 text-sm font-bold shadow-soft hover:brightness-105 transition-all text-center"
+                      >
+                        Enquire Now <Mail className="h-4 w-4" />
+                      </Link>
+                      <a
+                        href="tel:+911202788270"
+                        className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 py-3.5 px-6 text-sm font-semibold text-white transition-all text-center"
+                      >
+                        Call Office
+                      </a>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
@@ -472,6 +540,449 @@ function SubmenuPage() {
 
       <Footer />
       <Chatbot />
+    </div>
+  );
+}
+
+function FeeStructureTables() {
+  return (
+    <div className="space-y-10 py-4">
+      <div className="rounded-2xl bg-primary-soft/80 border border-primary/30 p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
+        <div>
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-accent text-accent-foreground text-xs font-bold uppercase tracking-wider mb-2">
+            Academic Session 2026–27
+          </span>
+          <h3 className="text-lg sm:text-xl font-extrabold text-foreground">
+            Raj Kumar Goel Institute of Technology (RKGIT), Ghaziabad
+          </h3>
+          <p className="text-xs text-muted-foreground mt-1">
+            Approved by AICTE, PCI & Affiliated to Dr. APJ Abdul Kalam Technical University (AKTU), Lucknow
+          </p>
+        </div>
+        <div className="flex flex-wrap items-center gap-2 shrink-0">
+          <span className="px-3.5 py-1.5 rounded-xl bg-navy text-white text-xs font-bold shadow-xs">
+            College Code: 033
+          </span>
+        </div>
+      </div>
+
+      {/* 1. B.Tech (Bachelor of Technology) */}
+      <div className="rounded-3xl border border-border bg-card shadow-card p-6 sm:p-8 space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-border pb-4">
+          <h2 className="text-xl sm:text-2xl font-extrabold text-foreground flex items-center gap-2.5">
+            <span className="grid h-8 w-8 place-items-center rounded-xl bg-primary text-primary-foreground text-sm font-extrabold">1</span>
+            1. B.Tech (Bachelor of Technology)
+          </h2>
+          <span className="text-xs font-bold px-3 py-1 bg-primary-soft text-primary rounded-full">
+            4 Years (Session 26-27 to 29-30)
+          </span>
+        </div>
+
+        <div className="overflow-x-auto rounded-2xl border border-border/80 shadow-xs">
+          <table className="w-full text-left text-xs sm:text-sm">
+            <thead className="bg-navy text-white uppercase text-xs tracking-wider">
+              <tr>
+                <th className="px-4 py-3.5 w-14">S.No</th>
+                <th className="px-4 py-3.5">Particulars</th>
+                <th className="px-4 py-3.5 font-bold">1st Year (26-27)</th>
+                <th className="px-4 py-3.5 font-bold">2nd Year (27-28)</th>
+                <th className="px-4 py-3.5 font-bold">3rd Year (28-29)</th>
+                <th className="px-4 py-3.5 font-bold">4th Year (29-30)</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-border/60">
+              <tr className="hover:bg-muted/30">
+                <td className="px-4 py-3 font-semibold text-muted-foreground">1</td>
+                <td className="px-4 py-3 font-medium text-foreground">Admission Registration & Documentation</td>
+                <td className="px-4 py-3">3000</td>
+                <td className="px-4 py-3">3000</td>
+                <td className="px-4 py-3">3000</td>
+                <td className="px-4 py-3">3000</td>
+              </tr>
+              <tr className="hover:bg-muted/30">
+                <td className="px-4 py-3 font-semibold text-muted-foreground">2</td>
+                <td className="px-4 py-3 font-medium text-foreground">Tuition Fee*</td>
+                <td className="px-4 py-3">104250*</td>
+                <td className="px-4 py-3">104250*</td>
+                <td className="px-4 py-3">104250*</td>
+                <td className="px-4 py-3">104250*</td>
+              </tr>
+              <tr className="hover:bg-muted/30">
+                <td className="px-4 py-3 font-semibold text-muted-foreground">3</td>
+                <td className="px-4 py-3 font-medium text-foreground">Career Planning & Development Fee</td>
+                <td className="px-4 py-3">22000</td>
+                <td className="px-4 py-3">22000</td>
+                <td className="px-4 py-3">22000</td>
+                <td className="px-4 py-3">22000</td>
+              </tr>
+              <tr className="hover:bg-muted/30">
+                <td className="px-4 py-3 font-semibold text-muted-foreground">4</td>
+                <td className="px-4 py-3 font-medium text-foreground">Industry Engagement & Innovation Support</td>
+                <td className="px-4 py-3">5000</td>
+                <td className="px-4 py-3">5000</td>
+                <td className="px-4 py-3">5000</td>
+                <td className="px-4 py-3">5000</td>
+              </tr>
+              <tr className="hover:bg-muted/30">
+                <td className="px-4 py-3 font-semibold text-muted-foreground">5</td>
+                <td className="px-4 py-3 font-medium text-foreground">Technology and Digital Learning Support</td>
+                <td className="px-4 py-3">3500</td>
+                <td className="px-4 py-3">3500</td>
+                <td className="px-4 py-3">3500</td>
+                <td className="px-4 py-3">3500</td>
+              </tr>
+              <tr className="hover:bg-muted/30">
+                <td className="px-4 py-3 font-semibold text-muted-foreground">6</td>
+                <td className="px-4 py-3 font-medium text-foreground">Learning Resource Access & Book Bank Charges</td>
+                <td className="px-4 py-3">3500</td>
+                <td className="px-4 py-3">3500</td>
+                <td className="px-4 py-3">3500</td>
+                <td className="px-4 py-3">3500</td>
+              </tr>
+              <tr className="hover:bg-muted/30">
+                <td className="px-4 py-3 font-semibold text-muted-foreground">7</td>
+                <td className="px-4 py-3 font-medium text-foreground">Student Welfare & Group Insurance</td>
+                <td className="px-4 py-3">1250</td>
+                <td className="px-4 py-3">1250</td>
+                <td className="px-4 py-3">1250</td>
+                <td className="px-4 py-3">1250</td>
+              </tr>
+              <tr className="hover:bg-muted/30">
+                <td className="px-4 py-3 font-semibold text-muted-foreground">8</td>
+                <td className="px-4 py-3 font-medium text-foreground">Academic Security (Refundable)</td>
+                <td className="px-4 py-3">5000</td>
+                <td className="px-4 py-3">—</td>
+                <td className="px-4 py-3">—</td>
+                <td className="px-4 py-3">—</td>
+              </tr>
+              <tr className="bg-primary/10 font-extrabold text-foreground text-sm border-t-2 border-primary/30">
+                <td className="px-4 py-3.5">—</td>
+                <td className="px-4 py-3.5 font-black uppercase text-xs tracking-wider text-primary">Gross Total</td>
+                <td className="px-4 py-3.5 text-primary text-base font-black">147500</td>
+                <td className="px-4 py-3.5 text-primary text-base font-black">142500</td>
+                <td className="px-4 py-3.5 text-primary text-base font-black">142500</td>
+                <td className="px-4 py-3.5 text-primary text-base font-black">142500</td>
+              </tr>
+              <tr className="bg-muted/40 font-semibold text-xs sm:text-sm text-foreground/90">
+                <td className="px-4 py-3.5">—</td>
+                <td className="px-4 py-3.5">Online University Examination Fee (to AKTU)**</td>
+                <td className="px-4 py-3.5 font-bold">7500</td>
+                <td className="px-4 py-3.5 font-bold">7500</td>
+                <td className="px-4 py-3.5 font-bold">7500</td>
+                <td className="px-4 py-3.5 font-bold">7500</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p className="text-xs text-muted-foreground italic pt-1">
+          *Fee structure is subject to change by the state/fee fixation committee, if any.
+        </p>
+
+        {/* B.Tech Hostel Fee */}
+        <div className="mt-6 pt-6 border-t border-border space-y-3">
+          <h3 className="text-base font-bold text-foreground">Hostel Fee (2026-27):</h3>
+          <div className="overflow-x-auto rounded-2xl border border-border/80 max-w-2xl shadow-xs">
+            <table className="w-full text-left text-xs sm:text-sm">
+              <thead className="bg-muted text-foreground uppercase text-xs tracking-wider">
+                <tr>
+                  <th className="px-4 py-3.5 font-bold">Details</th>
+                  <th className="px-4 py-3.5 font-bold">Triple Seater (Boys)</th>
+                  <th className="px-4 py-3.5 font-bold">Double Seater (Girls)</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border/60">
+                <tr className="hover:bg-muted/30">
+                  <td className="px-4 py-3 font-medium text-foreground">Rent & Mess</td>
+                  <td className="px-4 py-3 font-semibold">87,500</td>
+                  <td className="px-4 py-3 font-semibold">90,000</td>
+                </tr>
+                <tr className="hover:bg-muted/30">
+                  <td className="px-4 py-3 font-medium text-foreground">Security (One Time Refundable)</td>
+                  <td className="px-4 py-3 font-semibold">5,000</td>
+                  <td className="px-4 py-3 font-semibold">5,000</td>
+                </tr>
+                <tr className="bg-accent/15 font-extrabold text-foreground border-t-2 border-accent/40">
+                  <td className="px-4 py-3.5 uppercase text-xs tracking-wider font-black">Total</td>
+                  <td className="px-4 py-3.5 text-primary font-black">92,500</td>
+                  <td className="px-4 py-3.5 text-primary font-black">95,000</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      {/* 2. B.Pharm (Bachelor of Pharmacy) */}
+      <div className="rounded-3xl border border-border bg-card shadow-card p-6 sm:p-8 space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-border pb-4">
+          <h2 className="text-xl sm:text-2xl font-extrabold text-foreground flex items-center gap-2.5">
+            <span className="grid h-8 w-8 place-items-center rounded-xl bg-primary text-primary-foreground text-sm font-extrabold">2</span>
+            2. B.Pharm (Bachelor of Pharmacy)
+          </h2>
+          <span className="text-xs font-bold px-3 py-1 bg-primary-soft text-primary rounded-full">
+            4 Years (PCI Approved)
+          </span>
+        </div>
+
+        <div className="overflow-x-auto rounded-2xl border border-border/80 shadow-xs">
+          <table className="w-full text-left text-xs sm:text-sm">
+            <thead className="bg-navy text-white uppercase text-xs tracking-wider">
+              <tr>
+                <th className="px-4 py-3.5 w-14">S.No</th>
+                <th className="px-4 py-3.5">Particulars</th>
+                <th className="px-4 py-3.5 font-bold">1st Year</th>
+                <th className="px-4 py-3.5 font-bold">2nd Year</th>
+                <th className="px-4 py-3.5 font-bold">3rd Year</th>
+                <th className="px-4 py-3.5 font-bold">4th Year</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-border/60">
+              <tr className="hover:bg-muted/30">
+                <td className="px-4 py-3 font-semibold text-muted-foreground">1</td>
+                <td className="px-4 py-3 font-medium text-foreground">Admission Registration & Documentation</td>
+                <td className="px-4 py-3">3000</td>
+                <td className="px-4 py-3">3000</td>
+                <td className="px-4 py-3">3000</td>
+                <td className="px-4 py-3">3000</td>
+              </tr>
+              <tr className="hover:bg-muted/30">
+                <td className="px-4 py-3 font-semibold text-muted-foreground">2</td>
+                <td className="px-4 py-3 font-medium text-foreground">Tuition Fee*</td>
+                <td className="px-4 py-3">104250*</td>
+                <td className="px-4 py-3">104250*</td>
+                <td className="px-4 py-3">104250*</td>
+                <td className="px-4 py-3">104250*</td>
+              </tr>
+              <tr className="hover:bg-muted/30">
+                <td className="px-4 py-3 font-semibold text-muted-foreground">3</td>
+                <td className="px-4 py-3 font-medium text-foreground">Career Planning & Development Fee</td>
+                <td className="px-4 py-3">22000</td>
+                <td className="px-4 py-3">22000</td>
+                <td className="px-4 py-3">22000</td>
+                <td className="px-4 py-3">22000</td>
+              </tr>
+              <tr className="hover:bg-muted/30">
+                <td className="px-4 py-3 font-semibold text-muted-foreground">4</td>
+                <td className="px-4 py-3 font-medium text-foreground">Industry Engagement & Innovation Support</td>
+                <td className="px-4 py-3">5000</td>
+                <td className="px-4 py-3">5000</td>
+                <td className="px-4 py-3">5000</td>
+                <td className="px-4 py-3">5000</td>
+              </tr>
+              <tr className="hover:bg-muted/30">
+                <td className="px-4 py-3 font-semibold text-muted-foreground">5</td>
+                <td className="px-4 py-3 font-medium text-foreground">Technology and Digital Learning Support</td>
+                <td className="px-4 py-3">3500</td>
+                <td className="px-4 py-3">3500</td>
+                <td className="px-4 py-3">3500</td>
+                <td className="px-4 py-3">3500</td>
+              </tr>
+              <tr className="hover:bg-muted/30">
+                <td className="px-4 py-3 font-semibold text-muted-foreground">6</td>
+                <td className="px-4 py-3 font-medium text-foreground">Learning Resource Access & Book Bank Charges</td>
+                <td className="px-4 py-3">3500</td>
+                <td className="px-4 py-3">3500</td>
+                <td className="px-4 py-3">3500</td>
+                <td className="px-4 py-3">3500</td>
+              </tr>
+              <tr className="hover:bg-muted/30">
+                <td className="px-4 py-3 font-semibold text-muted-foreground">7</td>
+                <td className="px-4 py-3 font-medium text-foreground">Student Welfare & Group Insurance</td>
+                <td className="px-4 py-3">1250</td>
+                <td className="px-4 py-3">1250</td>
+                <td className="px-4 py-3">1250</td>
+                <td className="px-4 py-3">1250</td>
+              </tr>
+              <tr className="hover:bg-muted/30">
+                <td className="px-4 py-3 font-semibold text-muted-foreground">8</td>
+                <td className="px-4 py-3 font-medium text-foreground">Academic Security (Refundable)</td>
+                <td className="px-4 py-3">5000</td>
+                <td className="px-4 py-3">—</td>
+                <td className="px-4 py-3">—</td>
+                <td className="px-4 py-3">—</td>
+              </tr>
+              <tr className="bg-primary/10 font-extrabold text-foreground text-sm border-t-2 border-primary/30">
+                <td className="px-4 py-3.5">—</td>
+                <td className="px-4 py-3.5 font-black uppercase text-xs tracking-wider text-primary">Gross Total</td>
+                <td className="px-4 py-3.5 text-primary text-base font-black">147500</td>
+                <td className="px-4 py-3.5 text-primary text-base font-black">142500</td>
+                <td className="px-4 py-3.5 text-primary text-base font-black">142500</td>
+                <td className="px-4 py-3.5 text-primary text-base font-black">142500</td>
+              </tr>
+              <tr className="bg-muted/40 font-semibold text-xs sm:text-sm text-foreground/90">
+                <td className="px-4 py-3.5">—</td>
+                <td className="px-4 py-3.5">Online Registration Fee (to AKTU)**</td>
+                <td className="px-4 py-3.5 font-bold">2300</td>
+                <td className="px-4 py-3.5">—</td>
+                <td className="px-4 py-3.5">—</td>
+                <td className="px-4 py-3.5">—</td>
+              </tr>
+              <tr className="bg-muted/40 font-semibold text-xs sm:text-sm text-foreground/90">
+                <td className="px-4 py-3.5">—</td>
+                <td className="px-4 py-3.5">Online Exam Fee & Digital Library Fee (to AKTU)**</td>
+                <td className="px-4 py-3.5 font-bold">8200</td>
+                <td className="px-4 py-3.5 font-bold">8200</td>
+                <td className="px-4 py-3.5 font-bold">8200</td>
+                <td className="px-4 py-3.5 font-bold">8200</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p className="text-xs text-muted-foreground italic pt-1">
+          *Fee structure is subject to change by the state/fee fixation committee, if any.
+        </p>
+      </div>
+
+      {/* 3. MBA */}
+      <div className="rounded-3xl border border-border bg-card shadow-card p-6 sm:p-8 space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-border pb-4">
+          <h2 className="text-xl sm:text-2xl font-extrabold text-foreground flex items-center gap-2.5">
+            <span className="grid h-8 w-8 place-items-center rounded-xl bg-primary text-primary-foreground text-sm font-extrabold">3</span>
+            3. MBA
+          </h2>
+          <span className="text-xs font-bold px-3 py-1 bg-primary-soft text-primary rounded-full">
+            2-Year Post Graduate Program
+          </span>
+        </div>
+
+        <div className="overflow-x-auto rounded-2xl border border-border/80 shadow-xs">
+          <table className="w-full text-left text-xs sm:text-sm">
+            <thead className="bg-navy text-white uppercase text-xs tracking-wider">
+              <tr>
+                <th className="px-4 py-3.5 w-14">S.No</th>
+                <th className="px-4 py-3.5">Particulars</th>
+                <th className="px-4 py-3.5 font-bold">MBA 1st Year</th>
+                <th className="px-4 py-3.5 font-bold">MBA 2nd Year</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-border/60">
+              <tr className="hover:bg-muted/30">
+                <td className="px-4 py-3 font-semibold text-muted-foreground">1</td>
+                <td className="px-4 py-3 font-medium text-foreground">Registration Charges</td>
+                <td className="px-4 py-3 font-semibold">2000</td>
+                <td className="px-4 py-3 font-semibold">2000</td>
+              </tr>
+              <tr className="hover:bg-muted/30">
+                <td className="px-4 py-3 font-semibold text-muted-foreground">2</td>
+                <td className="px-4 py-3 font-medium text-foreground">Tuition and other Fees*</td>
+                <td className="px-4 py-3 font-semibold">104250</td>
+                <td className="px-4 py-3 font-semibold">104250</td>
+              </tr>
+              <tr className="hover:bg-muted/30">
+                <td className="px-4 py-3 font-semibold text-muted-foreground">3</td>
+                <td className="px-4 py-3 font-medium text-foreground">Personality Development and Placement Assistance**</td>
+                <td className="px-4 py-3 font-semibold">9500</td>
+                <td className="px-4 py-3 font-semibold">9500</td>
+              </tr>
+              <tr className="hover:bg-muted/30">
+                <td className="px-4 py-3 font-semibold text-muted-foreground">4</td>
+                <td className="px-4 py-3 font-medium text-foreground">Value added Courses & Skill Development</td>
+                <td className="px-4 py-3 font-semibold">10,000</td>
+                <td className="px-4 py-3 font-semibold">10,000</td>
+              </tr>
+              <tr className="hover:bg-muted/30">
+                <td className="px-4 py-3 font-semibold text-muted-foreground">5</td>
+                <td className="px-4 py-3 font-medium text-foreground">Digital Learning Support & ERP Charges</td>
+                <td className="px-4 py-3 font-semibold">4000</td>
+                <td className="px-4 py-3 font-semibold">4000</td>
+              </tr>
+              <tr className="hover:bg-muted/30">
+                <td className="px-4 py-3 font-semibold text-muted-foreground">6</td>
+                <td className="px-4 py-3 font-medium text-foreground">Industry Interface Charges</td>
+                <td className="px-4 py-3 font-semibold">10,000</td>
+                <td className="px-4 py-3 font-semibold">10,000</td>
+              </tr>
+              <tr className="hover:bg-muted/30">
+                <td className="px-4 py-3 font-semibold text-muted-foreground">7</td>
+                <td className="px-4 py-3 font-medium text-foreground">Academic Caution Money (Refundable)</td>
+                <td className="px-4 py-3 font-semibold">5000</td>
+                <td className="px-4 py-3 font-semibold">—</td>
+              </tr>
+              <tr className="hover:bg-muted/30">
+                <td className="px-4 py-3 font-semibold text-muted-foreground">8</td>
+                <td className="px-4 py-3 font-medium text-foreground">Book Bank Charges</td>
+                <td className="px-4 py-3 font-semibold">5000</td>
+                <td className="px-4 py-3 font-semibold">—</td>
+              </tr>
+              <tr className="hover:bg-muted/30">
+                <td className="px-4 py-3 font-semibold text-muted-foreground">9</td>
+                <td className="px-4 py-3 font-medium text-foreground">Group Insurance (Accidental)</td>
+                <td className="px-4 py-3 font-semibold">250</td>
+                <td className="px-4 py-3 font-semibold">250</td>
+              </tr>
+              <tr className="bg-primary/10 font-extrabold text-foreground text-sm border-t-2 border-primary/30">
+                <td className="px-4 py-3.5">—</td>
+                <td className="px-4 py-3.5 font-black uppercase text-xs tracking-wider text-primary">Total (Rs)</td>
+                <td className="px-4 py-3.5 text-primary text-base font-black">1,50,000</td>
+                <td className="px-4 py-3.5 text-primary text-base font-black">1,40,000</td>
+              </tr>
+              <tr className="bg-muted/40 font-semibold text-xs sm:text-sm text-foreground/90">
+                <td className="px-4 py-3.5">—</td>
+                <td className="px-4 py-3.5">Online Registration Fee (to AKTU)</td>
+                <td className="px-4 py-3.5 font-bold">2300</td>
+                <td className="px-4 py-3.5">—</td>
+              </tr>
+              <tr className="bg-muted/40 font-semibold text-xs sm:text-sm text-foreground/90">
+                <td className="px-4 py-3.5">—</td>
+                <td className="px-4 py-3.5">Online University Examination Fee (to AKTU)</td>
+                <td className="px-4 py-3.5 font-bold">8200</td>
+                <td className="px-4 py-3.5 font-bold">8200</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p className="text-xs text-muted-foreground italic pt-1">
+          *Fee structure is subject to change by the state/fee fixation committee, if any.
+        </p>
+      </div>
+
+      {/* 4. M.Tech (ECE/CSE) */}
+      <div className="rounded-3xl border border-border bg-card shadow-card p-6 sm:p-8 space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-border pb-4">
+          <h2 className="text-xl sm:text-2xl font-extrabold text-foreground flex items-center gap-2.5">
+            <span className="grid h-8 w-8 place-items-center rounded-xl bg-primary text-primary-foreground text-sm font-extrabold">4</span>
+            4. M.Tech (ECE/CSE)
+          </h2>
+          <span className="text-xs font-bold px-3 py-1 bg-primary-soft text-primary rounded-full">
+            2-Year Post Graduate Degree
+          </span>
+        </div>
+
+        <div className="overflow-x-auto rounded-2xl border border-border/80 shadow-xs">
+          <table className="w-full text-left text-xs sm:text-sm">
+            <thead className="bg-navy text-white uppercase text-xs tracking-wider">
+              <tr>
+                <th className="px-4 py-3.5 w-14">S.No</th>
+                <th className="px-4 py-3.5">Particulars</th>
+                <th className="px-4 py-3.5 font-bold">1st Year</th>
+                <th className="px-4 py-3.5 font-bold">2nd Year</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-border/60">
+              <tr className="hover:bg-muted/30">
+                <td className="px-4 py-3 font-semibold text-muted-foreground">1</td>
+                <td className="px-4 py-3 font-medium text-foreground">Tuition Fee*</td>
+                <td className="px-4 py-3 font-semibold">100000</td>
+                <td className="px-4 py-3 font-semibold">100000</td>
+              </tr>
+              <tr className="bg-primary/10 font-extrabold text-foreground text-sm border-t-2 border-primary/30">
+                <td className="px-4 py-3.5">—</td>
+                <td className="px-4 py-3.5 font-black uppercase text-xs tracking-wider text-primary">Gross Total</td>
+                <td className="px-4 py-3.5 text-primary text-base font-black" colSpan={2}>
+                  200000 (₹1,00,000 per year)
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p className="text-xs text-muted-foreground italic pt-1">
+          *Fee structure is subject to change by the state/fee fixation committee, if any.
+        </p>
+      </div>
     </div>
   );
 }

@@ -195,7 +195,7 @@ const NAV: NavItem[] = [
   },
 ];
 const SUB_NAV = [
-  { label: "Apply Now", href: "/apply-now" },
+  { label: "Admissions 2026", href: "/admissions/admission-process" },
   { label: "Announcements", href: "/announcements" },
   { label: "ERP", href: "/erp" },
   { label: "NIRF", href: "/nirf" },
