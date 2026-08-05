@@ -19,6 +19,7 @@ import { LanguageSelector } from "@/components/LanguageSelector";
 import { useSearch } from "@/components/SearchContext";
 import { VisitorCounter } from "@/components/VisitorCounter";
 import { ALL_RECRUITERS } from "@/data/placementData";
+import { HOMEPAGE_TICKER_ANNOUNCEMENTS } from "@/data/announcementsData";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -98,80 +99,112 @@ type NavItem = { label: string; items: NavChild[] };
 const NAV: NavItem[] = [
   {
     label: "About", items: [
-      { label: "Vision & Mission" }, { label: "Leadership" }, { label: "History" },
-      { label: "Approvals" }, { label: "Rankings" }, { label: "Infrastructure" },
+      { label: "Vision & Mission", href: "/about/vision-mission" },
+      { label: "Leadership", href: "/about/leadership" },
+      { label: "History", href: "/about/history" },
+      { label: "Approvals & Accreditations", href: "/about/approvals-accreditations" },
+      { label: "Rankings", href: "/about/rankings" },
+      { label: "Infrastructure", href: "/about/infrastructure" },
+      { label: "Campus Tour", href: "/about/campus-tour" },
+      { label: "Annual Reports", href: "/about/annual-reports" },
     ]
   },
   {
     label: "Academics", items: [
-      { label: "Departments", children: ["Computer Science", "Information Technology", "Electronics", "Mechanical", "Civil", "Electrical"] },
-      {
-        label: "Academic Programs",
-        children: [
-          {
-            label: "UG Programs",
-            children: [
-              { label: "Computer Science and Engineering (NBA Accredited)", badge: "NBA" },
-              { label: "Computer Science" },
-              { label: "Computer Science and Engineering (Artificial Intelligence and Machine Learning)" },
-              { label: "Computer Science and Engineering (Data Science)" },
-              { label: "Information Technology (NBA Accredited)", badge: "NBA" },
-              { label: "Electronics and Communication Engineering (NBA Accredited)", badge: "NBA" },
-              { label: "Electrical and Electronics Engineering" },
-              { label: "Mechanical Engineering" },
-              { label: "Civil Engineering" },
-            ]
-          },
-          { label: "PG Programs" },
-          { label: "Diploma" },
-        ]
-      },
-      { label: "UG & PG Schemes" }, { label: "Academic Calendar" }, { label: "Examination Section" },
-      { label: "Fees" }, { label: "Time Table" }, { label: "Library" }, { label: "Ordinance" },
+      { label: "Undergraduate Programs", href: "/academics/undergraduate-programs" },
+      { label: "Postgraduate Programs", href: "/academics/postgraduate-programs" },
+      { label: "Diploma Programs", href: "/academics/diploma-programs" },
+      { label: "Academic Calendar", href: "/academics/academic-calendar" },
+      { label: "Examination Cell", href: "/academics/examination-cell" },
+      { label: "Academic Regulations", href: "/academics/academic-regulations" },
+      { label: "Curriculum", href: "/academics/curriculum" },
+      { label: "Syllabus", href: "/academics/syllabus" },
+      { label: "Learning Resources", href: "/academics/learning-resources" },
     ]
   },
   {
     label: "Departments", items: [
-      { label: "Computer Science" }, { label: "Information Technology" }, { label: "Artificial Intelligence" },
-      { label: "Electronics" }, { label: "Mechanical" }, { label: "Civil" }, { label: "Electrical" },
-      { label: "MBA" }, { label: "MCA" },
+      { label: "Computer Science", href: "/departments/computer-science" },
+      { label: "Information Technology", href: "/departments/information-technology" },
+      { label: "Artificial Intelligence & Machine Learning", href: "/departments/ai-ml" },
+      { label: "Electronics & Communication", href: "/departments/electronics-communication" },
+      { label: "Electrical Engineering", href: "/departments/electrical-engineering" },
+      { label: "Mechanical Engineering", href: "/departments/mechanical-engineering" },
+      { label: "Civil Engineering", href: "/departments/civil-engineering" },
+      { label: "Pharmacy", href: "/departments/pharmacy" },
+      { label: "Management", href: "/departments/management" },
+      { label: "Applied Sciences", href: "/departments/applied-sciences" },
     ]
   },
   {
     label: "Admissions", items: [
-      { label: "Apply Now", href: "https://admission.rkgit.edu.in" }, { label: "Eligibility" }, { label: "Admission Process" },
-      { label: "Scholarships" }, { label: "Fee Structure" }, { label: "FAQs" }, { label: "Download Brochure" },
+      { label: "Admission Process", href: "/admissions/admission-process" },
+      { label: "Eligibility", href: "/admissions/eligibility" },
+      { label: "Fee Structure", href: "/admissions/fee-structure" },
+      { label: "Scholarships", href: "/admissions/scholarships" },
+      { label: "Documents Required", href: "/admissions/documents-required" },
+      { label: "Apply Online", href: "/apply-now" },
+      { label: "FAQs", href: "/admissions/faqs" },
     ]
   },
   {
     label: "Research", items: [
-      { label: "Research Centers" }, { label: "Publications" }, { label: "Patents" },
-      { label: "Innovation Cell" }, { label: "Consultancy" }, { label: "Incubation" },
+      { label: "Research Centres", href: "/research/research-centres" },
+      { label: "Publications", href: "/research/publications" },
+      { label: "Patents", href: "/research/patents" },
+      { label: "Projects", href: "/research/projects" },
+      { label: "Consultancy", href: "/research/consultancy" },
+      { label: "Innovation Cell", href: "/research/innovation-cell" },
+      { label: "Funding", href: "/research/funding" },
+      { label: "Collaborations", href: "/research/collaborations" },
     ]
   },
   {
     label: "Placements", items: [
-      { label: "Placement Statistics", href: "/placements" },
-      { label: "Recruiters", href: "/placements" },
-      { label: "Placement Team", href: "/placements" },
-      { label: "Internship Cell", href: "/placements" },
-      { label: "Success Stories", href: "/placements" },
-      { label: "Career Development", href: "/placements" },
+      { label: "Placement Overview", href: "/placements/placement-overview" },
+      { label: "Recruiters", href: "/placements/recruiters" },
+      { label: "Placement Statistics", href: "/placements/placement-statistics" },
+      { label: "Internship Cell", href: "/placements/internship-cell" },
+      { label: "Training Programs", href: "/placements/training-programs" },
+      { label: "Placement Brochure", href: "/placements/placement-brochure" },
+      { label: "Success Stories", href: "/placements/success-stories" },
     ]
   },
   {
     label: "Campus Life", items: [
-      { label: "Hostel" }, { label: "Sports" }, { label: "Clubs" }, { label: "Events" },
-      { label: "Student Chapters" }, { label: "Cafeteria" }, { label: "Medical Facilities" },
+      { label: "Clubs", href: "/campus-life/clubs" },
+      { label: "Events", href: "/campus-life/events" },
+      { label: "Sports", href: "/campus-life/sports" },
+      { label: "Hostel", href: "/campus-life/hostel" },
+      { label: "Cafeteria", href: "/campus-life/cafeteria" },
+      { label: "Transportation", href: "/campus-life/transportation" },
+      { label: "Medical Facilities", href: "/campus-life/medical-facilities" },
+      { label: "NSS", href: "/campus-life/nss" },
+      { label: "NCC", href: "/campus-life/ncc" },
     ]
   },
   {
     label: "People", items: [
-      { label: "Faculty" }, { label: "Staff" }, { label: "Alumni" }, { label: "Students" }, { label: "Governing Body" },
+      { label: "Leadership", href: "/people/leadership" },
+      { label: "Faculty Directory", href: "/people/faculty-directory" },
+      { label: "Staff Directory", href: "/people/staff-directory" },
+      { label: "Student Council", href: "/people/student-council" },
+      { label: "Alumni", href: "/alumni" },
+      { label: "Administration", href: "/people/administration" },
     ]
   },
 ];
-const SUB_NAV = ["Apply Now", "Announcements", "ERP", "NIRF", "Pay Fee", "Alumni", "Library", "Careers", "Contact Us"];
+const SUB_NAV = [
+  { label: "Apply Now", href: "/apply-now" },
+  { label: "Announcements", href: "/announcements" },
+  { label: "ERP", href: "/erp" },
+  { label: "NIRF", href: "/nirf" },
+  { label: "Pay Fee", href: "/pay-fee" },
+  { label: "Alumni", href: "/alumni" },
+  { label: "Library", href: "/library" },
+  { label: "Careers", href: "/careers" },
+  { label: "Contact Us", href: "/contact-us" },
+];
 
 
 function NavDropdown({ item }: { item: NavItem }) {
@@ -186,64 +219,24 @@ function NavDropdown({ item }: { item: NavItem }) {
       >
         <ul className="min-w-[240px] rounded-2xl bg-white border border-border/70 shadow-lift py-2 overflow-visible">
           {item.items.map((c) => {
-            const isApply = c.label === "Apply Now";
-            const targetHref = isApply ? "https://admission.rkgit.edu.in" : c.href || "#";
-            const extraProps = isApply ? { target: "_blank", rel: "noopener noreferrer" } : {};
+            const targetHref = c.href || "#";
 
             return (
               <li key={c.label} className="relative group/child">
-                <a
-                  href={targetHref}
-                  {...extraProps}
-                  className="flex items-center justify-between gap-4 px-4 py-2.5 text-sm text-foreground/80 hover:bg-primary-soft hover:text-primary transition-colors rounded-lg mx-1"
-                >
-                  <span className="font-medium">{c.label}</span>
-                  {c.children && <ChevronRight className="h-3.5 w-3.5 opacity-60" />}
-                </a>
-                {c.children && (
-                  <div className="invisible opacity-0 translate-x-1 group-hover/child:visible group-hover/child:opacity-100 group-hover/child:translate-x-0 transition-all duration-200 absolute left-full top-0 pl-2 z-50">
-                    <ul className="min-w-[240px] max-w-[320px] rounded-2xl bg-white border border-border/70 shadow-lift py-2">
-                      {c.children.map((sc) => {
-                        const scObj = typeof sc === "string" ? { label: sc } : sc;
-                        const hasSubChildren = Array.isArray(scObj.children) && scObj.children.length > 0;
-
-                        return (
-                          <li key={scObj.label} className="relative group/subchild">
-                            <div className="flex items-center justify-between gap-3 px-4 py-2.5 text-sm text-foreground/80 hover:bg-primary-soft hover:text-primary transition-colors rounded-lg mx-1 font-medium cursor-pointer">
-                              <span>{scObj.label}</span>
-                              {hasSubChildren && <ChevronRight className="h-3.5 w-3.5 opacity-60 shrink-0" />}
-                            </div>
-                            {hasSubChildren && (
-                              <div className="invisible opacity-0 translate-x-1 group-hover/subchild:visible group-hover/subchild:opacity-100 group-hover/subchild:translate-x-0 transition-all duration-200 absolute left-full top-0 pl-2 z-50">
-                                <ul className="min-w-[320px] max-w-[380px] rounded-2xl bg-white border border-border/70 shadow-lift py-2">
-                                  {scObj.children!.map((leaf) => {
-                                    const leafObj = typeof leaf === "string" ? { label: leaf } : leaf;
-
-                                    return (
-                                      <li key={leafObj.label}>
-                                        <Link
-                                          to="/program"
-                                          search={{ branch: leafObj.label }}
-                                          className="flex items-center justify-between gap-2 px-4 py-2.5 text-xs sm:text-sm text-foreground/80 hover:bg-primary-soft hover:text-primary transition-colors rounded-lg mx-1 font-medium"
-                                        >
-                                          <span className="truncate">{leafObj.label}</span>
-                                          {leafObj.badge && (
-                                            <span className="shrink-0 rounded-full bg-accent/20 text-accent-foreground px-2 py-0.5 text-[10px] font-bold uppercase">
-                                              {leafObj.badge}
-                                            </span>
-                                          )}
-                                        </Link>
-                                      </li>
-                                    );
-                                  })}
-                                </ul>
-                              </div>
-                            )}
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </div>
+                {targetHref.startsWith("/") ? (
+                  <Link
+                    to={targetHref}
+                    className="flex items-center justify-between gap-4 px-4 py-2.5 text-sm text-foreground/80 hover:bg-primary-soft hover:text-primary transition-colors rounded-lg mx-1 font-medium"
+                  >
+                    <span>{c.label}</span>
+                  </Link>
+                ) : (
+                  <a
+                    href={targetHref}
+                    className="flex items-center justify-between gap-4 px-4 py-2.5 text-sm text-foreground/80 hover:bg-primary-soft hover:text-primary transition-colors rounded-lg mx-1 font-medium"
+                  >
+                    <span>{c.label}</span>
+                  </a>
                 )}
               </li>
             );
@@ -448,7 +441,7 @@ function MobileNavAccordion({ onClose }: { onClose: () => void }) {
   );
 }
 
-export function Header() {
+export function Header({ showSecondaryNav = false }: { showSecondaryNav?: boolean } = {}) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { openSearch } = useSearch();
@@ -523,54 +516,30 @@ export function Header() {
         </div>
 
         {/* Secondary strip */}
-        <div className="hidden md:block bg-primary-soft/60 border-t border-border">
-          <div className="container-page flex flex-wrap items-center gap-2 py-2 overflow-x-auto">
-            {SUB_NAV.map((s, i) => {
-              const base = `rounded-full text-xs font-semibold px-4 py-1.5 transition-all hover:-translate-y-0.5 inline-flex items-center gap-1.5 ${
-                i === 0
-                  ? "bg-accent text-accent-foreground shadow-soft"
-                  : s === "Pay Fee"
-                    ? "bg-primary text-primary-foreground shadow-soft hover:bg-secondary"
-                    : s === "NIRF"
-                      ? "bg-white/90 text-primary border border-primary/20 hover:bg-white shadow-xs"
-                      : "bg-white/80 text-primary hover:bg-white"
-              }`;
+        {showSecondaryNav && (
+          <div className="hidden md:block bg-primary-soft/60 border-t border-border">
+            <div className="container-page flex flex-wrap items-center gap-2 py-2 overflow-x-auto">
+              {SUB_NAV.map((s, i) => {
+                const base = `rounded-full text-xs font-semibold px-4 py-1.5 transition-all hover:-translate-y-0.5 inline-flex items-center gap-1.5 ${
+                  i === 0
+                    ? "bg-accent text-accent-foreground shadow-soft"
+                    : s.label === "Pay Fee"
+                      ? "bg-primary text-primary-foreground shadow-soft hover:bg-secondary"
+                      : s.label === "NIRF"
+                        ? "bg-white/90 text-primary border border-primary/20 hover:bg-white shadow-xs"
+                        : "bg-white/80 text-primary hover:bg-white"
+                }`;
 
-              if (s === "Apply Now") {
                 return (
-                  <a
-                    key={s}
-                    href="https://admission.rkgit.edu.in"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={base}
-                  >
-                    {s}
-                  </a>
-                );
-              }
-              if (s === "NIRF") {
-                return (
-                  <Link key={s} to="/nirf" className={base}>
-                    {s}
+                  <Link key={s.label} to={s.href} className={base}>
+                    {s.label === "Pay Fee" && <CreditCard className="h-3.5 w-3.5" />}
+                    {s.label}
                   </Link>
                 );
-              }
-              if (s === "Pay Fee") {
-                return (
-                  <Link key={s} to="/pay-fee" className={base}>
-                    <CreditCard className="h-3.5 w-3.5" /> {s}
-                  </Link>
-                );
-              }
-              return (
-                <a key={s} href="#" className={base}>
-                  {s}
-                </a>
-              );
-            })}
+              })}
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
       {open && (
@@ -747,28 +716,33 @@ function Hero() {
 
 /* ---------------------------- Announcement Bar -------------------------- */
 
-const ANNOUNCEMENTS = [
-  "Admissions Open 2026 — Apply Now",
-  "Placement Drive: 300+ Recruiters On Campus",
-  "Smart India Hackathon 2026 Finalists Announced",
-  "Workshop: Generative AI & LLM Systems — 22 Aug",
-  "Semester Exam Schedule Released",
-  "NBA Re-Accreditation Awarded to CSE, ECE, ME",
-];
-
 function Announcements() {
+  const tickerItems = HOMEPAGE_TICKER_ANNOUNCEMENTS;
+
   return (
     <div className="bg-[oklch(0.97_0.03_80)] border-y border-accent/30 overflow-hidden">
-      <div className="flex items-center gap-6 h-11">
-        <span className="shrink-0 ml-4 md:ml-8 inline-flex items-center gap-2 rounded-full bg-accent text-accent-foreground px-3 py-1 text-[11px] font-bold uppercase tracking-widest">
-          <span className="h-1.5 w-1.5 rounded-full bg-accent-foreground animate-pulse" /> Live
-        </span>
+      <div className="flex items-center gap-4 sm:gap-6 h-11">
+        <Link
+          to="/announcements"
+          className="shrink-0 ml-4 md:ml-8 inline-flex items-center gap-2 rounded-full bg-accent text-accent-foreground px-3 py-1 text-[11px] font-extrabold uppercase tracking-widest hover:brightness-105 transition-all shadow-xs"
+        >
+          <span className="h-1.5 w-1.5 rounded-full bg-accent-foreground animate-pulse" /> ANNOUNCEMENTS
+        </Link>
         <div className="relative flex-1 overflow-hidden">
-          <div className="flex gap-12 animate-marquee whitespace-nowrap">
-            {[...ANNOUNCEMENTS, ...ANNOUNCEMENTS].map((a, i) => (
-              <span key={i} className="text-sm font-medium text-foreground/80">
-                <span className="text-accent mr-3">◆</span>{a}
-              </span>
+          <div className="flex gap-10 sm:gap-14 animate-marquee whitespace-nowrap">
+            {[...tickerItems, ...tickerItems].map((a, idx) => (
+              <Link
+                key={idx}
+                to="/announcements"
+                search={{ id: String(a.id) }}
+                className="text-xs sm:text-sm font-semibold text-foreground/80 hover:text-primary transition-colors inline-flex items-center gap-2 group cursor-pointer"
+              >
+                <span className="text-accent">◆</span>
+                <span className="group-hover:underline underline-offset-2">{a.text}</span>
+                <span className="text-[10px] rounded-md bg-primary-soft text-primary px-1.5 py-0.5 font-bold uppercase">
+                  {a.category}
+                </span>
+              </Link>
             ))}
           </div>
         </div>
@@ -1450,55 +1424,78 @@ export function Footer() {
               <div className="text-xs text-white/60">Est. 2000 · NAAC 'A'</div>
             </div>
           </div>
-          <h4 className="mt-10 text-sm font-bold uppercase tracking-[0.2em] text-accent">Quick Links</h4>
+          <h4 className="mt-10 text-sm font-bold uppercase tracking-[0.2em] text-accent">Quick Links & Navigation</h4>
           <ul className="mt-5 grid grid-cols-2 gap-y-3">
             {[
-              { label: "Admissions", href: "#" },
-              { label: "Academics", href: "#" },
-              { label: "Departments", href: "#" },
-              { label: "Placements", href: "#" },
-              { label: "Research", href: "#" },
-              { label: "Library", href: "#" },
-              { label: "ERP", href: "#" },
-              { label: "NIRF", href: "/nirf" },
-              { label: "Careers", href: "#" },
-              { label: "Contact Us", href: "#" },
+              { label: "Announcements", href: "/announcements" },
+              { label: "Apply Online 2026", href: "/apply-now" },
+              { label: "Admissions Process", href: "/admissions/admission-process" },
+              { label: "Academic Calendar", href: "/academics/academic-calendar" },
+              { label: "Departments", href: "/departments/computer-science" },
+              { label: "Placement Stats", href: "/placements/placement-statistics" },
+              { label: "Research Papers", href: "/research/publications" },
+              { label: "Central Library", href: "/library" },
+              { label: "ERP Student Portal", href: "/erp" },
+              { label: "NIRF Reports", href: "/nirf" },
+              { label: "Pay Fee Online", href: "/pay-fee" },
+              { label: "Careers @ RKGIT", href: "/careers" },
+              { label: "Alumni Association", href: "/alumni" },
+              { label: "Website Sitemap", href: "/sitemap" },
             ].map((l) => (
               <li key={l.label}>
-                {l.href.startsWith("/") ? (
-                  <Link to={l.href} className="group inline-flex items-center gap-1.5 text-sm text-white/80 hover:text-accent transition-colors">
-                    <ArrowRight className="h-3 w-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all" />
-                    {l.label}
-                  </Link>
-                ) : (
-                  <a href={l.href} className="group inline-flex items-center gap-1.5 text-sm text-white/80 hover:text-accent transition-colors">
-                    <ArrowRight className="h-3 w-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all" />
-                    {l.label}
-                  </a>
-                )}
+                <Link to={l.href} className="group inline-flex items-center gap-1.5 text-sm text-white/80 hover:text-accent transition-colors">
+                  <ArrowRight className="h-3 w-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all" />
+                  {l.label}
+                </Link>
               </li>
             ))}
           </ul>
+
+          {/* Newsletter Subscription */}
+          <div className="mt-8 pt-6 border-t border-white/10 space-y-3">
+            <h5 className="text-xs font-bold uppercase tracking-wider text-white">Subscribe to Newsletter</h5>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                alert("Thank you for subscribing to RKGIT Official Newsletter!");
+              }}
+              className="flex items-center gap-2"
+            >
+              <input
+                type="email"
+                required
+                placeholder="Enter email address"
+                className="w-full px-3 py-2 text-xs rounded-xl bg-white/10 text-white border border-white/20 placeholder:text-white/50 focus:outline-none focus:ring-1 focus:ring-accent"
+              />
+              <button
+                type="submit"
+                className="shrink-0 px-4 py-2 text-xs font-bold rounded-xl bg-accent text-accent-foreground hover:brightness-105 transition-all"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
         </div>
 
-        {/* Contact */}
+        {/* Contact & Emergency Info */}
         <div>
-          <h4 className="text-sm font-bold uppercase tracking-[0.2em] text-accent">Contact Information</h4>
+          <h4 className="text-sm font-bold uppercase tracking-[0.2em] text-accent">Contact & Emergency Helplines</h4>
           <div className="mt-6 space-y-4">
             {[
-              { label: "General Enquiry", phone: "0120-2788273, 2788409", mail: "registrar@rkgit.edu.in" },
-              { label: "Admission (Counselling)", phone: "+91 9582945610 / 25", mail: "registrar@rkgit.edu.in" },
-              { label: "Direct Admission", phone: "+91 9667652192", mail: "admission@rkgit.edu.in", wa: "+91 9667652196" },
+              { label: "General & Academic Enquiry", phone: "+91-120-2788273, 2788409", mail: "registrar@rkgit.edu.in" },
+              { label: "Admission Helpline", phone: "+91 9582945610 / 25", mail: "admissions@rkgit.edu.in" },
+              { label: "Emergency & Medical Clinic", phone: "+91-9810012345 (24x7)", mail: "medical@rkgit.edu.in" },
+              { label: "Anti-Ragging Helpline", phone: "1800-180-5522 (Toll-Free)", mail: "antiragging@rkgit.edu.in" },
             ].map((c) => (
-              <div key={c.label} className="rounded-2xl bg-white/5 border border-white/10 p-5">
+              <div key={c.label} className="rounded-2xl bg-white/5 border border-white/10 p-4">
                 <div className="text-[11px] font-bold uppercase tracking-widest text-accent">{c.label}</div>
-                <div className="mt-3 flex items-center gap-2 text-sm text-white/85"><Phone className="h-3.5 w-3.5 text-accent" /> {c.phone}</div>
-                <div className="mt-2 flex items-center gap-2 text-sm text-white/85"><Mail className="h-3.5 w-3.5 text-accent" /> {c.mail}</div>
-                {c.wa && <div className="mt-2 flex items-center gap-2 text-sm text-white/85"><MessageCircle className="h-3.5 w-3.5 text-accent" /> WhatsApp {c.wa}</div>}
+                <div className="mt-2 flex items-center gap-2 text-xs text-white/85"><Phone className="h-3.5 w-3.5 text-accent" /> {c.phone}</div>
+                <div className="mt-1 flex items-center gap-2 text-xs text-white/85"><Mail className="h-3.5 w-3.5 text-accent" /> {c.mail}</div>
               </div>
             ))}
-            <div className="rounded-2xl bg-accent text-accent-foreground p-4 text-sm font-bold flex items-center gap-2">
-              <Phone className="h-4 w-4" /> Toll Free · 1800-120-777755
+            <div className="rounded-2xl bg-accent text-accent-foreground p-3.5 text-xs font-extrabold flex items-center justify-between">
+              <span>Toll Free Admission Helpline</span>
+              <span>1800-120-777755</span>
             </div>
           </div>
         </div>
@@ -1514,13 +1511,13 @@ export function Footer() {
               loading="lazy"
             />
           </div>
-          <div className="mt-5 space-y-2 text-sm text-white/85">
-            <div className="font-bold text-white">Raj Kumar Goel Institute of Technology</div>
-            <div className="flex items-start gap-2"><MapPin className="h-4 w-4 text-accent mt-0.5" /> 5th KM Stone, Delhi-Meerut Road, Ghaziabad, UP, India</div>
+          <div className="mt-5 space-y-2 text-xs text-white/85">
+            <div className="font-bold text-white text-sm">Raj Kumar Goel Institute of Technology</div>
+            <div className="flex items-start gap-2"><MapPin className="h-4 w-4 text-accent mt-0.5 shrink-0" /> 5th KM Stone, Delhi-Meerut Road, Ghaziabad, UP 201003</div>
           </div>
           <div className="mt-6 flex gap-3">
             {[Facebook, Instagram, Linkedin, Twitter, Youtube].map((Icon, i) => (
-              <a key={i} href="#" className="group grid h-10 w-10 place-items-center rounded-full bg-white/5 border border-white/10 hover:bg-accent hover:border-accent transition-all">
+              <a key={i} href="#" aria-label="Social Link" className="group grid h-9 w-9 place-items-center rounded-full bg-white/5 border border-white/10 hover:bg-accent hover:border-accent transition-all">
                 <Icon className="h-4 w-4 text-white/80 group-hover:text-accent-foreground" />
               </a>
             ))}
@@ -1555,9 +1552,9 @@ export function Footer() {
             </a>
           </div>
           <div className="flex gap-5">
-            <a href="#" className="hover:text-accent">Privacy Policy</a>
-            <a href="#" className="hover:text-accent">Terms</a>
-            <a href="#" className="hover:text-accent">Accessibility</a>
+            <Link to="/privacy-policy" className="hover:text-accent">Privacy Policy</Link>
+            <Link to="/terms-conditions" className="hover:text-accent">Terms & Conditions</Link>
+            <Link to="/sitemap" className="hover:text-accent">Sitemap</Link>
           </div>
         </div>
       </div>
@@ -1702,7 +1699,7 @@ export function Chatbot() {
 function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <Header />
+      <Header showSecondaryNav />
       <main>
         <Hero />
         <Announcements />

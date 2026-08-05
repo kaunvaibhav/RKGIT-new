@@ -10,10 +10,21 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AlumniRouteImport } from './routes/alumni'
+import { Route as AnnouncementsRouteImport } from './routes/announcements'
+import { Route as ApplyNowRouteImport } from './routes/apply-now'
+import { Route as CareersRouteImport } from './routes/careers'
+import { Route as ContactUsRouteImport } from './routes/contact-us'
+import { Route as ErpRouteImport } from './routes/erp'
+import { Route as LibraryRouteImport } from './routes/library'
 import { Route as NirfRouteImport } from './routes/nirf'
 import { Route as PayFeeRouteImport } from './routes/pay-fee'
 import { Route as PlacementsRouteImport } from './routes/placements'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as ProgramRouteImport } from './routes/program'
+import { Route as SitemapRouteImport } from './routes/sitemap'
+import { Route as TermsConditionsRouteImport } from './routes/terms-conditions'
+import { Route as CategorySlugRouteImport } from './routes/$category.$slug'
 import { Route as AdminAchievementsRouteImport } from './routes/admin/achievements'
 import { Route as AdminAnnouncementsRouteImport } from './routes/admin/announcements'
 import { Route as AdminCareersRouteImport } from './routes/admin/careers'
@@ -50,6 +61,41 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AlumniRoute = AlumniRouteImport.update({
+  id: '/alumni',
+  path: '/alumni',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AnnouncementsRoute = AnnouncementsRouteImport.update({
+  id: '/announcements',
+  path: '/announcements',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApplyNowRoute = ApplyNowRouteImport.update({
+  id: '/apply-now',
+  path: '/apply-now',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareersRoute = CareersRouteImport.update({
+  id: '/careers',
+  path: '/careers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactUsRoute = ContactUsRouteImport.update({
+  id: '/contact-us',
+  path: '/contact-us',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ErpRoute = ErpRouteImport.update({
+  id: '/erp',
+  path: '/erp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LibraryRoute = LibraryRouteImport.update({
+  id: '/library',
+  path: '/library',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NirfRoute = NirfRouteImport.update({
   id: '/nirf',
   path: '/nirf',
@@ -65,9 +111,29 @@ const PlacementsRoute = PlacementsRouteImport.update({
   path: '/placements',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProgramRoute = ProgramRouteImport.update({
   id: '/program',
   path: '/program',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapRoute = SitemapRouteImport.update({
+  id: '/sitemap',
+  path: '/sitemap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsConditionsRoute = TermsConditionsRouteImport.update({
+  id: '/terms-conditions',
+  path: '/terms-conditions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CategorySlugRoute = CategorySlugRouteImport.update({
+  id: '/$category/$slug',
+  path: '/$category/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminAchievementsRoute = AdminAchievementsRouteImport.update({
@@ -223,10 +289,21 @@ const PlacementsStatisticsRoute = PlacementsStatisticsRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/alumni': typeof AlumniRoute
+  '/announcements': typeof AnnouncementsRoute
+  '/apply-now': typeof ApplyNowRoute
+  '/careers': typeof CareersRoute
+  '/contact-us': typeof ContactUsRoute
+  '/erp': typeof ErpRoute
+  '/library': typeof LibraryRoute
   '/nirf': typeof NirfRoute
   '/pay-fee': typeof PayFeeRoute
   '/placements': typeof PlacementsRouteWithChildren
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/program': typeof ProgramRoute
+  '/sitemap': typeof SitemapRoute
+  '/terms-conditions': typeof TermsConditionsRoute
+  '/$category/$slug': typeof CategorySlugRoute
   '/admin/achievements': typeof AdminAchievementsRoute
   '/admin/announcements': typeof AdminAnnouncementsRoute
   '/admin/careers': typeof AdminCareersRoute
@@ -260,10 +337,21 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/alumni': typeof AlumniRoute
+  '/announcements': typeof AnnouncementsRoute
+  '/apply-now': typeof ApplyNowRoute
+  '/careers': typeof CareersRoute
+  '/contact-us': typeof ContactUsRoute
+  '/erp': typeof ErpRoute
+  '/library': typeof LibraryRoute
   '/nirf': typeof NirfRoute
   '/pay-fee': typeof PayFeeRoute
   '/placements': typeof PlacementsRouteWithChildren
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/program': typeof ProgramRoute
+  '/sitemap': typeof SitemapRoute
+  '/terms-conditions': typeof TermsConditionsRoute
+  '/$category/$slug': typeof CategorySlugRoute
   '/admin/achievements': typeof AdminAchievementsRoute
   '/admin/announcements': typeof AdminAnnouncementsRoute
   '/admin/careers': typeof AdminCareersRoute
@@ -298,10 +386,21 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/alumni': typeof AlumniRoute
+  '/announcements': typeof AnnouncementsRoute
+  '/apply-now': typeof ApplyNowRoute
+  '/careers': typeof CareersRoute
+  '/contact-us': typeof ContactUsRoute
+  '/erp': typeof ErpRoute
+  '/library': typeof LibraryRoute
   '/nirf': typeof NirfRoute
   '/pay-fee': typeof PayFeeRoute
   '/placements': typeof PlacementsRouteWithChildren
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/program': typeof ProgramRoute
+  '/sitemap': typeof SitemapRoute
+  '/terms-conditions': typeof TermsConditionsRoute
+  '/$category/$slug': typeof CategorySlugRoute
   '/admin/achievements': typeof AdminAchievementsRoute
   '/admin/announcements': typeof AdminAnnouncementsRoute
   '/admin/careers': typeof AdminCareersRoute
@@ -337,10 +436,21 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/alumni'
+    | '/announcements'
+    | '/apply-now'
+    | '/careers'
+    | '/contact-us'
+    | '/erp'
+    | '/library'
     | '/nirf'
     | '/pay-fee'
     | '/placements'
+    | '/privacy-policy'
     | '/program'
+    | '/sitemap'
+    | '/terms-conditions'
+    | '/$category/$slug'
     | '/admin/achievements'
     | '/admin/announcements'
     | '/admin/careers'
@@ -374,10 +484,21 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/alumni'
+    | '/announcements'
+    | '/apply-now'
+    | '/careers'
+    | '/contact-us'
+    | '/erp'
+    | '/library'
     | '/nirf'
     | '/pay-fee'
     | '/placements'
+    | '/privacy-policy'
     | '/program'
+    | '/sitemap'
+    | '/terms-conditions'
+    | '/$category/$slug'
     | '/admin/achievements'
     | '/admin/announcements'
     | '/admin/careers'
@@ -411,10 +532,21 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/alumni'
+    | '/announcements'
+    | '/apply-now'
+    | '/careers'
+    | '/contact-us'
+    | '/erp'
+    | '/library'
     | '/nirf'
     | '/pay-fee'
     | '/placements'
+    | '/privacy-policy'
     | '/program'
+    | '/sitemap'
+    | '/terms-conditions'
+    | '/$category/$slug'
     | '/admin/achievements'
     | '/admin/announcements'
     | '/admin/careers'
@@ -449,10 +581,21 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AlumniRoute: typeof AlumniRoute
+  AnnouncementsRoute: typeof AnnouncementsRoute
+  ApplyNowRoute: typeof ApplyNowRoute
+  CareersRoute: typeof CareersRoute
+  ContactUsRoute: typeof ContactUsRoute
+  ErpRoute: typeof ErpRoute
+  LibraryRoute: typeof LibraryRoute
   NirfRoute: typeof NirfRoute
   PayFeeRoute: typeof PayFeeRoute
   PlacementsRoute: typeof PlacementsRouteWithChildren
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   ProgramRoute: typeof ProgramRoute
+  SitemapRoute: typeof SitemapRoute
+  TermsConditionsRoute: typeof TermsConditionsRoute
+  CategorySlugRoute: typeof CategorySlugRoute
   AdminAchievementsRoute: typeof AdminAchievementsRoute
   AdminAnnouncementsRoute: typeof AdminAnnouncementsRoute
   AdminCareersRoute: typeof AdminCareersRoute
@@ -492,6 +635,55 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/alumni': {
+      id: '/alumni'
+      path: '/alumni'
+      fullPath: '/alumni'
+      preLoaderRoute: typeof AlumniRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/announcements': {
+      id: '/announcements'
+      path: '/announcements'
+      fullPath: '/announcements'
+      preLoaderRoute: typeof AnnouncementsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/apply-now': {
+      id: '/apply-now'
+      path: '/apply-now'
+      fullPath: '/apply-now'
+      preLoaderRoute: typeof ApplyNowRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/careers': {
+      id: '/careers'
+      path: '/careers'
+      fullPath: '/careers'
+      preLoaderRoute: typeof CareersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact-us': {
+      id: '/contact-us'
+      path: '/contact-us'
+      fullPath: '/contact-us'
+      preLoaderRoute: typeof ContactUsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/erp': {
+      id: '/erp'
+      path: '/erp'
+      fullPath: '/erp'
+      preLoaderRoute: typeof ErpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/library': {
+      id: '/library'
+      path: '/library'
+      fullPath: '/library'
+      preLoaderRoute: typeof LibraryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/nirf': {
       id: '/nirf'
       path: '/nirf'
@@ -513,11 +705,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PlacementsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/program': {
       id: '/program'
       path: '/program'
       fullPath: '/program'
       preLoaderRoute: typeof ProgramRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap': {
+      id: '/sitemap'
+      path: '/sitemap'
+      fullPath: '/sitemap'
+      preLoaderRoute: typeof SitemapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms-conditions': {
+      id: '/terms-conditions'
+      path: '/terms-conditions'
+      fullPath: '/terms-conditions'
+      preLoaderRoute: typeof TermsConditionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$category/$slug': {
+      id: '/$category/$slug'
+      path: '/$category/$slug'
+      fullPath: '/$category/$slug'
+      preLoaderRoute: typeof CategorySlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/achievements': {
@@ -749,10 +969,21 @@ const PlacementsRouteWithChildren = PlacementsRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AlumniRoute: AlumniRoute,
+  AnnouncementsRoute: AnnouncementsRoute,
+  ApplyNowRoute: ApplyNowRoute,
+  CareersRoute: CareersRoute,
+  ContactUsRoute: ContactUsRoute,
+  ErpRoute: ErpRoute,
+  LibraryRoute: LibraryRoute,
   NirfRoute: NirfRoute,
   PayFeeRoute: PayFeeRoute,
   PlacementsRoute: PlacementsRouteWithChildren,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
   ProgramRoute: ProgramRoute,
+  SitemapRoute: SitemapRoute,
+  TermsConditionsRoute: TermsConditionsRoute,
+  CategorySlugRoute: CategorySlugRoute,
   AdminAchievementsRoute: AdminAchievementsRoute,
   AdminAnnouncementsRoute: AdminAnnouncementsRoute,
   AdminCareersRoute: AdminCareersRoute,
